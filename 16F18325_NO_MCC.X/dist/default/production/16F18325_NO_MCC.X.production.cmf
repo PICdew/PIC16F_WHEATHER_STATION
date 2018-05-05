@@ -11,61 +11,35 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$dist/default/production/16F18325_NO_MCC.X.production.obj
-cinit CODE 0 7F6 7F6 A 2
-text1 CODE 0 93E 93E 5 2
-text2 CODE 0 9A9 9A9 17 2
-text3 CODE 0 F02 F02 FE 2
-text4 CODE 0 968 968 A 2
-text5 CODE 0 9F1 9F1 1B 2
-text6 CODE 0 972 972 F 2
-text7 CODE 0 930 930 4 2
-text8 CODE 0 957 957 8 2
-text9 CODE 0 B86 B86 44 2
-text10 CODE 0 95F 95F 9 2
-text11 CODE 0 9D8 9D8 19 2
-text12 CODE 0 C19 C19 62 2
-text13 CODE 0 981 981 13 2
-text14 CODE 0 DD2 DD2 87 2
-text15 CODE 0 9C0 9C0 18 2
-text16 CODE 0 A81 A81 2E 2
-text17 CODE 0 ADE ADE 2F 2
-text18 CODE 0 58 58 1A2 2
-text19 CODE 0 452 452 3A4 2
-text20 CODE 0 A2E A2E 28 2
-text21 CODE 0 6 6 52 2
-text22 CODE 0 D4C D4C 86 2
-text23 CODE 0 1FA 1FA 258 2
-text24 CODE 0 AAF AAF 2F 2
-text25 CODE 0 E59 E59 A9 2
-text26 CODE 0 B49 B49 3D 2
-text27 CODE 0 C7B C7B 64 2
-text28 CODE 0 BCA BCA 4F 2
-text29 CODE 0 994 994 15 2
-text30 CODE 0 A56 A56 2B 2
-text31 CODE 0 B0D B0D 3C 2
-text32 CODE 0 943 943 6 2
-text33 CODE 0 939 939 5 2
-text34 CODE 0 934 934 5 2
-text35 CODE 0 A0C A0C 22 2
-text36 CODE 0 94F 94F 8 2
-nvBANK1 BANK1 1 DA DA 1 1
-maintext CODE 0 CDF CDF 6D 2
-cstackCOMMON COMMON 1 70 70 E 1
-cstackBANK0 BANK0 1 20 20 50 1
-bssBANK1 BANK1 1 A0 A0 3A 1
-clrtext CODE 0 949 949 6 2
-$/tmp/xcXzzClcz.obj
+$/tmp/xcXftvSOr.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 2 2 2 2
 config CONFIG 0 8007 8007 4 2
+$dist/default/production/16F18325_NO_MCC.X.production.obj
+cinit CODE 0 7F6 7F6 A 2
+text1 CODE 0 6DF 6DF 17 2
+text2 CODE 0 6D0 6D0 F 2
+text3 CODE 0 6A2 6A2 4 2
+text4 CODE 0 6B4 6B4 8 2
+text5 CODE 0 760 760 44 2
+text6 CODE 0 6BC 6BC 9 2
+text7 CODE 0 6C5 6C5 B 2
+text8 CODE 0 6F6 6F6 2F 2
+text9 CODE 0 7A4 7A4 52 2
+text10 CODE 0 6AC 6AC 8 2
+maintext CODE 0 725 725 3B 2
+cstackCOMMON COMMON 1 70 70 E 1
+cstackBANK0 BANK0 1 45 45 A 1
+bssBANK0 BANK0 1 20 20 25 1
+clrtext CODE 0 6A6 6A6 6 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM DB-EF 1
+RAM 4F-6F 1
+RAM A0-EF 1
 RAM 120-16F 1
 RAM 1A0-1EF 1
 RAM 220-26F 1
@@ -77,7 +51,8 @@ RAM 4A0-4EF 1
 RAM 520-56F 1
 RAM 5A0-5EF 1
 RAM 620-64F 1
-BANK1 DB-EF 1
+BANK0 4F-6F 1
+BANK1 A0-EF 1
 BANK2 120-16F 1
 BANK3 1A0-1EF 1
 BANK4 220-26F 1
@@ -86,12 +61,10 @@ BANK6 320-36F 1
 BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
-CONST 4-5 2
-CONST 800-92F 2
-CONST 1000-1FFF 2
-ENTRY 4-5 2
-ENTRY 800-92F 2
-ENTRY 1000-1FFF 2
+CONST 4-6A1 2
+CONST 800-1FFF 2
+ENTRY 4-6A1 2
+ENTRY 800-1FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -115,10 +88,9 @@ SFR28 E00-E6F 1
 SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
-STACK 208B-23EF 1
-CODE 4-5 2
-CODE 800-92F 2
-CODE 1000-1FFF 2
+STACK 202F-23EF 1
+CODE 4-6A1 2
+CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -134,12 +106,10 @@ BANK11 5A0-5EF 1
 BANK12 620-64F 1
 BIGRAM 2000-23EF 1
 EEDATA F000-F0FF 2
-STRCODE 4-5 2
-STRCODE 800-92F 2
-STRCODE 1000-1FFF 2
-STRING 4-5 2
-STRING 800-92F 2
-STRING 1000-1FFF 2
+STRCODE 4-6A1 2
+STRCODE 800-1FFF 2
+STRING 4-6A1 2
+STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -154,415 +124,131 @@ STRING 1000-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/16F18325_NO_MCC.X.production.obj
-7F6 cinit CODE >4976:/tmp/xcX1OffsG
-7F6 cinit CODE >4979:/tmp/xcX1OffsG
-7F6 cinit CODE >5027:/tmp/xcX1OffsG
-7F7 cinit CODE >5028:/tmp/xcX1OffsG
-7F8 cinit CODE >5029:/tmp/xcX1OffsG
-7F9 cinit CODE >5030:/tmp/xcX1OffsG
-7FA cinit CODE >5031:/tmp/xcX1OffsG
-7FB cinit CODE >5032:/tmp/xcX1OffsG
-7FD cinit CODE >5038:/tmp/xcX1OffsG
-7FD cinit CODE >5040:/tmp/xcX1OffsG
-7FE cinit CODE >5041:/tmp/xcX1OffsG
-94F text36 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-94F text36 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A0C text35 CODE >51:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A0C text35 CODE >54:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A0F text35 CODE >55:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A11 text35 CODE >56:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A14 text35 CODE >57:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A1C text35 CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A1F text35 CODE >59:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A28 text35 CODE >60:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A29 text35 CODE >61:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-934 text34 CODE >24:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-934 text34 CODE >26:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-936 text34 CODE >27:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-938 text34 CODE >28:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-939 text33 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-939 text33 CODE >32:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-93B text33 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-93D text33 CODE >34:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-943 text32 CODE >36:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-943 text32 CODE >38:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-945 text32 CODE >39:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-948 text32 CODE >40:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-B0D text31 CODE >7:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B0E text31 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B11 text31 CODE >11:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B18 text31 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B1B text31 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B25 text31 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B28 text31 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B2B text31 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B2E text31 CODE >17:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B35 text31 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B38 text31 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B42 text31 CODE >20:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B45 text31 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-B47 text31 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A56 text30 CODE >93:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A57 text30 CODE >95:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A5A text30 CODE >96:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A61 text30 CODE >97:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A64 text30 CODE >98:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A6E text30 CODE >99:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A71 text30 CODE >100:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A7B text30 CODE >101:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A7E text30 CODE >102:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-A80 text30 CODE >104:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-994 text29 CODE >172:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-994 text29 CODE >175:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-99B text29 CODE >176:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-9A1 text29 CODE >177:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-9A8 text29 CODE >178:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BCA text28 CODE >27:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BCB text28 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BCE text28 CODE >31:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BD5 text28 CODE >32:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BD8 text28 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BE2 text28 CODE >34:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BE5 text28 CODE >35:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BE8 text28 CODE >36:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BEB text28 CODE >37:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BF2 text28 CODE >38:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-BF5 text28 CODE >39:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C00 text28 CODE >40:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C05 text28 CODE >41:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C0F text28 CODE >42:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C12 text28 CODE >43:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C14 text28 CODE >45:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-C7B text27 CODE >62:/opt/microchip/xc8/v1.45/sources/common/float.c
-C7B text27 CODE >64:/opt/microchip/xc8/v1.45/sources/common/float.c
-C83 text27 CODE >65:/opt/microchip/xc8/v1.45/sources/common/float.c
-C8A text27 CODE >67:/opt/microchip/xc8/v1.45/sources/common/float.c
-C8E text27 CODE >68:/opt/microchip/xc8/v1.45/sources/common/float.c
-C94 text27 CODE >66:/opt/microchip/xc8/v1.45/sources/common/float.c
-C99 text27 CODE >71:/opt/microchip/xc8/v1.45/sources/common/float.c
-C9D text27 CODE >72:/opt/microchip/xc8/v1.45/sources/common/float.c
-CA7 text27 CODE >73:/opt/microchip/xc8/v1.45/sources/common/float.c
-CAD text27 CODE >70:/opt/microchip/xc8/v1.45/sources/common/float.c
-CAD text27 CODE >74:/opt/microchip/xc8/v1.45/sources/common/float.c
-CB2 text27 CODE >76:/opt/microchip/xc8/v1.45/sources/common/float.c
-CB4 text27 CODE >77:/opt/microchip/xc8/v1.45/sources/common/float.c
-CBA text27 CODE >75:/opt/microchip/xc8/v1.45/sources/common/float.c
-CC0 text27 CODE >79:/opt/microchip/xc8/v1.45/sources/common/float.c
-CC2 text27 CODE >80:/opt/microchip/xc8/v1.45/sources/common/float.c
-CC8 text27 CODE >81:/opt/microchip/xc8/v1.45/sources/common/float.c
-CCA text27 CODE >82:/opt/microchip/xc8/v1.45/sources/common/float.c
-CDA text27 CODE >83:/opt/microchip/xc8/v1.45/sources/common/float.c
-CDD text27 CODE >84:/opt/microchip/xc8/v1.45/sources/common/float.c
-CDE text27 CODE >86:/opt/microchip/xc8/v1.45/sources/common/float.c
-B49 text26 CODE >42:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B49 text26 CODE >45:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B4B text26 CODE >46:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B4F text26 CODE >47:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B51 text26 CODE >48:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B5C text26 CODE >49:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B5E text26 CODE >52:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B62 text26 CODE >53:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B69 text26 CODE >54:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B6D text26 CODE >52:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-B6E text26 CODE >56:/opt/microchip/xc8/v1.45/sources/common/altoft.c
-E59 text25 CODE >56:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E59 text25 CODE >63:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E69 text25 CODE >64:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E70 text25 CODE >65:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E7F text25 CODE >66:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E86 text25 CODE >67:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E8C text25 CODE >68:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-E91 text25 CODE >69:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EA1 text25 CODE >70:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EB1 text25 CODE >71:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EB5 text25 CODE >72:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EB6 text25 CODE >73:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EBC text25 CODE >74:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EBD text25 CODE >75:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EC3 text25 CODE >76:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EC7 text25 CODE >78:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-ECD text25 CODE >79:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-ED9 text25 CODE >80:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EDF text25 CODE >81:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EE0 text25 CODE >83:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EE6 text25 CODE >84:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-EEA text25 CODE >85:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
-AAF text24 CODE >15:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AAF text24 CODE >119:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AB7 text24 CODE >121:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AB9 text24 CODE >122:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AC1 text24 CODE >123:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AC8 text24 CODE >124:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-ACF text24 CODE >125:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-AD5 text24 CODE >128:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
-1FA text23 CODE >215:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-1FA text23 CODE >217:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-205 text23 CODE >221:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-219 text23 CODE >231:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-380 text23 CODE >236:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-41A text23 CODE >243:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-43C text23 CODE >245:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D4C text22 CODE >49:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D4E text22 CODE >52:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D51 text22 CODE >53:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D58 text22 CODE >54:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D5B text22 CODE >55:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D66 text22 CODE >56:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D69 text22 CODE >57:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D6C text22 CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D6F text22 CODE >59:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D76 text22 CODE >60:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D79 text22 CODE >61:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D87 text22 CODE >62:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D8E text22 CODE >63:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-D91 text22 CODE >64:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-DA7 text22 CODE >65:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-DAE text22 CODE >66:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-DB1 text22 CODE >67:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-DC6 text22 CODE >69:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-DC8 text22 CODE >71:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6 text21 CODE >6:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-6 text21 CODE >14:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-E text21 CODE >15:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-14 text21 CODE >16:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-16 text21 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-18 text21 CODE >18:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-1F text21 CODE >19:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-23 text21 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-24 text21 CODE >22:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-2B text21 CODE >23:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-3B text21 CODE >24:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-43 text21 CODE >25:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-44 text21 CODE >27:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-4B text21 CODE >28:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-4F text21 CODE >30:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
-A2E text20 CODE >35:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A2E text20 CODE >38:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A32 text20 CODE >41:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A36 text20 CODE >42:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A3D text20 CODE >43:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A41 text20 CODE >41:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-A42 text20 CODE >45:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
-452 text19 CODE >249:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-452 text19 CODE >251:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-45F text19 CODE >257:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-483 text19 CODE >258:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-4ED text19 CODE >259:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-52B text19 CODE >260:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-55C text19 CODE >261:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-60E text19 CODE >262:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-63D text19 CODE >263:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-643 text19 CODE >264:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-64A text19 CODE >266:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-695 text19 CODE >267:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-699 text19 CODE >268:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6B5 text19 CODE >269:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6B6 text19 CODE >270:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6D2 text19 CODE >271:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6D2 text19 CODE >272:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-74A text19 CODE >273:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-787 text19 CODE >274:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-7D4 text19 CODE >275:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-58 text18 CODE >180:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-58 text18 CODE >185:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-65 text18 CODE >187:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-6D text18 CODE >191:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-CF text18 CODE >197:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-183 text18 CODE >199:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-19E text18 CODE >202:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-1DE text18 CODE >204:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-1F3 text18 CODE >206:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-ADE text17 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-ADE text17 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-AE1 text17 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-AE2 text17 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-B08 text17 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-B09 text17 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-B0B text17 CODE >17:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-B0C text17 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
-A81 text16 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-A81 text16 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-A84 text16 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-A8B text16 CODE >17:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-A96 text16 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-A9B text16 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-AA5 text16 CODE >20:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-AA8 text16 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-AAA text16 CODE >22:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9C0 text15 CODE >3:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9C1 text15 CODE >6:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9C4 text15 CODE >7:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9CB text15 CODE >8:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9D5 text15 CODE >9:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9D7 text15 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-DD2 text14 CODE >44:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-DD2 text14 CODE >49:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-DE2 text14 CODE >50:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-DEB text14 CODE >51:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-DFB text14 CODE >52:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-DFC text14 CODE >53:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E02 text14 CODE >54:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E09 text14 CODE >55:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E0B text14 CODE >56:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E0D text14 CODE >57:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E12 text14 CODE >58:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E1B text14 CODE >60:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E22 text14 CODE >61:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E29 text14 CODE >63:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E2D text14 CODE >64:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E36 text14 CODE >66:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E3D text14 CODE >67:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E3F text14 CODE >65:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E3F text14 CODE >68:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E42 text14 CODE >70:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E45 text14 CODE >71:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-E50 text14 CODE >72:/opt/microchip/xc8/v1.45/sources/common/fttol.c
-981 text13 CODE >28:/opt/microchip/xc8/v1.45/sources/common/lwtoft.c
-981 text13 CODE >30:/opt/microchip/xc8/v1.45/sources/common/lwtoft.c
-C19 text12 CODE >28:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C1B text12 CODE >31:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C1F text12 CODE >32:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C20 text12 CODE >35:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C24 text12 CODE >36:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C25 text12 CODE >38:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C29 text12 CODE >39:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C2A text12 CODE >41:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C2E text12 CODE >42:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C2F text12 CODE >44:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C33 text12 CODE >46:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C34 text12 CODE >32:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C40 text12 CODE >48:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C49 text12 CODE >49:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C51 text12 CODE >50:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-C76 text12 CODE >51:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/BH1750.c
-9D8 text11 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9D8 text11 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9DA text11 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9DB text11 CODE >28:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9DE text11 CODE >31:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E0 text11 CODE >34:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E2 text11 CODE >37:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E4 text11 CODE >40:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E5 text11 CODE >44:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E7 text11 CODE >45:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9E8 text11 CODE >46:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9EC text11 CODE >48:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9ED text11 CODE >49:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9EE text11 CODE >50:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9EF text11 CODE >53:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-9F0 text11 CODE >54:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
-95F text10 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95F text10 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-962 text10 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-963 text10 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-964 text10 CODE >25:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-966 text10 CODE >27:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-967 text10 CODE >28:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B86 text9 CODE >52:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B86 text9 CODE >57:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B88 text9 CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B89 text9 CODE >63:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B8C text9 CODE >64:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B8E text9 CODE >69:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B91 text9 CODE >70:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B93 text9 CODE >75:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B95 text9 CODE >76:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B96 text9 CODE >81:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B98 text9 CODE >82:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B99 text9 CODE >83:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-B9E text9 CODE >84:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BA2 text9 CODE >85:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BA6 text9 CODE >86:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BAB text9 CODE >87:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BAF text9 CODE >88:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BB3 text9 CODE >89:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BB7 text9 CODE >90:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BBC text9 CODE >91:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BC0 text9 CODE >92:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BC5 text9 CODE >93:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-BC9 text9 CODE >94:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-957 text8 CODE >36:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-957 text8 CODE >39:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-959 text8 CODE >41:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95A text8 CODE >43:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95B text8 CODE >45:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95C text8 CODE >47:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95D text8 CODE >49:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-95E text8 CODE >50:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-930 text7 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-930 text7 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-933 text7 CODE >34:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-972 text6 CODE >6:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-972 text6 CODE >9:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-975 text6 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-978 text6 CODE >11:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-97B text6 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-97E text6 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-980 text6 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
-9F1 text5 CODE >80:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-9F3 text5 CODE >82:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-9FB text5 CODE >84:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-968 text4 CODE >88:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-969 text4 CODE >90:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F02 text3 CODE >106:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F02 text3 CODE >109:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F0E text3 CODE >111:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F1A text3 CODE >113:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F26 text3 CODE >115:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F32 text3 CODE >117:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F3E text3 CODE >119:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F4A text3 CODE >121:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F56 text3 CODE >123:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F62 text3 CODE >125:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F6E text3 CODE >127:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F7A text3 CODE >129:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F86 text3 CODE >131:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F92 text3 CODE >133:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-F9B text3 CODE >135:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-FA7 text3 CODE >137:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-FB0 text3 CODE >139:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-FD1 text3 CODE >141:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-FF7 text3 CODE >143:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-FFF text3 CODE >146:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/bme280.c
-9A9 text2 CODE >7:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9AA text2 CODE >9:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9AC text2 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9AD text2 CODE >11:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9AF text2 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9B2 text2 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9B4 text2 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9B5 text2 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9B9 text2 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9BB text2 CODE >20:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9BB text2 CODE >22:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-9BF text2 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-93E text1 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-93F text1 CODE >32:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-942 text1 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
-CDF maintext CODE >41:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-CDF maintext CODE >44:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-CE2 maintext CODE >45:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-CEE maintext CODE >46:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-CF5 maintext CODE >51:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-CFB maintext CODE >52:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D04 maintext CODE >53:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D07 maintext CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D14 maintext CODE >59:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D17 maintext CODE >60:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D20 maintext CODE >61:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D29 maintext CODE >62:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D33 maintext CODE >63:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D3D maintext CODE >64:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D47 maintext CODE >65:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-D4B maintext CODE >56:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
-949 clrtext CODE >5016:/tmp/xcX1OffsG
-949 clrtext CODE >5017:/tmp/xcX1OffsG
-94A clrtext CODE >5018:/tmp/xcX1OffsG
-94A clrtext CODE >5019:/tmp/xcX1OffsG
-94B clrtext CODE >5020:/tmp/xcX1OffsG
-94C clrtext CODE >5021:/tmp/xcX1OffsG
-94D clrtext CODE >5022:/tmp/xcX1OffsG
-94E clrtext CODE >5023:/tmp/xcX1OffsG
+7F6 cinit CODE >4901:/tmp/xcXO4VYfL
+7F6 cinit CODE >4904:/tmp/xcXO4VYfL
+7F6 cinit CODE >4931:/tmp/xcXO4VYfL
+7F7 cinit CODE >4932:/tmp/xcXO4VYfL
+7F8 cinit CODE >4933:/tmp/xcXO4VYfL
+7F9 cinit CODE >4934:/tmp/xcXO4VYfL
+7FA cinit CODE >4935:/tmp/xcXO4VYfL
+7FB cinit CODE >4936:/tmp/xcXO4VYfL
+7FD cinit CODE >4942:/tmp/xcXO4VYfL
+7FD cinit CODE >4944:/tmp/xcXO4VYfL
+7FE cinit CODE >4945:/tmp/xcXO4VYfL
+6AC text10 CODE >73:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6AD text10 CODE >75:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6AD text10 CODE >77:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6B0 text10 CODE >79:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6B3 text10 CODE >80:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+7A4 text9 CODE >6:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7A4 text9 CODE >14:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7AC text9 CODE >15:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7B2 text9 CODE >16:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7B4 text9 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7B6 text9 CODE >18:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7BD text9 CODE >19:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7C1 text9 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7C2 text9 CODE >22:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7C9 text9 CODE >23:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7D9 text9 CODE >24:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7E1 text9 CODE >25:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7E2 text9 CODE >27:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7E9 text9 CODE >28:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+7ED text9 CODE >30:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+6F6 text8 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+6F6 text8 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+6F9 text8 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+6FA text8 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+720 text8 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+721 text8 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+723 text8 CODE >17:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+724 text8 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/I2C1.c
+6C5 text7 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6C5 text7 CODE >20:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6C8 text7 CODE >24:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6CA text7 CODE >27:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6CC text7 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6CE text7 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6CF text7 CODE >35:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/eusart.c
+6BC text6 CODE >16:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6BC text6 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6BF text6 CODE >21:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6C0 text6 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6C1 text6 CODE >25:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6C3 text6 CODE >27:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6C4 text6 CODE >28:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+760 text5 CODE >52:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+760 text5 CODE >57:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+762 text5 CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+763 text5 CODE >63:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+766 text5 CODE >64:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+768 text5 CODE >69:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+76B text5 CODE >70:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+76D text5 CODE >75:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+76F text5 CODE >76:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+770 text5 CODE >81:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+772 text5 CODE >82:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+773 text5 CODE >83:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+778 text5 CODE >84:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+77C text5 CODE >85:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+780 text5 CODE >86:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+785 text5 CODE >87:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+789 text5 CODE >88:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+78D text5 CODE >89:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+791 text5 CODE >90:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+796 text5 CODE >91:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+79A text5 CODE >92:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+79F text5 CODE >93:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+7A3 text5 CODE >94:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B4 text4 CODE >36:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B4 text4 CODE >39:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B6 text4 CODE >41:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B7 text4 CODE >43:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B8 text4 CODE >45:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6B9 text4 CODE >47:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6BA text4 CODE >49:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6BB text4 CODE >50:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6A2 text3 CODE >30:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6A2 text3 CODE >33:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6A5 text3 CODE >34:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6D0 text2 CODE >6:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6D0 text2 CODE >9:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6D3 text2 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6D6 text2 CODE >11:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6D9 text2 CODE >12:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6DC text2 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6DE text2 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/system.c
+6DF text1 CODE >7:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6E0 text1 CODE >9:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6E2 text1 CODE >10:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6E3 text1 CODE >11:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6E5 text1 CODE >13:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6E8 text1 CODE >14:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6EA text1 CODE >15:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6EB text1 CODE >18:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6EF text1 CODE >19:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6F1 text1 CODE >20:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6F1 text1 CODE >22:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+6F5 text1 CODE >23:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/SPI2.c
+725 maintext CODE >43:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+725 maintext CODE >46:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+728 maintext CODE >47:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+734 maintext CODE >48:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+73B maintext CODE >57:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+73D maintext CODE >61:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+73F maintext CODE >62:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+74C maintext CODE >64:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+74E maintext CODE >66:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+75B maintext CODE >67:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+75F maintext CODE >58:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
+6A6 clrtext CODE >4920:/tmp/xcXO4VYfL
+6A6 clrtext CODE >4921:/tmp/xcXO4VYfL
+6A7 clrtext CODE >4922:/tmp/xcXO4VYfL
+6A7 clrtext CODE >4923:/tmp/xcXO4VYfL
+6A8 clrtext CODE >4924:/tmp/xcXO4VYfL
+6A9 clrtext CODE >4925:/tmp/xcXO4VYfL
+6AA clrtext CODE >4926:/tmp/xcXO4VYfL
+6AB clrtext CODE >4927:/tmp/xcXO4VYfL
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -577,22 +263,17 @@ D4B maintext CODE >56:/home/pierre/MPLABXProjects/16F18325_NO_MCC.X/main.c
 %SYMTAB
 _RA5PPSbits E95 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 ___latbits 2 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_readSensorCoefficients 1E04 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hspace_0 800B 0 ABS 0 - -
-__Hspace_1 DB 0 ABS 0 - -
+__Hspace_1 7E 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 spiInit@sTransmitEdge 72 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@exp 2E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-I2C_Master_Init@c 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+I2C_Master_Init@c 45 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_readPressure 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RXPPSbits E24 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_PMD_Initialize 12AE 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BH1750_Write 1380 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read24@temp 21 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_WDT_Initialize 1268 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
+_PMD_Initialize D68 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_WDT_Initialize D4C 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
 _LATA 10C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _LATC 10E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
@@ -604,112 +285,61 @@ _PMD4 915 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _PMD5 916 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _WPUA 20C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _WPUC 20E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXzzClcz.obj
-_main 19BE 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readPressure@adc_P 44 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___sp 0 0 STACK 2 stack /tmp/xcXftvSOr.obj
+_main E4A 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-start 4 0 CODE 0 init /tmp/xcXzzClcz.obj
-__size_of___ftdiv 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of___fttol 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+start 4 0 CODE 0 init /tmp/xcXftvSOr.obj
+_EUSART_Write D58 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of___lldiv 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RA4PPSbits E94 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_write8@reg 75 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_read16_LE 13E2 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-?___lmul 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readTemperature@temperature 56 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@f1 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@f2 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@f3 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BH1750_Read 76 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_read16 76 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_read24 76 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_EUSART_Initialize 13E2 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EUSART_Initialize DA0 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-I2C_Master_Read@a 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-?_LireLux 3E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXzzClcz.obj
-__size_of_BH1750_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXftvSOr.obj
 _SSP2CLKPPSbits E1D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC2PPSbits EA2 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readTemperature$1238 52 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
-I2C_Master_Read@temp 74 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BH1750_Read 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_readHumidity 8A4 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_PMD_Initialize 12BE 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+_RC1STAbits 19D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_PMD_Initialize D78 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_EUSART_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
-_BME280_readTemperature B0 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartTxBuffer A8 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _ANSELA 18C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _ANSELC 18E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readPressure@p 50 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BH1750_Write 13B0 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of___altoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-LireLux@lux 42 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___altoft@c 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___lmul 15BC 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
-main@lux 6E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EUSART_Write D68 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_spiInit 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___fttol@f1 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-__LnvBANK1 0 0 ABS 0 nvBANK1 -
-__size_of___ftpack 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_FEXTOSC$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___ftdiv 1E04 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___fttol 1CB2 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___lldiv B0 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_read16_LE 1418 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_readTemperature 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_readPressure 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_read16_LE 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_EUSART_Initialize 13B0 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___lldiv FEC 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+_EUSART_Initialize D8A 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC0PPSbits EA0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of___lltoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of___lwtoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 ___lldiv@counter 7D 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-_PIN_MANAGER_Initialize 170C 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+_PIN_MANAGER_Initialize EC0 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
 spiInit@sDataSample 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_readSensorCoefficients 2000 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 start_initialization FEC 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
 _ODCONA 28C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _ODCONC 28E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCFRQ 91F 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___altoft 1692 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISAbits 8C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISCbits 8E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 ___lldiv@dividend 74 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_readS16_LE 29 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartRxBuffer A0 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_RC1REG 199 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC1STA 19D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_SYSTEM_Initialize 1302 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___altoft 170C 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
-clear_ram0 1292 0 CODE 0 clrtext dist/default/production/16F18325_NO_MCC.X.production.obj
-__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_SYSTEM_Initialize DBE 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+clear_ram0 D4C 0 CODE 0 clrtext dist/default/production/16F18325_NO_MCC.X.production.obj
+__pcstackBANK0 45 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSPBUF 211 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___fttol@exp1 3D 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___fttol@lval 39 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_read16 1794 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_read24 1A98 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1REG 19A 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1STA 19E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readPressure 8A4 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
-___lltoft@c 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftpack 18F6 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftpack@arg 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftpack@exp 73 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 _WDTCON 97 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_goForceMode 1352 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcXzzClcz.obj
-__end_of___ftpack 19BE 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
+___int_sp 0 0 STACK 2 stack /tmp/xcXftvSOr.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -746,8 +376,6 @@ __Hsfr29 0 0 ABS 0 sfr29 -
 __Hsfr30 0 0 ABS 0 sfr30 -
 __Hsfr31 0 0 ABS 0 sfr31 -
 __Hstack 0 0 STACK 2 stack -
-I2C_Master_Write@d 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read16@reg 7A 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hbank10 0 0 ABS 0 bank10 -
 __Hbank11 0 0 ABS 0 bank11 -
 __Hbank12 0 0 ABS 0 bank12 -
@@ -770,16 +398,12 @@ __Hbank28 0 0 BANK28 1 bank28 -
 __Hbank29 0 0 BANK29 1 bank29 -
 __Hbank30 0 0 BANK30 1 bank30 -
 __Hbank31 0 0 BANK31 1 bank31 -
-_BME280_write8 14AC 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
 _BAUD1CON 19F 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_spiInit 1380 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read24@reg 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___lltoft 145C 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_spiInit DEC 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10016 0 CONFIG 0 config -
-___lwtoft 1302 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -815,11 +439,8 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-__size_of_LireLux 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___lltoft 14AC 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2DATPPSbits E1E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of___lwtoft 1328 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_read8 161A 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
+_PORTCbits E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hinit 4 0 CODE 0 init -
@@ -848,86 +469,31 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-__pnvBANK1 DA 0 BANK1 1 nvBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON1 215 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON2 216 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1STAT 214 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2CON1 21D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2STAT 21C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___lmul 155E 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 _SSP2STATbits 21C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__end_of_BME280_readTemperature 3F4 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_goForceMode 1328 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read8@temp 79 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_WDT_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_BH1750_Read 1502 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
 __S0 800B 0 ABS 0 - -
-__S1 DB 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-main@humidity 68 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_I2C_Master_Start 1268 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
-_I2C_Master_Write 1286 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
-_SYSTEM_Initialize 12E4 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+_SYSTEM_Initialize DA0 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_BOREN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_BORV$LOW 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__HnvBANK1 0 0 ABS 0 nvBANK1 -
 __Lintentry 4 0 CODE 0 intentry -
 ___lldiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXzzClcz.obj
-__size_of_BME280_read8 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readTemperature@var1 4A 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readTemperature@var2 4E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_read16 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_read24 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_readS16_LE 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_readPressure FEC 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
-LireLux@resolution 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_read16_LE 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of___lmul 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__LbssBANK1 0 0 ABS 0 bssBANK1 -
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXftvSOr.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-?___altoft 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_PMD_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_PIE1bits 91 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___altoft@exp 24 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readPressure@var1 54 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readPressure@var2 4C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext10 12BE 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext11 13B0 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext12 1832 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext13 1302 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext14 1BA4 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext15 1380 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext16 1502 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext17 15BC 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext18 B0 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext19 8A4 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext20 145C 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext21 C 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext22 1A98 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext23 3F4 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext24 155E 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext25 1CB2 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext26 1692 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext27 18F6 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext28 1794 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext29 1328 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext30 14AC 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext31 161A 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext32 1286 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext33 1272 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext34 1268 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext35 1418 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext36 129E 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_PIN_MANAGER_Initialize 1794 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv 1CB2 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
-___fttol 1BA4 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_write8 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___lldiv C 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_goForceMode@mode 7B 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext10 D58 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_PIN_MANAGER_Initialize F48 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lldiv F48 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbank10 0 0 ABS 0 bank10 -
 __Lbank11 0 0 ABS 0 bank11 -
 __Lbank12 0 0 ABS 0 bank12 -
@@ -950,163 +516,91 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-BH1750_Read@res 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readHumidity@adc_H 44 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CLKPPSbits E20 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__pmaintext 19BE 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+__pmaintext E4A 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbigram 0 0 ABS 0 bigram -
-___lmul@multiplier 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_read8 1692 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_RSTOSC$HFINT1 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_readSensorCoefficients 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-?_BME280_readHumidity 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
-?___ftpack 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_LireLux 18F6 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_read16 1832 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_read24 1BA4 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
-_t_fine B0 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-?_I2C_Master_Read 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readHumidity@h 58 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readTemperature@adc_T 59 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___lwtoft@c 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-stackhi 23EF 0 ABS 0 - /tmp/xcXzzClcz.obj
-stacklo 208B 0 ABS 0 - /tmp/xcXzzClcz.obj
-?___lltoft 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+_t_fine 20 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+stackhi 23EF 0 ABS 0 - /tmp/xcXftvSOr.obj
+stacklo 202F 0 ABS 0 - /tmp/xcXftvSOr.obj
 _OSCCON1 919 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCCON3 91B 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCTUNE 91E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_I2C_Master_Init 161A 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_I2C_Master_Read 145C 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_I2C_Master_Stop 127C 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_I2C_Master_Wait 12AE 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
-?___lwtoft 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_write8 1502 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_I2C_Master_Start 1272 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Init E4A 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__end_of_I2C_Master_Write 1292 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_LPBOREN$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read16_LE@temp 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+_PIR1bits 11 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lend_init 4 0 CODE 0 end_init -
-_cal_data B9 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_cal_data 24 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_LVP$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BH1750_Write@data1 74 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CSWEN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__size_of_I2C_Master_Start 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_I2C_Master_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 end_of_initialization FFA 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hintentry 4 0 CODE 0 intentry -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1STAbits 19E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
-?___ftdiv 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-?___fttol 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 ?___lldiv 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec -
-__HbssBANK1 0 0 ABS 0 bssBANK1 -
-BME280_read16@temp 7B 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___lltoft@exp 7D 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext1 127C 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext2 1352 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext3 1E04 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext4 12D0 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext5 13E2 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext6 12E4 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext7 1260 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext8 12AE 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext9 170C 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartTxBufferRemaining DA 0 BANK1 1 nvBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read16_LE@reg 26 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_spiInit 1352 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
-spiWrite@dat 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BME280_readS16_LE 12E4 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__ptext1 DBE 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext2 DA0 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext3 D44 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext4 D68 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext5 EC0 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext6 D78 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext7 D8A 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext8 DEC 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext9 F48 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+_spiInit DBE 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
-__size_of_BME280_readTemperature 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 spiInit@sType 73 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_I2C_Master_Init 15BC 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
-_I2C_Master_Read 1418 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
-_I2C_Master_Stop 1272 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
-_I2C_Master_Wait 129E 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Init DEC 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec -
-BME280_readHumidity@v_x1_u32r 5F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+EUSART_Write@txData 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __end_of__initialization FFA 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_spiWrite 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_BME280_goForceMode 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lfunctab 0 0 ENTRY 0 functab -
-__size_of_BME280_readHumidity 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SP1BRGH 19C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SP1BRGL 19B 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartRxCount B4 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity$1239 5B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity$1240 48 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity$1241 4C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity$1242 50 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity$1243 54 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext -
-___altoft@sign 25 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON2bits 216 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_read8@reg 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftpack@sign 74 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___lmul@product 78 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-main@temperature 65 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EUSART_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readPressure$1244 48 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___lmul@multiplicand 74 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 ___lldiv@quotient 79 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@cntr 2A 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-___ftdiv@sign 2F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_BH1750_Read 155E 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1ADD 212 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2BUF 219 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hend_init 8 0 CODE 0 end_init -
-BME280_write8@value 72 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_main 1A98 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
-BME280_readS16_LE@reg 7D 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_main EC0 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC5PPSbits EA5 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCEN 91D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-main@pressure 6B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISA 8C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISC 8E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_PIN_MANAGER_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_WDT_Initialize 1260 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
-___fttol@sign1 38 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_WDT_Initialize D44 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1DATPPSbits E21 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_OSCILLATOR_Initialize 12D0 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_OSCILLATOR_Initialize D8A 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_PPS1WAY$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 spiInit@sClockIdle 71 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 __initialization FEC 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readHumidity 3F4 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
-__pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_spiWrite 127C 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartRxHead B6 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartRxTail B5 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_BME280_readS16_LE 12D0 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartTxHead B8 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_eusartTxTail B7 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC4PPSbits EA4 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_I2C_Master_Read 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_I2C_Master_Stop 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__size_of_I2C_Master_Wait 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_spiWrite 1286 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
-_OSCILLATOR_Initialize 12BE 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
-_LireLux 1832 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
+_OSCILLATOR_Initialize D78 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1133,46 +627,19 @@ _LireLux 1832 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.producti
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cinit 0 7F6 FEC A 2
-text1 0 93E 127C 5 2
-text2 0 9A9 1352 17 2
-text3 0 F02 1E04 FE 2
-text4 0 968 12D0 A 2
-text5 0 9F1 13E2 1B 2
-text6 0 972 12E4 F 2
-text7 0 930 1260 4 2
-text8 0 957 12AE 8 2
-text9 0 B86 170C 44 2
-text10 0 95F 12BE 9 2
-text11 0 9D8 13B0 19 2
-text12 0 C19 1832 62 2
-text13 0 981 1302 13 2
-text14 0 DD2 1BA4 87 2
-text15 0 9C0 1380 18 2
-text16 0 A81 1502 2E 2
-text17 0 ADE 15BC 2F 2
-text18 0 58 B0 1A2 2
-text19 0 452 8A4 3A4 2
-text20 0 A2E 145C 28 2
-text21 0 6 C 52 2
-text22 0 D4C 1A98 86 2
-text23 0 1FA 3F4 258 2
-text24 0 AAF 155E 2F 2
-text25 0 E59 1CB2 A9 2
-text26 0 B49 1692 3D 2
-text27 0 C7B 18F6 64 2
-text28 0 BCA 1794 4F 2
-text29 0 994 1328 15 2
-text30 0 A56 14AC 2B 2
-text31 0 B0D 161A 3C 2
-text32 0 943 1286 6 2
-text33 0 939 1272 5 2
-text34 0 934 1268 5 2
-text35 0 A0C 1418 22 2
-text36 0 94F 129E 8 2
-maintext 0 CDF 19BE 6D 2
+text1 0 6DF DBE 17 2
+text2 0 6D0 DA0 F 2
+text3 0 6A2 D44 4 2
+text4 0 6B4 D68 8 2
+text5 0 760 EC0 44 2
+text6 0 6BC D78 9 2
+text7 0 6C5 D8A B 2
+text8 0 6F6 DEC 2F 2
+text9 0 7A4 F48 52 2
+text10 0 6AC D58 8 2
+maintext 0 725 E4A 3B 2
 cstackCOMMON 1 70 70 E 1
-cstackBANK0 1 20 20 50 1
 reset_vec 0 0 0 4 2
-bssBANK1 1 A0 A0 3B 1
-clrtext 0 949 1292 6 2
+bssBANK0 1 20 20 2F 1
+clrtext 0 6A6 D4C 6 2
 config 0 8007 1000E 4 2

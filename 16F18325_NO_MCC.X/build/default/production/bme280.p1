@@ -7209,14 +7209,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 8: extern volatile uint8_t eusartTxBufferRemaining;
-[; ;eusart.h: 9: extern volatile uint8_t eusartRxCount;
-[; ;eusart.h: 13: void EUSART_Initialize(void);
-[; ;eusart.h: 15: uint8_t EUSART_is_tx_ready(void);
-[; ;eusart.h: 17: uint8_t EUSART_is_rx_ready(void);
-[; ;eusart.h: 19: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 21: uint8_t EUSART_Read(void);
-[; ;eusart.h: 23: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 77: void EUSART_Initialize(void);
+[; ;eusart.h: 86: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 95: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 104: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 111: uint8_t EUSART_Read(void);
+[; ;eusart.h: 120: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7269,9 +7267,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5
 [v _t_fine `l ~T0 @X0 1 e ]
 [; ;bme280.c: 5: int32_t t_fine;
-[v F7537 `(uc ~T0 @X0 1 tf1`uc ]
+[v F7535 `(uc ~T0 @X0 1 tf1`uc ]
 "7
-[v _BME280_read8 `TF7537 ~T0 @X0 1 e ]
+[v _BME280_read8 `TF7535 ~T0 @X0 1 e ]
 "8
 {
 [; ;bme280.c: 7: inline uint8_t BME280_read8(uint8_t reg)
@@ -7328,9 +7326,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [e :UE 920 ]
 }
-[v F7544 `(ui ~T0 @X0 1 tf1`uc ]
+[v F7542 `(ui ~T0 @X0 1 tf1`uc ]
 "27
-[v _BME280_read16 `TF7544 ~T0 @X0 1 e ]
+[v _BME280_read16 `TF7542 ~T0 @X0 1 e ]
 "28
 {
 [; ;bme280.c: 27: inline uint16_t BME280_read16(uint8_t reg)
@@ -7393,9 +7391,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "47
 [e :UE 921 ]
 }
-[v F7551 `(ul ~T0 @X0 1 tf1`uc ]
+[v F7549 `(ul ~T0 @X0 1 tf1`uc ]
 "49
-[v _BME280_read24 `TF7551 ~T0 @X0 1 e ]
+[v _BME280_read24 `TF7549 ~T0 @X0 1 e ]
 "50
 {
 [; ;bme280.c: 49: inline uint32_t BME280_read24(uint8_t reg)
@@ -7524,9 +7522,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "91
 [e :UE 925 ]
 }
-[v F7541 `(c ~T0 @X0 1 tf2`uc`uc ]
+[v F7539 `(c ~T0 @X0 1 tf2`uc`uc ]
 "93
-[v _BME280_write8 `TF7541 ~T0 @X0 1 e ]
+[v _BME280_write8 `TF7539 ~T0 @X0 1 e ]
 "94
 {
 [; ;bme280.c: 93: inline int8_t BME280_write8(uint8_t reg,uint8_t value)

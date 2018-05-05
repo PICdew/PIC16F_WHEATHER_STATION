@@ -9545,22 +9545,22 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
+# 77 "eusart.h"
 void EUSART_Initialize(void);
 
-uint8_t EUSART_is_tx_ready(void);
+# 86
+bool EUSART_is_tx_ready(void);
 
-uint8_t EUSART_is_rx_ready(void);
+# 95
+bool EUSART_is_rx_ready(void);
 
+# 104
 bool EUSART_is_tx_done(void);
 
+# 111
 uint8_t EUSART_Read(void);
 
+# 120
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"

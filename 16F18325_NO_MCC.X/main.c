@@ -36,6 +36,8 @@
 #include "BH1750.h"
 #include "bme280.h"
 #include "SPI2.h"
+#include <stdio.h>
+
 
 
 void main()
@@ -45,23 +47,28 @@ void main()
     I2C_Master_Init(100000);
     spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
     uint16_t  lux ;
-    float temperature ; 
+   /* float temperature ; 
     float humidity ;
     float pressure ; 
     BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // Set before CONTROL !!!
     BME280_write8(BME280_REGISTER_CONTROL, 0b00100100);
-    readSensorCoefficients();
+    readSensorCoefficients(); */
     
-    
+    TRISCbits.TRISC3 = 0 ;
 	while(1)
 	{
+        
+        PORTCbits.RC3 =1;
         __delay_ms(1000);
-       BME280_goForceMode();
-        __delay_ms(100);
-        lux = LireLux(1);
-        temperature = BME280_readTemperature();
-        humidity = BME280_readHumidity();
-        pressure = BME280_readPressure();
-        spiWrite(0xAA);
+      // BME280_goForceMode();
+        PORTCbits.RC3 =0;
+       // lux = LireLux(1);
+         __delay_ms(1000);
+        EUSART_Write('p');
+       // temperature = BME280_readTemperature();
+       // humidity = BME280_readHumidity();
+       // pressure = BME280_readPressure();
+      
+     //  spiWrite(0xAA);
     }
 }

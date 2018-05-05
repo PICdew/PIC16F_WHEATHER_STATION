@@ -9572,22 +9572,22 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
+# 77 "eusart.h"
 void EUSART_Initialize(void);
 
-uint8_t EUSART_is_tx_ready(void);
+# 86
+bool EUSART_is_tx_ready(void);
 
-uint8_t EUSART_is_rx_ready(void);
+# 95
+bool EUSART_is_rx_ready(void);
 
+# 104
 bool EUSART_is_tx_done(void);
 
+# 111
 uint8_t EUSART_Read(void);
 
+# 120
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9597,43 +9597,7 @@ void WDT_Initialize(void);
 void PMD_Initialize(void);
 void PIN_MANAGER_Initialize(void);
 
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-void EUSART_Initialize(void);
-
-uint8_t EUSART_is_tx_ready(void);
-
-uint8_t EUSART_is_rx_ready(void);
-
-bool EUSART_is_tx_done(void);
-
-uint8_t EUSART_Read(void);
-
-void EUSART_Write(uint8_t txData);
-
-# 8
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-void EUSART_Initialize(void);
-
-uint8_t EUSART_is_tx_ready(void);
-
-uint8_t EUSART_is_rx_ready(void);
-
-bool EUSART_is_tx_done(void);
-
-uint8_t EUSART_Read(void);
-
-void EUSART_Write(uint8_t txData);
-
-# 7 "system.h"
+# 7
 void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
@@ -9648,24 +9612,6 @@ void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
-
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-void EUSART_Initialize(void);
-
-uint8_t EUSART_is_tx_ready(void);
-
-uint8_t EUSART_is_rx_ready(void);
-
-bool EUSART_is_tx_done(void);
-
-uint8_t EUSART_Read(void);
-
-void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
 void SYSTEM_Initialize(void);
@@ -9687,24 +9633,6 @@ unsigned short I2C_Master_Read(unsigned short a);
 uint16_t LireLux(int8_t resolution);
 void BH1750_Write(unsigned char data);
 uint16_t BH1750_Read(void);
-
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-void EUSART_Initialize(void);
-
-uint8_t EUSART_is_tx_ready(void);
-
-uint8_t EUSART_is_rx_ready(void);
-
-bool EUSART_is_tx_done(void);
-
-uint8_t EUSART_Read(void);
-
-void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
 void SYSTEM_Initialize(void);
@@ -9767,24 +9695,6 @@ float BME280_readTemperature(void);
 float BME280_readHumidity(void);
 float BME280_readPressure(void);
 
-# 8 "eusart.h"
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-void EUSART_Initialize(void);
-
-uint8_t EUSART_is_tx_ready(void);
-
-uint8_t EUSART_is_rx_ready(void);
-
-bool EUSART_is_tx_done(void);
-
-uint8_t EUSART_Read(void);
-
-void EUSART_Write(uint8_t txData);
-
 # 7 "system.h"
 void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
@@ -9827,7 +9737,7 @@ void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
 
-# 41 "main.c"
+# 43 "main.c"
 void main()
 {
 
@@ -9835,23 +9745,20 @@ SYSTEM_Initialize();
 I2C_Master_Init(100000);
 spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
 uint16_t lux ;
-float temperature ;
-float humidity ;
-float pressure ;
-BME280_write8(0xF2, 0x01);
-BME280_write8(0xF4, 0b00100100);
-readSensorCoefficients();
 
-
+# 57
+TRISCbits.TRISC3 = 0 ;
 while(1)
 {
+
+PORTCbits.RC3 =1;
 _delay((unsigned long)((1000)*(2000000/4000.0)));
-BME280_goForceMode();
-_delay((unsigned long)((100)*(2000000/4000.0)));
-lux = LireLux(1);
-temperature = BME280_readTemperature();
-humidity = BME280_readHumidity();
-pressure = BME280_readPressure();
-spiWrite(0xAA);
+
+PORTCbits.RC3 =0;
+
+_delay((unsigned long)((1000)*(2000000/4000.0)));
+EUSART_Write('p');
+
+# 73
 }
 }
