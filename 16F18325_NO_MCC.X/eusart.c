@@ -12,6 +12,8 @@
   Section: EUSART APIs
 */
 
+
+
 void EUSART_Initialize(void)
 {
     // Set the EUSART module to the options selected in the user interface.

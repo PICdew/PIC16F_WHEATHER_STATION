@@ -7,7 +7,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
 "9
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
-"77 eusart.h
+"26 eusart.h
 [v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
 "11925 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [v _OSCCON1 `Vuc ~T0 @X0 0 e@2329 ]
@@ -163,17 +163,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S713 . . . ]
 "13937
 [v _RA5PPSbits `VS713 ~T0 @X0 0 e@3733 ]
-"14238
-[s S732 :5 `uc 1 ]
-[n S732 . RC5PPS ]
-"14241
-[s S733 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S733 . RC5PPS0 RC5PPS1 RC5PPS2 RC5PPS3 RC5PPS4 ]
-"14237
-[u S731 `S732 1 `S733 1 ]
-[n S731 . . . ]
-"14249
-[v _RC5PPSbits `VS731 ~T0 @X0 0 e@3749 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7371,12 +7360,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 77: void EUSART_Initialize(void);
-[; ;eusart.h: 86: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 95: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 104: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 111: uint8_t EUSART_Read(void);
-[; ;eusart.h: 120: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7549,9 +7538,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 92: RA5PPSbits.RA5PPS = 0x18;
 "92
 [e = . . _RA5PPSbits 0 0 -> -> 24 `i `uc ]
-[; ;system.c: 93: RC5PPSbits.RC5PPS = 0x1B;
-"93
-[e = . . _RC5PPSbits 0 0 -> -> 27 `i `uc ]
 [; ;system.c: 94: }
 "94
 [e :UE 923 ]

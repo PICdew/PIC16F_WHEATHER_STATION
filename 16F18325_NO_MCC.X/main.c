@@ -34,8 +34,9 @@
 #include "eusart.h"
 #include "I2C1.h"
 #include "BH1750.h"
-#include "bme280.h"
+//#include "bme280.h"
 #include "SPI2.h"
+#include "interupt.h"
 #include <stdio.h>
 
 
@@ -44,31 +45,38 @@ void main()
 {
     
     SYSTEM_Initialize();
-    I2C_Master_Init(100000);
-    spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
+    //I2C_Master_Init(100000);
+   // spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
     uint16_t  lux ;
-   /* float temperature ; 
+    float temperature ; 
     float humidity ;
     float pressure ; 
-    BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // Set before CONTROL !!!
+  /*  BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // regler avant  CONTROL !!!
     BME280_write8(BME280_REGISTER_CONTROL, 0b00100100);
     readSensorCoefficients(); */
-    
+    EnableGlobalinterupts();
+    EnablePeripheralInterupts();
+    EnableRXInterupts();
     TRISCbits.TRISC3 = 0 ;
 	while(1)
 	{
         
-        PORTCbits.RC3 =1;
+       PORTCbits.RC3 =1;
         __delay_ms(1000);
-      // BME280_goForceMode();
+     //   BME280_goForceMode();
         PORTCbits.RC3 =0;
        // lux = LireLux(1);
          __delay_ms(1000);
-        EUSART_Write('p');
-       // temperature = BME280_readTemperature();
-       // humidity = BME280_readHumidity();
-       // pressure = BME280_readPressure();
+       
+        
+    /*    temperature = BME280_readTemperature();
+        humidity = BME280_readHumidity();
+        pressure = BME280_readPressure();
+        
+         printf("temperature : %f \r\n",temperature);
+         printf("humidite : %f \r\n",humidity);
+         printf("pression : %f \r\n",pressure);
       
-     //  spiWrite(0xAA);
+     //  spiWrite(0xAA); */
     }
 }

@@ -9572,22 +9572,22 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 77 "eusart.h"
+# 26 "eusart.h"
 void EUSART_Initialize(void);
 
-# 86
+# 35
 bool EUSART_is_tx_ready(void);
 
-# 95
+# 44
 bool EUSART_is_rx_ready(void);
 
-# 104
+# 53
 bool EUSART_is_tx_done(void);
 
-# 111
+# 60
 uint8_t EUSART_Read(void);
 
-# 120
+# 69
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9597,7 +9597,43 @@ void WDT_Initialize(void);
 void PMD_Initialize(void);
 void PIN_MANAGER_Initialize(void);
 
-# 7
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
+# 26
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
+# 7 "system.h"
 void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
@@ -9612,6 +9648,24 @@ void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
+
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
 void SYSTEM_Initialize(void);
@@ -9634,66 +9688,23 @@ uint16_t LireLux(int8_t resolution);
 void BH1750_Write(unsigned char data);
 uint16_t BH1750_Read(void);
 
-# 7 "system.h"
-void SYSTEM_Initialize(void);
-void OSCILLATOR_Initialize(void);
-void WDT_Initialize(void);
-void PMD_Initialize(void);
-void PIN_MANAGER_Initialize(void);
+# 26 "eusart.h"
+void EUSART_Initialize(void);
 
-# 16 "I2C1.h"
-void I2C_Master_Init(const unsigned long c);
-void I2C_Master_Wait();
-void I2C_Master_Start();
-void I2C_Master_Stop();
-void I2C_Master_Write(unsigned d);
-int8_t I2C_Master_Write_V2(unsigned d);
-unsigned short I2C_Master_Read(unsigned short a);
+# 35
+bool EUSART_is_tx_ready(void);
 
-# 46 "bme280.h"
-struct BME280_Calibration_Data
-{
+# 44
+bool EUSART_is_rx_ready(void);
 
+# 53
+bool EUSART_is_tx_done(void);
 
-uint16_t dig_T1;
-int16_t dig_T2;
-int16_t dig_T3;
+# 60
+uint8_t EUSART_Read(void);
 
-uint16_t dig_P1;
-int16_t dig_P2;
-int16_t dig_P3;
-int16_t dig_P4;
-int16_t dig_P5;
-int16_t dig_P6;
-int16_t dig_P7;
-int16_t dig_P8;
-int16_t dig_P9;
-
-uint8_t dig_H1;
-int16_t dig_H2;
-uint8_t dig_H3;
-int16_t dig_H4;
-int16_t dig_H5;
-int8_t dig_H6;
-
-};
-
-
-
-int8_t BME280_init(void);
-inline uint8_t BME280_read8(uint8_t reg);
-inline int8_t BME280_write8(uint8_t reg,uint8_t value);
-inline uint16_t BME280_read16(uint8_t reg);
-uint16_t BME280_read16_LE(uint8_t reg);
-int16_t BME280_readS16(uint8_t reg);
-inline uint32_t BME280_read24(uint8_t reg);
-int16_t BME280_readS16_LE(uint8_t reg);
-void readSensorCoefficients(void);
-
-void BME280_goForceMode(void);
-float BME280_readTemperature(void);
-float BME280_readHumidity(void);
-float BME280_readPressure(void);
+# 69
+void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
 void SYSTEM_Initialize(void);
@@ -9737,16 +9748,56 @@ void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
 
-# 43 "main.c"
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
+# 6 "interupt.h"
+typedef struct {
+char data[3];
+uint8_t len ;
+} RXbuffer;
+RXbuffer monBuffer ;
+
+
+
+inline void EnableGlobalinterupts(void);
+inline void DisableGlobalinterupts(void);
+inline void EnablePeripheralInterupts(void);
+inline void DisablePeripheralInterupts(void);
+inline void EnableRXInterupts(void);
+inline void DisableRXInterupts(void);
+
+# 44 "main.c"
 void main()
 {
 
 SYSTEM_Initialize();
-I2C_Master_Init(100000);
-spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
+
+
 uint16_t lux ;
+float temperature ;
+float humidity ;
+float pressure ;
 
 # 57
+EnableGlobalinterupts();
+EnablePeripheralInterupts();
+EnableRXInterupts();
 TRISCbits.TRISC3 = 0 ;
 while(1)
 {
@@ -9757,8 +9808,7 @@ _delay((unsigned long)((1000)*(2000000/4000.0)));
 PORTCbits.RC3 =0;
 
 _delay((unsigned long)((1000)*(2000000/4000.0)));
-EUSART_Write('p');
 
-# 73
+# 81
 }
 }

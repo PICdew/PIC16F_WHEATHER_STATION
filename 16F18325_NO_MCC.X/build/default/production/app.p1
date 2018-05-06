@@ -1,17 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"46 bme280.h
-[s S919 `ui 1 `i 1 `i 1 `ui 1 `i 1 `i 1 `i 1 `i 1 `i 1 `i 1 `i 1 `i 1 `uc 1 `i 1 `uc 1 `i 1 `i 1 `c 1 ]
-[n S919 BME280_Calibration_Data dig_T1 dig_T2 dig_T3 dig_P1 dig_P2 dig_P3 dig_P4 dig_P5 dig_P6 dig_P7 dig_P8 dig_P9 dig_H1 dig_H2 dig_H3 dig_H4 dig_H5 dig_H6 ]
-"18 I2C1.h
-[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
-"20
-[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
-"17
-[v _I2C_Master_Wait `(v ~T0 @X0 0 ef ]
-"19
-[v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-"22
-[v _I2C_Master_Read `(us ~T0 @X0 0 ef1`us ]
+"6 interupt.h
+[s S919 `uc -> 3 `i `uc 1 ]
+[n S919 . data len ]
+"195 /opt/microchip/xc8/v1.45/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7215,617 +7207,64 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart.h: 53: bool EUSART_is_tx_done(void);
 [; ;eusart.h: 60: uint8_t EUSART_Read(void);
 [; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
-[; ;system.h: 7: void SYSTEM_Initialize(void);
-[; ;system.h: 8: void OSCILLATOR_Initialize(void);
-[; ;system.h: 9: void WDT_Initialize(void);
-[; ;system.h: 10: void PMD_Initialize(void);
-[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
-[; ;I2C1.h: 16: void I2C_Master_Init(const unsigned long c);
-[; ;I2C1.h: 17: void I2C_Master_Wait();
-[; ;I2C1.h: 18: void I2C_Master_Start();
-[; ;I2C1.h: 19: void I2C_Master_Stop();
-[; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
-[; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
-[; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
-[; ;bme280.h: 46: struct BME280_Calibration_Data
-[; ;bme280.h: 47: {
-[; ;bme280.h: 50: uint16_t dig_T1;
-[; ;bme280.h: 51: int16_t dig_T2;
-[; ;bme280.h: 52: int16_t dig_T3;
-[; ;bme280.h: 54: uint16_t dig_P1;
-[; ;bme280.h: 55: int16_t dig_P2;
-[; ;bme280.h: 56: int16_t dig_P3;
-[; ;bme280.h: 57: int16_t dig_P4;
-[; ;bme280.h: 58: int16_t dig_P5;
-[; ;bme280.h: 59: int16_t dig_P6;
-[; ;bme280.h: 60: int16_t dig_P7;
-[; ;bme280.h: 61: int16_t dig_P8;
-[; ;bme280.h: 62: int16_t dig_P9;
-[; ;bme280.h: 64: uint8_t dig_H1;
-[; ;bme280.h: 65: int16_t dig_H2;
-[; ;bme280.h: 66: uint8_t dig_H3;
-[; ;bme280.h: 67: int16_t dig_H4;
-[; ;bme280.h: 68: int16_t dig_H5;
-[; ;bme280.h: 69: int8_t dig_H6;
-[; ;bme280.h: 71: };
-[; ;bme280.h: 75: int8_t BME280_init(void);
-[; ;bme280.h: 76: inline uint8_t BME280_read8(uint8_t reg);
-[; ;bme280.h: 77: inline int8_t BME280_write8(uint8_t reg,uint8_t value);
-[; ;bme280.h: 78: inline uint16_t BME280_read16(uint8_t reg);
-[; ;bme280.h: 79: uint16_t BME280_read16_LE(uint8_t reg);
-[; ;bme280.h: 80: int16_t BME280_readS16(uint8_t reg);
-[; ;bme280.h: 81: inline uint32_t BME280_read24(uint8_t reg);
-[; ;bme280.h: 82: int16_t BME280_readS16_LE(uint8_t reg);
-[; ;bme280.h: 83: void readSensorCoefficients(void);
-[; ;bme280.h: 85: void BME280_goForceMode(void);
-[; ;bme280.h: 86: float BME280_readTemperature(void);
-[; ;bme280.h: 87: float BME280_readHumidity(void);
-[; ;bme280.h: 88: float BME280_readPressure(void);
-"4 bme280.c
-[v _cal_data `S919 ~T0 @X0 1 e ]
-[; ;bme280.c: 4: struct BME280_Calibration_Data cal_data ;
-"5
-[v _t_fine `l ~T0 @X0 1 e ]
-[; ;bme280.c: 5: int32_t t_fine;
-[v F7535 `(uc ~T0 @X0 1 tf1`uc ]
-"7
-[v _BME280_read8 `TF7535 ~T0 @X0 1 e ]
+[; ;interupt.h: 6: typedef struct {
+[; ;interupt.h: 7: char data[3];
+[; ;interupt.h: 8: uint8_t len ;
+[; ;interupt.h: 9: } RXbuffer;
+"10 interupt.h
+[v _monBuffer `S919 ~T0 @X0 1 e ]
+[; ;interupt.h: 10: RXbuffer monBuffer ;
+[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 18: inline void EnableRXInterupts(void);
+[; ;interupt.h: 19: inline void DisableRXInterupts(void);
+[; ;app.h: 5: void interpretation(void);
+[; ;app.c: 5: extern RXbuffer monBuffer ;
+"7 app.c
+[v _interpretation `(v ~T0 @X0 1 ef ]
 "8
 {
-[; ;bme280.c: 7: inline uint8_t BME280_read8(uint8_t reg)
-[; ;bme280.c: 8: {
-[e :U _BME280_read8 ]
-"7
-[v _reg `uc ~T0 @X0 1 r1 ]
-"8
+[; ;app.c: 7: void interpretation(void)
+[; ;app.c: 8: {
+[e :U _interpretation ]
 [f ]
 "9
-[v _temp `uc ~T0 @X0 1 a ]
-[; ;bme280.c: 9: uint8_t temp ;
-[; ;bme280.c: 10: I2C_Master_Start();
+[v _i `uc ~T0 @X0 1 a ]
+[; ;app.c: 9: uint8_t i ;
+[; ;app.c: 10: monBuffer.len = 0;
 "10
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 11: I2C_Master_Write(0xEC);
+[e = . _monBuffer 1 -> -> 0 `i `uc ]
+[; ;app.c: 11: printf("la commande est : \r\n");
 "11
-[e ( _I2C_Master_Write (1 -> -> 236 `i `ui ]
-[; ;bme280.c: 12: I2C_Master_Wait();
+[e ( _printf :s 1C ]
+[; ;app.c: 12: for(i=0;i<3;i++)
 "12
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 13: I2C_Master_Write(reg);
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 921  ]
+[e $U 922  ]
 "13
-[e ( _I2C_Master_Write (1 -> _reg `ui ]
-[; ;bme280.c: 14: I2C_Master_Wait();
+[e :U 921 ]
+[; ;app.c: 13: {
+{
+[; ;app.c: 14: printf(" %c",monBuffer.data[i]);
 "14
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 15: I2C_Master_Stop();
+[e ( _printf , (. :s 2C -> *U + &U . _monBuffer 0 * -> _i `ux -> -> # *U &U . _monBuffer 0 `ui `ux `i ]
 "15
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 16: I2C_Master_Start();
+}
+"12
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 921  ]
+[e :U 922 ]
+"15
+}
+[; ;app.c: 15: }
+[; ;app.c: 16: }
 "16
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 17: I2C_Master_Write(0xED);
-"17
-[e ( _I2C_Master_Write (1 -> -> 237 `i `ui ]
-[; ;bme280.c: 18: I2C_Master_Wait();
-"18
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 19: temp = I2C_Master_Read(0);
-"19
-[e = _temp -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-[; ;bme280.c: 20: I2C_Master_Wait();
-"20
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 21: I2C_Master_Stop();
-"21
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 23: return temp;
-"23
-[e ) _temp ]
-[e $UE 920  ]
-[; ;bme280.c: 25: }
-"25
 [e :UE 920 ]
 }
-[v F7542 `(ui ~T0 @X0 1 tf1`uc ]
-"27
-[v _BME280_read16 `TF7542 ~T0 @X0 1 e ]
-"28
-{
-[; ;bme280.c: 27: inline uint16_t BME280_read16(uint8_t reg)
-[; ;bme280.c: 28: {
-[e :U _BME280_read16 ]
-"27
-[v _reg `uc ~T0 @X0 1 r1 ]
-"28
-[f ]
-"29
-[v _temp `ui ~T0 @X0 1 a ]
-[; ;bme280.c: 29: uint16_t temp ;
-[; ;bme280.c: 30: I2C_Master_Start();
-"30
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 31: I2C_Master_Write(0xEC);
-"31
-[e ( _I2C_Master_Write (1 -> -> 236 `i `ui ]
-[; ;bme280.c: 32: I2C_Master_Wait();
-"32
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 33: I2C_Master_Write(reg);
-"33
-[e ( _I2C_Master_Write (1 -> _reg `ui ]
-[; ;bme280.c: 34: I2C_Master_Wait();
-"34
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 35: I2C_Master_Stop();
-"35
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 36: I2C_Master_Start();
-"36
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 37: I2C_Master_Write(0xED);
-"37
-[e ( _I2C_Master_Write (1 -> -> 237 `i `ui ]
-[; ;bme280.c: 38: I2C_Master_Wait();
-"38
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 39: temp = I2C_Master_Read(1);
-"39
-[e = _temp -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ui ]
-[; ;bme280.c: 40: temp<<=8;
-"40
-[e =<< _temp -> 8 `i ]
-[; ;bme280.c: 41: temp |= I2C_Master_Read(0);
-"41
-[e =| _temp -> ( _I2C_Master_Read (1 -> -> 0 `i `us `ui ]
-[; ;bme280.c: 42: I2C_Master_Wait();
-"42
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 43: I2C_Master_Stop();
-"43
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 45: return temp;
-"45
-[e ) _temp ]
-[e $UE 921  ]
-[; ;bme280.c: 47: }
-"47
-[e :UE 921 ]
-}
-[v F7549 `(ul ~T0 @X0 1 tf1`uc ]
-"49
-[v _BME280_read24 `TF7549 ~T0 @X0 1 e ]
-"50
-{
-[; ;bme280.c: 49: inline uint32_t BME280_read24(uint8_t reg)
-[; ;bme280.c: 50: {
-[e :U _BME280_read24 ]
-"49
-[v _reg `uc ~T0 @X0 1 r1 ]
-"50
-[f ]
-"51
-[v _temp `ul ~T0 @X0 1 a ]
-[; ;bme280.c: 51: uint32_t temp ;
-[; ;bme280.c: 52: I2C_Master_Start();
-"52
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 53: I2C_Master_Write(0xEC);
-"53
-[e ( _I2C_Master_Write (1 -> -> 236 `i `ui ]
-[; ;bme280.c: 54: I2C_Master_Wait();
-"54
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 55: I2C_Master_Write(reg);
-"55
-[e ( _I2C_Master_Write (1 -> _reg `ui ]
-[; ;bme280.c: 56: I2C_Master_Wait();
-"56
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 57: I2C_Master_Stop();
-"57
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 58: I2C_Master_Start();
-"58
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 59: I2C_Master_Write(0xED);
-"59
-[e ( _I2C_Master_Write (1 -> -> 237 `i `ui ]
-[; ;bme280.c: 60: I2C_Master_Wait();
-"60
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 61: temp = I2C_Master_Read(1);
-"61
-[e = _temp -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ul ]
-[; ;bme280.c: 62: temp<<=8;
-"62
-[e =<< _temp -> 8 `i ]
-[; ;bme280.c: 63: I2C_Master_Wait();
-"63
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 64: temp |= I2C_Master_Read(1);
-"64
-[e =| _temp -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ul ]
-[; ;bme280.c: 65: temp<<=8;
-"65
-[e =<< _temp -> 8 `i ]
-[; ;bme280.c: 66: I2C_Master_Wait();
-"66
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 67: temp |= I2C_Master_Read(0);
-"67
-[e =| _temp -> ( _I2C_Master_Read (1 -> -> 0 `i `us `ul ]
-[; ;bme280.c: 69: I2C_Master_Stop();
-"69
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 71: return temp;
-"71
-[e ) _temp ]
-[e $UE 922  ]
-[; ;bme280.c: 73: }
-"73
-[e :UE 922 ]
-}
-"75
-[v _BME280_readS16 `(i ~T0 @X0 1 ef1`uc ]
-"76
-{
-[; ;bme280.c: 75: int16_t BME280_readS16(uint8_t reg)
-[; ;bme280.c: 76: {
-[e :U _BME280_readS16 ]
-"75
-[v _reg `uc ~T0 @X0 1 r1 ]
-"76
-[f ]
-[; ;bme280.c: 77: return (int16_t)BME280_read16(reg);
-"77
-[e ) -> ( _BME280_read16 (1 _reg `i ]
-[e $UE 923  ]
-[; ;bme280.c: 78: }
-"78
-[e :UE 923 ]
-}
-"80
-[v _BME280_read16_LE `(ui ~T0 @X0 1 ef1`uc ]
-{
-[; ;bme280.c: 80: uint16_t BME280_read16_LE(uint8_t reg) {
-[e :U _BME280_read16_LE ]
-[v _reg `uc ~T0 @X0 1 r1 ]
-[f ]
-"82
-[v _temp `ui ~T0 @X0 1 a ]
-[; ;bme280.c: 82: uint16_t temp = BME280_read16(reg);
-[e = _temp ( _BME280_read16 (1 _reg ]
-[; ;bme280.c: 84: return (temp >> 8) | (temp << 8);
-"84
-[e ) | >> _temp -> 8 `i << _temp -> 8 `i ]
-[e $UE 924  ]
-[; ;bme280.c: 86: }
-"86
-[e :UE 924 ]
-}
-"88
-[v _BME280_readS16_LE `(i ~T0 @X0 1 ef1`uc ]
-"89
-{
-[; ;bme280.c: 88: int16_t BME280_readS16_LE(uint8_t reg)
-[; ;bme280.c: 89: {
-[e :U _BME280_readS16_LE ]
-"88
-[v _reg `uc ~T0 @X0 1 r1 ]
-"89
-[f ]
-[; ;bme280.c: 90: return (int16_t)BME280_read16_LE(reg);
-"90
-[e ) -> ( _BME280_read16_LE (1 _reg `i ]
-[e $UE 925  ]
-[; ;bme280.c: 91: }
-"91
-[e :UE 925 ]
-}
-[v F7539 `(c ~T0 @X0 1 tf2`uc`uc ]
-"93
-[v _BME280_write8 `TF7539 ~T0 @X0 1 e ]
-"94
-{
-[; ;bme280.c: 93: inline int8_t BME280_write8(uint8_t reg,uint8_t value)
-[; ;bme280.c: 94: {
-[e :U _BME280_write8 ]
-"93
-[v _reg `uc ~T0 @X0 1 r1 ]
-[v _value `uc ~T0 @X0 1 r2 ]
-"94
-[f ]
-[; ;bme280.c: 95: I2C_Master_Start();
-"95
-[e ( _I2C_Master_Start ..  ]
-[; ;bme280.c: 96: I2C_Master_Write(0xEC);
-"96
-[e ( _I2C_Master_Write (1 -> -> 236 `i `ui ]
-[; ;bme280.c: 97: I2C_Master_Wait();
-"97
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 98: I2C_Master_Write(reg);
-"98
-[e ( _I2C_Master_Write (1 -> _reg `ui ]
-[; ;bme280.c: 99: I2C_Master_Wait();
-"99
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 100: I2C_Master_Write(value);
-"100
-[e ( _I2C_Master_Write (1 -> _value `ui ]
-[; ;bme280.c: 101: I2C_Master_Wait();
-"101
-[e ( _I2C_Master_Wait ..  ]
-[; ;bme280.c: 102: I2C_Master_Stop();
-"102
-[e ( _I2C_Master_Stop ..  ]
-[; ;bme280.c: 104: }
-"104
-[e :UE 926 ]
-}
-"106
-[v _readSensorCoefficients `(v ~T0 @X0 1 ef ]
-"107
-{
-[; ;bme280.c: 106: void readSensorCoefficients(void)
-[; ;bme280.c: 107: {
-[e :U _readSensorCoefficients ]
-[f ]
-[; ;bme280.c: 109: cal_data.dig_T1 = BME280_read16_LE(0x88);
-"109
-[e = . _cal_data 0 ( _BME280_read16_LE (1 -> -> 136 `i `uc ]
-[; ;bme280.c: 111: cal_data.dig_T2 = BME280_readS16_LE(0x8A);
-"111
-[e = . _cal_data 1 ( _BME280_readS16_LE (1 -> -> 138 `i `uc ]
-[; ;bme280.c: 113: cal_data.dig_T3 = BME280_readS16_LE(0x8C);
-"113
-[e = . _cal_data 2 ( _BME280_readS16_LE (1 -> -> 140 `i `uc ]
-[; ;bme280.c: 115: cal_data.dig_P1 = BME280_read16_LE(0x8E);
-"115
-[e = . _cal_data 3 ( _BME280_read16_LE (1 -> -> 142 `i `uc ]
-[; ;bme280.c: 117: cal_data.dig_P2 = BME280_readS16_LE(0x90);
-"117
-[e = . _cal_data 4 ( _BME280_readS16_LE (1 -> -> 144 `i `uc ]
-[; ;bme280.c: 119: cal_data.dig_P3 = BME280_readS16_LE(0x92);
-"119
-[e = . _cal_data 5 ( _BME280_readS16_LE (1 -> -> 146 `i `uc ]
-[; ;bme280.c: 121: cal_data.dig_P4 = BME280_readS16_LE(0x94);
-"121
-[e = . _cal_data 6 ( _BME280_readS16_LE (1 -> -> 148 `i `uc ]
-[; ;bme280.c: 123: cal_data.dig_P5 = BME280_readS16_LE(0x96);
-"123
-[e = . _cal_data 7 ( _BME280_readS16_LE (1 -> -> 150 `i `uc ]
-[; ;bme280.c: 125: cal_data.dig_P6 = BME280_readS16_LE(0x98);
-"125
-[e = . _cal_data 8 ( _BME280_readS16_LE (1 -> -> 152 `i `uc ]
-[; ;bme280.c: 127: cal_data.dig_P7 = BME280_readS16_LE(0x9A);
-"127
-[e = . _cal_data 9 ( _BME280_readS16_LE (1 -> -> 154 `i `uc ]
-[; ;bme280.c: 129: cal_data.dig_P8 = BME280_readS16_LE(0x9C);
-"129
-[e = . _cal_data 10 ( _BME280_readS16_LE (1 -> -> 156 `i `uc ]
-[; ;bme280.c: 131: cal_data.dig_P9 = BME280_readS16_LE(0x9E);
-"131
-[e = . _cal_data 11 ( _BME280_readS16_LE (1 -> -> 158 `i `uc ]
-[; ;bme280.c: 133: cal_data.dig_H1 = BME280_read8(0xA1);
-"133
-[e = . _cal_data 12 ( _BME280_read8 (1 -> -> 161 `i `uc ]
-[; ;bme280.c: 135: cal_data.dig_H2 = BME280_readS16_LE(0xE1);
-"135
-[e = . _cal_data 13 ( _BME280_readS16_LE (1 -> -> 225 `i `uc ]
-[; ;bme280.c: 137: cal_data.dig_H3 = BME280_read8(0xE3);
-"137
-[e = . _cal_data 14 ( _BME280_read8 (1 -> -> 227 `i `uc ]
-[; ;bme280.c: 139: cal_data.dig_H4 = (BME280_read8(0xE4) << 4) | (BME280_read8(0xE4+1) & 0xF);
-"139
-[e = . _cal_data 15 | << -> ( _BME280_read8 (1 -> -> 228 `i `uc `i -> 4 `i & -> ( _BME280_read8 (1 -> + -> 228 `i -> 1 `i `uc `i -> 15 `i ]
-[; ;bme280.c: 141: cal_data.dig_H5 = (BME280_read8(0xE5+1) << 4) | (BME280_read8(0xE5) >> 4);
-"141
-[e = . _cal_data 16 | << -> ( _BME280_read8 (1 -> + -> 229 `i -> 1 `i `uc `i -> 4 `i >> -> ( _BME280_read8 (1 -> -> 229 `i `uc `i -> 4 `i ]
-[; ;bme280.c: 143: cal_data.dig_H6 = (int8_t)BME280_read8(0xE7);
-"143
-[e = . _cal_data 17 -> ( _BME280_read8 (1 -> -> 231 `i `uc `c ]
-[; ;bme280.c: 146: }
-"146
-[e :UE 927 ]
-}
-"172
-[v _BME280_goForceMode `(v ~T0 @X0 1 ef ]
-"173
-{
-[; ;bme280.c: 172: void BME280_goForceMode(void)
-[; ;bme280.c: 173: {
-[e :U _BME280_goForceMode ]
-[f ]
-"174
-[v _mode `uc ~T0 @X0 1 a ]
-[; ;bme280.c: 174: uint8_t mode ;
-[; ;bme280.c: 175: mode = BME280_read8(0xF4);
-"175
-[e = _mode ( _BME280_read8 (1 -> -> 244 `i `uc ]
-[; ;bme280.c: 176: mode = (mode & 0xFC) + 0x01;
-"176
-[e = _mode -> + & -> _mode `i -> 252 `i -> 1 `i `uc ]
-[; ;bme280.c: 177: BME280_write8(0xF4,mode);
-"177
-[e ( _BME280_write8 (2 , -> -> 244 `i `uc _mode ]
-[; ;bme280.c: 178: }
-"178
-[e :UE 928 ]
-}
-"180
-[v _BME280_readTemperature `(f ~T0 @X0 1 ef ]
-"181
-{
-[; ;bme280.c: 180: float BME280_readTemperature(void)
-[; ;bme280.c: 181: {
-[e :U _BME280_readTemperature ]
-[f ]
-"182
-[v _temperature `f ~T0 @X0 1 a ]
-"183
-[v _var1 `l ~T0 @X0 1 a ]
-[v _var2 `l ~T0 @X0 1 a ]
-"185
-[v _adc_T `l ~T0 @X0 1 a ]
-[; ;bme280.c: 182: float temperature ;
-[; ;bme280.c: 183: int32_t var1, var2;
-[; ;bme280.c: 185: int32_t adc_T = BME280_read24(0xFA);
-[e = _adc_T -> ( _BME280_read24 (1 -> -> 250 `i `uc `l ]
-[; ;bme280.c: 187: adc_T >>= 4;
-"187
-[e =>> _adc_T -> 4 `i ]
-[; ;bme280.c: 189: var1 = ((((adc_T>>3) - ((int32_t)cal_data.dig_T1 <<1))) *
-[; ;bme280.c: 191: ((int32_t)cal_data.dig_T2)) >> 11;
-"191
-[e = _var1 >> * - >> _adc_T -> 3 `i << -> . _cal_data 0 `l -> 1 `i -> . _cal_data 1 `l -> 11 `i ]
-[; ;bme280.c: 193: var2 = (((((adc_T>>4) - ((int32_t)cal_data.dig_T1)) *
-[; ;bme280.c: 195: ((adc_T>>4) - ((int32_t)cal_data.dig_T1))) >> 12) *
-[; ;bme280.c: 197: ((int32_t)cal_data.dig_T3)) >> 14;
-"197
-[e = _var2 >> * >> * - >> _adc_T -> 4 `i -> . _cal_data 0 `l - >> _adc_T -> 4 `i -> . _cal_data 0 `l -> 12 `i -> . _cal_data 2 `l -> 14 `i ]
-[; ;bme280.c: 199: t_fine = var1 + var2;
-"199
-[e = _t_fine + _var1 _var2 ]
-[; ;bme280.c: 202: temperature = (t_fine * 5 + 128) >> 8;
-"202
-[e = _temperature -> >> + * _t_fine -> -> 5 `i `l -> -> 128 `i `l -> 8 `i `f ]
-[; ;bme280.c: 204: temperature = temperature / 100;
-"204
-[e = _temperature / _temperature -> -> 100 `i `f ]
-[; ;bme280.c: 206: return temperature ;
-"206
-[e ) _temperature ]
-[e $UE 929  ]
-[; ;bme280.c: 210: }
-"210
-[e :UE 929 ]
-}
-"215
-[v _BME280_readHumidity `(f ~T0 @X0 1 ef ]
-{
-[; ;bme280.c: 215: float BME280_readHumidity(void) {
-[e :U _BME280_readHumidity ]
-[f ]
-"217
-[v _adc_H `l ~T0 @X0 1 a ]
-[; ;bme280.c: 217: int32_t adc_H = BME280_read16(0xFD);
-[e = _adc_H -> ( _BME280_read16 (1 -> -> 253 `i `uc `l ]
-"219
-[v _v_x1_u32r `l ~T0 @X0 1 a ]
-[; ;bme280.c: 219: int32_t v_x1_u32r;
-[; ;bme280.c: 221: v_x1_u32r = (t_fine - ((int32_t)76800));
-"221
-[e = _v_x1_u32r - _t_fine -> 76800 `l ]
-[; ;bme280.c: 223: v_x1_u32r = (((((adc_H << 14) - (((int32_t)cal_data.dig_H4) << 20) -
-[; ;bme280.c: 225: (((int32_t)cal_data.dig_H5) * v_x1_u32r)) + ((int32_t)16384)) >> 15) *
-[; ;bme280.c: 227: (((((((v_x1_u32r * ((int32_t)cal_data.dig_H6)) >> 10) *
-[; ;bme280.c: 229: (((v_x1_u32r * ((int32_t)cal_data.dig_H3)) >> 11) + ((int32_t)32768))) >> 10) +
-[; ;bme280.c: 231: ((int32_t)2097152)) * ((int32_t)cal_data.dig_H2) + 8192) >> 14));
-"231
-[e = _v_x1_u32r * >> + - - << _adc_H -> 14 `i << -> . _cal_data 15 `l -> 20 `i * -> . _cal_data 16 `l _v_x1_u32r -> -> 16384 `i `l -> 15 `i >> + * + >> * >> * _v_x1_u32r -> . _cal_data 17 `l -> 10 `i + >> * _v_x1_u32r -> . _cal_data 14 `l -> 11 `i -> 32768 `l -> 10 `i -> 2097152 `l -> . _cal_data 13 `l -> -> 8192 `i `l -> 14 `i ]
-[; ;bme280.c: 234: v_x1_u32r = (v_x1_u32r - (((((v_x1_u32r >> 15) * (v_x1_u32r >> 15)) >> 7) *
-[; ;bme280.c: 236: ((int32_t)cal_data.dig_H1)) >> 4));
-"236
-[e = _v_x1_u32r - _v_x1_u32r >> * >> * >> _v_x1_u32r -> 15 `i >> _v_x1_u32r -> 15 `i -> 7 `i -> . _cal_data 12 `l -> 4 `i ]
-"243
-[v _h `f ~T0 @X0 1 a ]
-[; ;bme280.c: 243: float h = (v_x1_u32r>>12);
-[e = _h -> >> _v_x1_u32r -> 12 `i `f ]
-[; ;bme280.c: 245: return (h / 1024.0);
-"245
-[e ) -> / -> _h `d .1024.0 `f ]
-[e $UE 930  ]
-[; ;bme280.c: 247: }
-"247
-[e :UE 930 ]
-}
-"249
-[v _BME280_readPressure `(f ~T0 @X0 1 ef ]
-"250
-{
-[; ;bme280.c: 249: float BME280_readPressure(void)
-[; ;bme280.c: 250: {
-[e :U _BME280_readPressure ]
-[f ]
-"251
-[v _adc_P `l ~T0 @X0 1 a ]
-[; ;bme280.c: 251: int32_t adc_P = BME280_read24(0xF7);
-[e = _adc_P -> ( _BME280_read24 (1 -> -> 247 `i `uc `l ]
-"252
-[v _var1 `l ~T0 @X0 1 a ]
-[v _var2 `l ~T0 @X0 1 a ]
-"253
-[v _p `ul ~T0 @X0 1 a ]
-[; ;bme280.c: 252: int32_t var1,var2 ;
-[; ;bme280.c: 253: uint32_t p ;
-[; ;bme280.c: 257: var1 = (((int32_t)t_fine)>>1) - (int32_t)64000;
-"257
-[e = _var1 - >> _t_fine -> 1 `i -> 64000 `l ]
-[; ;bme280.c: 258: var2 = (((var1>>2) * (var1>>2)) >> 11 ) * ((int32_t)cal_data.dig_P6);
-"258
-[e = _var2 * >> * >> _var1 -> 2 `i >> _var1 -> 2 `i -> 11 `i -> . _cal_data 8 `l ]
-[; ;bme280.c: 259: var2 = var2 + ((var1*((int32_t)cal_data.dig_P5))<<1);
-"259
-[e = _var2 + _var2 << * _var1 -> . _cal_data 7 `l -> 1 `i ]
-[; ;bme280.c: 260: var2 = (var2>>2)+(((int32_t)cal_data.dig_P4)<<16);
-"260
-[e = _var2 + >> _var2 -> 2 `i << -> . _cal_data 6 `l -> 16 `i ]
-[; ;bme280.c: 261: var1 = (((cal_data.dig_P3 * (((var1>>2) * (var1>>2)) >> 13 )) >> 3) + ((((int32_t)cal_data.dig_P2) * var1)>>1))>>18;
-"261
-[e = _var1 >> + >> * -> . _cal_data 5 `l >> * >> _var1 -> 2 `i >> _var1 -> 2 `i -> 13 `i -> 3 `i >> * -> . _cal_data 4 `l _var1 -> 1 `i -> 18 `i ]
-[; ;bme280.c: 262: var1 =((((32768+var1))*((int32_t)cal_data.dig_P1))>>15);
-"262
-[e = _var1 >> * + -> 32768 `l _var1 -> . _cal_data 3 `l -> 15 `i ]
-[; ;bme280.c: 263: if (var1 == 0) {
-"263
-[e $ ! == _var1 -> -> 0 `i `l 932  ]
-{
-[; ;bme280.c: 264: return 0;
-"264
-[e ) -> -> 0 `i `f ]
-[e $UE 931  ]
-"265
-}
-[e :U 932 ]
-[; ;bme280.c: 265: }
-[; ;bme280.c: 266: p = (((uint32_t)(((int32_t)1048576)-adc_P)-(var2>>12)))*3125;
-"266
-[e = _p * - -> - -> 1048576 `l _adc_P `ul -> >> _var2 -> 12 `i `ul -> -> -> 3125 `i `l `ul ]
-[; ;bme280.c: 267: if (p < 0x80000000) {
-"267
-[e $ ! < _p -> -2147483648 `ul 933  ]
-{
-[; ;bme280.c: 268: p = (p << 1) / ((uint32_t)var1);
-"268
-[e = _p / << _p -> 1 `i -> _var1 `ul ]
-"269
-}
-[; ;bme280.c: 269: } else {
-[e $U 934  ]
-[e :U 933 ]
-{
-[; ;bme280.c: 270: p = (p / (uint32_t)var1) * 2;
-"270
-[e = _p * / _p -> _var1 `ul -> -> -> 2 `i `l `ul ]
-"271
-}
-[e :U 934 ]
-[; ;bme280.c: 271: }
-[; ;bme280.c: 272: var1 = (((int32_t)cal_data.dig_P9) * ((int32_t)(((p>>3) * (p>>3))>>13)))>>12;
-"272
-[e = _var1 >> * -> . _cal_data 11 `l -> >> * >> _p -> 3 `i >> _p -> 3 `i -> 13 `i `l -> 12 `i ]
-[; ;bme280.c: 273: var2 = (((int32_t)(p>>2)) * ((int32_t)cal_data.dig_P8))>>13;
-"273
-[e = _var2 >> * -> >> _p -> 2 `i `l -> . _cal_data 10 `l -> 13 `i ]
-[; ;bme280.c: 274: p = (uint32_t)((int32_t)p + ((var1 + var2 + cal_data.dig_P7) >> 4));
-"274
-[e = _p -> + -> _p `l >> + + _var1 _var2 -> . _cal_data 9 `l -> 4 `i `ul ]
-[; ;bme280.c: 275: return (p/100.0);
-"275
-[e ) -> / -> _p `d .100.0 `f ]
-[e $UE 931  ]
-[; ;bme280.c: 280: }
-"280
-[e :UE 931 ]
-}
+[p f _printf 8912896 ]
+[a 2C 32 37 99 0 ]
+[a 1C 108 97 32 99 111 109 109 97 110 100 101 32 101 115 116 32 58 32 13 10 0 ]

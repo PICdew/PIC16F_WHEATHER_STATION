@@ -90,5 +90,5 @@ void PIN_MANAGER_Initialize(void)
     SSP2CLKPPSbits.SSP2CLKPPS = 0x10;   //RC0->MSSP2:SCK2;    
     SSP2DATPPSbits.SSP2DATPPS = 0x11;   //RC1->MSSP2:SDI2;    
     RA5PPSbits.RA5PPS = 0x18;   //RA5->MSSP1:SCL1;    
-    RC5PPSbits.RC5PPS = 0x1B;   //RC5->MSSP2:SDO2;    
+   
 }

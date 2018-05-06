@@ -1,20 +1,19 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"6 interupt.h
+[s S919 `uc -> 3 `i `uc 1 ]
+[n S919 . data len ]
 [p mainexit ]
 "7 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"16 I2C1.h
-[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"48 main.c
-[c E7596 32 33 34 35 36 37 .. ]
-[n E7596 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E7604 0 128 .. ]
-[n E7604 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E7608 16 0 .. ]
-[n E7608 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E7612 0 64 .. ]
-[n E7612 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
-"44 SPI2.h
-[v _spiInit `(v ~T0 @X0 0 ef4`E7596`E7604`E7608`E7612 ]
+[v F7603 `(v ~T0 @X0 1 tf ]
+"14 interupt.h
+[v _EnableGlobalinterupts `TF7603 ~T0 @X0 0 e ]
+[v F7609 `(v ~T0 @X0 1 tf ]
+"16
+[v _EnablePeripheralInterupts `TF7609 ~T0 @X0 0 e ]
+[v F7615 `(v ~T0 @X0 1 tf ]
+"18
+[v _EnableRXInterupts `TF7615 ~T0 @X0 0 e ]
 "1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
@@ -35,8 +34,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "153 /opt/microchip/xc8/v1.45/include/pic.h
 [v __delay `JF7378 ~T0 @X0 0 e ]
 [p i __delay ]
-"120 eusart.h
-[v _EUSART_Write `(v ~T0 @X0 0 ef1`uc ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -7270,17 +7267,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 77: void EUSART_Initialize(void);
-[; ;eusart.h: 86: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 95: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 104: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 111: uint8_t EUSART_Read(void);
-[; ;eusart.h: 120: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
 [; ;system.h: 10: void PMD_Initialize(void);
 [; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7293,6 +7302,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7308,52 +7323,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;BH1750.h: 8: uint16_t LireLux(int8_t resolution);
 [; ;BH1750.h: 9: void BH1750_Write(unsigned char data);
 [; ;BH1750.h: 10: uint16_t BH1750_Read(void);
-[; ;system.h: 7: void SYSTEM_Initialize(void);
-[; ;system.h: 8: void OSCILLATOR_Initialize(void);
-[; ;system.h: 9: void WDT_Initialize(void);
-[; ;system.h: 10: void PMD_Initialize(void);
-[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
-[; ;I2C1.h: 16: void I2C_Master_Init(const unsigned long c);
-[; ;I2C1.h: 17: void I2C_Master_Wait();
-[; ;I2C1.h: 18: void I2C_Master_Start();
-[; ;I2C1.h: 19: void I2C_Master_Stop();
-[; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
-[; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
-[; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
-[; ;bme280.h: 46: struct BME280_Calibration_Data
-[; ;bme280.h: 47: {
-[; ;bme280.h: 50: uint16_t dig_T1;
-[; ;bme280.h: 51: int16_t dig_T2;
-[; ;bme280.h: 52: int16_t dig_T3;
-[; ;bme280.h: 54: uint16_t dig_P1;
-[; ;bme280.h: 55: int16_t dig_P2;
-[; ;bme280.h: 56: int16_t dig_P3;
-[; ;bme280.h: 57: int16_t dig_P4;
-[; ;bme280.h: 58: int16_t dig_P5;
-[; ;bme280.h: 59: int16_t dig_P6;
-[; ;bme280.h: 60: int16_t dig_P7;
-[; ;bme280.h: 61: int16_t dig_P8;
-[; ;bme280.h: 62: int16_t dig_P9;
-[; ;bme280.h: 64: uint8_t dig_H1;
-[; ;bme280.h: 65: int16_t dig_H2;
-[; ;bme280.h: 66: uint8_t dig_H3;
-[; ;bme280.h: 67: int16_t dig_H4;
-[; ;bme280.h: 68: int16_t dig_H5;
-[; ;bme280.h: 69: int8_t dig_H6;
-[; ;bme280.h: 71: };
-[; ;bme280.h: 75: int8_t BME280_init(void);
-[; ;bme280.h: 76: inline uint8_t BME280_read8(uint8_t reg);
-[; ;bme280.h: 77: inline int8_t BME280_write8(uint8_t reg,uint8_t value);
-[; ;bme280.h: 78: inline uint16_t BME280_read16(uint8_t reg);
-[; ;bme280.h: 79: uint16_t BME280_read16_LE(uint8_t reg);
-[; ;bme280.h: 80: int16_t BME280_readS16(uint8_t reg);
-[; ;bme280.h: 81: inline uint32_t BME280_read24(uint8_t reg);
-[; ;bme280.h: 82: int16_t BME280_readS16_LE(uint8_t reg);
-[; ;bme280.h: 83: void readSensorCoefficients(void);
-[; ;bme280.h: 85: void BME280_goForceMode(void);
-[; ;bme280.h: 86: float BME280_readTemperature(void);
-[; ;bme280.h: 87: float BME280_readHumidity(void);
-[; ;bme280.h: 88: float BME280_readPressure(void);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7387,59 +7362,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 45: void spiWrite(char);
 [; ;SPI2.h: 46: unsigned spiDataReady();
 [; ;SPI2.h: 47: char spiRead();
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 6: typedef struct {
+[; ;interupt.h: 7: char data[3];
+[; ;interupt.h: 8: uint8_t len ;
+[; ;interupt.h: 9: } RXbuffer;
+"10 interupt.h
+[v _monBuffer `S919 ~T0 @X0 1 e ]
+[; ;interupt.h: 10: RXbuffer monBuffer ;
+[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 18: inline void EnableRXInterupts(void);
+[; ;interupt.h: 19: inline void DisableRXInterupts(void);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"43 main.c
+"44 main.c
 [v _main `(v ~T0 @X0 1 ef ]
-"44
+"45
 {
-[; ;main.c: 43: void main()
-[; ;main.c: 44: {
+[; ;main.c: 44: void main()
+[; ;main.c: 45: {
 [e :U _main ]
 [f ]
-[; ;main.c: 46: SYSTEM_Initialize();
-"46
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 47: I2C_Master_Init(100000);
+[; ;main.c: 47: SYSTEM_Initialize();
 "47
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-[; ;main.c: 48: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
-"48
-[e ( _spiInit (4 , , , . `E7596 0 . `E7604 0 . `E7608 1 . `E7612 0 ]
-"49
+[e ( _SYSTEM_Initialize ..  ]
+"50
 [v _lux `ui ~T0 @X0 1 a ]
-[; ;main.c: 49: uint16_t lux ;
-[; ;main.c: 57: TRISCbits.TRISC3 = 0 ;
+"51
+[v _temperature `f ~T0 @X0 1 a ]
+"52
+[v _humidity `f ~T0 @X0 1 a ]
+"53
+[v _pressure `f ~T0 @X0 1 a ]
+[; ;main.c: 50: uint16_t lux ;
+[; ;main.c: 51: float temperature ;
+[; ;main.c: 52: float humidity ;
+[; ;main.c: 53: float pressure ;
+[; ;main.c: 57: EnableGlobalinterupts();
 "57
-[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 58: while(1)
+[e ( _EnableGlobalinterupts ..  ]
+[; ;main.c: 58: EnablePeripheralInterupts();
 "58
-[e :U 922 ]
-[; ;main.c: 59: {
+[e ( _EnablePeripheralInterupts ..  ]
+[; ;main.c: 59: EnableRXInterupts();
 "59
-{
-[; ;main.c: 61: PORTCbits.RC3 =1;
+[e ( _EnableRXInterupts ..  ]
+[; ;main.c: 60: TRISCbits.TRISC3 = 0 ;
+"60
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 61: while(1)
 "61
-[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 62: _delay((unsigned long)((1000)*(2000000/4000.0)));
+[e :U 922 ]
+[; ;main.c: 62: {
 "62
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 64: PORTCbits.RC3 =0;
+{
+[; ;main.c: 64: PORTCbits.RC3 =1;
 "64
-[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 66: _delay((unsigned long)((1000)*(2000000/4000.0)));
-"66
+[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 65: _delay((unsigned long)((1000)*(2000000/4000.0)));
+"65
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 67: EUSART_Write('p');
+[; ;main.c: 67: PORTCbits.RC3 =0;
 "67
-[e ( _EUSART_Write (1 -> -> 112 `ui `uc ]
-"73
+[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 69: _delay((unsigned long)((1000)*(2000000/4000.0)));
+"69
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+"81
 }
 [e :U 921 ]
-"58
+"61
 [e $U 922  ]
 [e :U 923 ]
-[; ;main.c: 73: }
-[; ;main.c: 74: }
-"74
+[; ;main.c: 81: }
+[; ;main.c: 82: }
+"82
 [e :UE 920 ]
 }
