@@ -40,8 +40,15 @@ unsigned spiDataReady() //Check whether the data is ready to read
         return 0;
 }
 
-char spiRead() //REad the received data
+uint8_t spiRead() //REad the received data
 {
     spiReceiveWait();        // wait until the all bits receive
     return(SSP2BUF); // read the received data from the buffer
+}
+
+
+uint8_t SPI2_exchange8bit(uint8_t tx)
+{
+   spiWrite(tx);
+   return spiRead();
 }

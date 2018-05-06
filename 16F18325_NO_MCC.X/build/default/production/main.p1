@@ -10,15 +10,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BME280_write8 `TF7592 ~T0 @X0 0 e ]
 "83
 [v _readSensorCoefficients `(v ~T0 @X0 0 ef ]
-[v F7668 `(v ~T0 @X0 1 tf ]
+[v F7670 `(v ~T0 @X0 1 tf ]
 "14 interupt.h
-[v _EnableGlobalinterupts `TF7668 ~T0 @X0 0 e ]
-[v F7674 `(v ~T0 @X0 1 tf ]
+[v _EnableGlobalinterupts `TF7670 ~T0 @X0 0 e ]
+[v F7676 `(v ~T0 @X0 1 tf ]
 "16
-[v _EnablePeripheralInterupts `TF7674 ~T0 @X0 0 e ]
-[v F7680 `(v ~T0 @X0 1 tf ]
+[v _EnablePeripheralInterupts `TF7676 ~T0 @X0 0 e ]
+[v F7682 `(v ~T0 @X0 1 tf ]
 "18
-[v _EnableRXInterupts `TF7680 ~T0 @X0 0 e ]
+[v _EnableRXInterupts `TF7682 ~T0 @X0 0 e ]
 "1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
@@ -49,8 +49,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BME280_readHumidity `(f ~T0 @X0 0 ef ]
 "88
 [v _BME280_readPressure `(f ~T0 @X0 0 ef ]
-"45 SPI2.h
-[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
+"48 SPI2.h
+[v _SPI2_exchange8bit `(uc ~T0 @X0 0 ef1`uc ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -7430,7 +7430,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 44: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 [; ;SPI2.h: 45: void spiWrite(char);
 [; ;SPI2.h: 46: unsigned spiDataReady();
-[; ;SPI2.h: 47: char spiRead();
+[; ;SPI2.h: 47: uint8_t spiRead();
+[; ;SPI2.h: 48: uint8_t SPI2_exchange8bit(uint8_t tx);
 [; ;eusart.h: 26: void EUSART_Initialize(void);
 [; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
 [; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
@@ -7528,9 +7529,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 74: pressure = BME280_readPressure();
 "74
 [e = _pressure ( _BME280_readPressure ..  ]
-[; ;main.c: 80: spiWrite(0xAA);
+[; ;main.c: 80: SPI2_exchange8bit(0xAA);
 "80
-[e ( _spiWrite (1 -> -> 170 `i `uc ]
+[e ( _SPI2_exchange8bit (1 -> -> 170 `i `uc ]
 "81
 }
 [e :U 922 ]

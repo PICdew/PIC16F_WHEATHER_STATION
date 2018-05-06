@@ -9603,7 +9603,8 @@ SPI_ACTIVE_2_IDLE = 0b01000000
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
-char spiRead();
+uint8_t spiRead();
+uint8_t SPI2_exchange8bit(uint8_t tx);
 
 # 7 "SPI2.c"
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge)
@@ -9642,8 +9643,15 @@ else
 return 0;
 }
 
-char spiRead()
+uint8_t spiRead()
 {
 spiReceiveWait();
 return(SSP2BUF);
+}
+
+
+uint8_t SPI2_exchange8bit(uint8_t tx)
+{
+spiWrite(tx);
+return spiRead();
 }

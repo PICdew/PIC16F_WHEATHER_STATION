@@ -77,6 +77,6 @@ void main()
       //   printf("humidite : %f \r\n",humidity);
        //  printf("pression : %f \r\n",pressure);
       
-      spiWrite(0xAA); 
+      SPI2_exchange8bit(0xAA);
     }
 }
