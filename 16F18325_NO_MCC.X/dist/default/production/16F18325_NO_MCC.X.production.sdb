@@ -3,6 +3,27 @@
 [d edition pro ]
 [d chip 16F18325 ]
 [d frameptr 6 ]
+"16 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+[e E7534 . `uc
+SPI_MASTER_OSC_DIV4 32
+SPI_MASTER_OSC_DIV16 33
+SPI_MASTER_OSC_DIV64 34
+SPI_MASTER_TMR2 35
+SPI_SLAVE_SS_EN 36
+SPI_SLAVE_SS_DIS 37
+]
+[e E7542 . `uc
+SPI_DATA_SAMPLE_MIDDLE 0
+SPI_DATA_SAMPLE_END 128
+]
+[e E7546 . `uc
+SPI_CLOCK_IDLE_HIGH 16
+SPI_CLOCK_IDLE_LOW 0
+]
+[e E7550 . `uc
+SPI_IDLE_2_ACTIVE 0
+SPI_ACTIVE_2_IDLE 64
+]
 "8 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
 [e E7501 . `uc
 SPI_MASTER_OSC_DIV4 32
@@ -54,6 +75,8 @@ SPI_ACTIVE_2_IDLE 64
 [v _BH1750_Write BH1750_Write `(v  1 e 1 0 ]
 "12
 [v _BH1750_Read BH1750_Read `(ui  1 e 2 0 ]
+"28
+[v _LireLux LireLux `(ui  1 e 2 0 ]
 "7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
 [v _BME280_read8 BME280_read8 `T(uc  1 e 1 0 ]
 "27
@@ -66,6 +89,16 @@ SPI_ACTIVE_2_IDLE 64
 [v _BME280_readS16_LE BME280_readS16_LE `(i  1 e 2 0 ]
 "93
 [v _BME280_write8 BME280_write8 `T(c  1 e 1 0 ]
+"106
+[v _readSensorCoefficients readSensorCoefficients `(v  1 e 1 0 ]
+"172
+[v _BME280_goForceMode BME280_goForceMode `(v  1 e 1 0 ]
+"180
+[v _BME280_readTemperature BME280_readTemperature `(f  1 e 3 0 ]
+"215
+[v _BME280_readHumidity BME280_readHumidity `(f  1 e 3 0 ]
+"249
+[v _BME280_readPressure BME280_readPressure `(f  1 e 3 0 ]
 "17 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 "55
@@ -74,7 +107,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
 "89
 [v _putch putch `(v  1 e 1 0 ]
-"19 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+"10 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+"19
 [v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
 "24
 [v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
@@ -94,17 +129,21 @@ SPI_ACTIVE_2_IDLE 64
 [v _interupt1 interupt1 `II(v  1 e 1 0 ]
 "44 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
 [v _main main `(v  1 e 1 0 ]
-"25 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+"7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+[v _spiInit spiInit `(v  1 e 1 0 ]
+"25
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
-"6 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"16
-[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "30
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+"7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"19
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"33
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
-"36
+"39
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"52
+"55
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 [s S129 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
@@ -114,7 +153,7 @@ SPI_ACTIVE_2_IDLE 64
 "362 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [u S134 . 1 `S129 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES134  1 e 1 @11 ]
-[s S496 . 1 `uc 1 RC0 1 0 :1:0 
+[s S536 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -122,8 +161,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC5 1 0 :1:5 
 ]
 "447
-[u S503 . 1 `S496 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES503  1 e 1 @14 ]
+[u S543 . 1 `S536 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES543  1 e 1 @14 ]
 [s S24 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 BCL1IF 1 0 :1:2 
@@ -138,7 +177,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _PIR1bits PIR1bits `VES33  1 e 1 @17 ]
 "1497
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
-[s S549 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S615 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -146,11 +185,11 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "1512
-[u S556 . 1 `S549 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES556  1 e 1 @140 ]
+[u S622 . 1 `S615 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES622  1 e 1 @140 ]
 "1542
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
-[s S479 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S519 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -158,8 +197,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISC5 1 0 :1:5 
 ]
 "1557
-[u S486 . 1 `S479 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES486  1 e 1 @142 ]
+[u S526 . 1 `S519 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES526  1 e 1 @142 ]
 [s S142 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 BCL1IE 1 0 :1:2 
@@ -234,7 +273,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
 "4992
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
-[s S566 . 1 `uc 1 SEN 1 0 :1:0 
+[s S632 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -244,13 +283,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5014
-[u S575 . 1 `S566 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES575  1 e 1 @534 ]
+[u S641 . 1 `S632 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES641  1 e 1 @534 ]
 "5236
 [v _SSP2BUF SSP2BUF `VEuc  1 e 1 @537 ]
 "5620
 [v _SSP2STAT SSP2STAT `VEuc  1 e 1 @540 ]
-[s S753 . 1 `uc 1 BF 1 0 :1:0 
+[s S818 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -260,8 +299,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "5637
-[u S762 . 1 `S753 1 . 1 0 ]
-[v _SSP2STATbits SSP2STATbits `VES762  1 e 1 @540 ]
+[u S827 . 1 `S818 1 . 1 0 ]
+[v _SSP2STATbits SSP2STATbits `VES827  1 e 1 @540 ]
 "5682
 [v _SSP2CON1 SSP2CON1 `VEuc  1 e 1 @541 ]
 "5944
@@ -290,119 +329,119 @@ SPI_ACTIVE_2_IDLE 64
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @2334 ]
 "12266
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2335 ]
-[s S393 . 1 `uc 1 SSP2CLKPPS 1 0 :5:0 
+[s S422 . 1 `uc 1 SSP2CLKPPS 1 0 :5:0 
 ]
 "13025
-[s S395 . 1 `uc 1 SSP2CLKPPS0 1 0 :1:0 
+[s S424 . 1 `uc 1 SSP2CLKPPS0 1 0 :1:0 
 `uc 1 SSP2CLKPPS1 1 0 :1:1 
 `uc 1 SSP2CLKPPS2 1 0 :1:2 
 `uc 1 SSP2CLKPPS3 1 0 :1:3 
 `uc 1 SSP2CLKPPS4 1 0 :1:4 
 ]
-[u S401 . 1 `S393 1 . 1 0 `S395 1 . 1 0 ]
-[v _SSP2CLKPPSbits SSP2CLKPPSbits `VES401  1 e 1 @3613 ]
-[s S413 . 1 `uc 1 SSP2DATPPS 1 0 :5:0 
+[u S430 . 1 `S422 1 . 1 0 `S424 1 . 1 0 ]
+[v _SSP2CLKPPSbits SSP2CLKPPSbits `VES430  1 e 1 @3613 ]
+[s S442 . 1 `uc 1 SSP2DATPPS 1 0 :5:0 
 ]
 "13077
-[s S415 . 1 `uc 1 SSP2DATPPS0 1 0 :1:0 
+[s S444 . 1 `uc 1 SSP2DATPPS0 1 0 :1:0 
 `uc 1 SSP2DATPPS1 1 0 :1:1 
 `uc 1 SSP2DATPPS2 1 0 :1:2 
 `uc 1 SSP2DATPPS3 1 0 :1:3 
 `uc 1 SSP2DATPPS4 1 0 :1:4 
 ]
-[u S421 . 1 `S413 1 . 1 0 `S415 1 . 1 0 ]
-[v _SSP2DATPPSbits SSP2DATPPSbits `VES421  1 e 1 @3614 ]
-[s S273 . 1 `uc 1 SSP1CLKPPS 1 0 :5:0 
+[u S450 . 1 `S442 1 . 1 0 `S444 1 . 1 0 ]
+[v _SSP2DATPPSbits SSP2DATPPSbits `VES450  1 e 1 @3614 ]
+[s S302 . 1 `uc 1 SSP1CLKPPS 1 0 :5:0 
 ]
 "13181
-[s S275 . 1 `uc 1 SSP1CLKPPS0 1 0 :1:0 
+[s S304 . 1 `uc 1 SSP1CLKPPS0 1 0 :1:0 
 `uc 1 SSP1CLKPPS1 1 0 :1:1 
 `uc 1 SSP1CLKPPS2 1 0 :1:2 
 `uc 1 SSP1CLKPPS3 1 0 :1:3 
 `uc 1 SSP1CLKPPS4 1 0 :1:4 
 ]
-[u S281 . 1 `S273 1 . 1 0 `S275 1 . 1 0 ]
-[v _SSP1CLKPPSbits SSP1CLKPPSbits `VES281  1 e 1 @3616 ]
-[s S253 . 1 `uc 1 SSP1DATPPS 1 0 :5:0 
+[u S310 . 1 `S302 1 . 1 0 `S304 1 . 1 0 ]
+[v _SSP1CLKPPSbits SSP1CLKPPSbits `VES310  1 e 1 @3616 ]
+[s S282 . 1 `uc 1 SSP1DATPPS 1 0 :5:0 
 ]
 "13233
-[s S255 . 1 `uc 1 SSP1DATPPS0 1 0 :1:0 
+[s S284 . 1 `uc 1 SSP1DATPPS0 1 0 :1:0 
 `uc 1 SSP1DATPPS1 1 0 :1:1 
 `uc 1 SSP1DATPPS2 1 0 :1:2 
 `uc 1 SSP1DATPPS3 1 0 :1:3 
 `uc 1 SSP1DATPPS4 1 0 :1:4 
 ]
-[u S261 . 1 `S253 1 . 1 0 `S255 1 . 1 0 ]
-[v _SSP1DATPPSbits SSP1DATPPSbits `VES261  1 e 1 @3617 ]
-[s S293 . 1 `uc 1 RXPPS 1 0 :5:0 
+[u S290 . 1 `S282 1 . 1 0 `S284 1 . 1 0 ]
+[v _SSP1DATPPSbits SSP1DATPPSbits `VES290  1 e 1 @3617 ]
+[s S322 . 1 `uc 1 RXPPS 1 0 :5:0 
 ]
 "13337
-[s S295 . 1 `uc 1 RXDTPPS0 1 0 :1:0 
+[s S324 . 1 `uc 1 RXDTPPS0 1 0 :1:0 
 `uc 1 RXDTPPS1 1 0 :1:1 
 `uc 1 RXDTPPS2 1 0 :1:2 
 `uc 1 RXDTPPS3 1 0 :1:3 
 `uc 1 RXDTPPS4 1 0 :1:4 
 ]
-[u S301 . 1 `S293 1 . 1 0 `S295 1 . 1 0 ]
-[v _RXPPSbits RXPPSbits `VES301  1 e 1 @3620 ]
-[s S313 . 1 `uc 1 RA4PPS 1 0 :5:0 
+[u S330 . 1 `S322 1 . 1 0 `S324 1 . 1 0 ]
+[v _RXPPSbits RXPPSbits `VES330  1 e 1 @3620 ]
+[s S342 . 1 `uc 1 RA4PPS 1 0 :5:0 
 ]
 "13885
-[s S315 . 1 `uc 1 RA4PPS0 1 0 :1:0 
+[s S344 . 1 `uc 1 RA4PPS0 1 0 :1:0 
 `uc 1 RA4PPS1 1 0 :1:1 
 `uc 1 RA4PPS2 1 0 :1:2 
 `uc 1 RA4PPS3 1 0 :1:3 
 `uc 1 RA4PPS4 1 0 :1:4 
 ]
-[u S321 . 1 `S313 1 . 1 0 `S315 1 . 1 0 ]
-[v _RA4PPSbits RA4PPSbits `VES321  1 e 1 @3732 ]
-[s S433 . 1 `uc 1 RA5PPS 1 0 :5:0 
+[u S350 . 1 `S342 1 . 1 0 `S344 1 . 1 0 ]
+[v _RA4PPSbits RA4PPSbits `VES350  1 e 1 @3732 ]
+[s S462 . 1 `uc 1 RA5PPS 1 0 :5:0 
 ]
 "13937
-[s S435 . 1 `uc 1 RA5PPS0 1 0 :1:0 
+[s S464 . 1 `uc 1 RA5PPS0 1 0 :1:0 
 `uc 1 RA5PPS1 1 0 :1:1 
 `uc 1 RA5PPS2 1 0 :1:2 
 `uc 1 RA5PPS3 1 0 :1:3 
 `uc 1 RA5PPS4 1 0 :1:4 
 ]
-[u S441 . 1 `S433 1 . 1 0 `S435 1 . 1 0 ]
-[v _RA5PPSbits RA5PPSbits `VES441  1 e 1 @3733 ]
-[s S353 . 1 `uc 1 RC0PPS 1 0 :5:0 
+[u S470 . 1 `S462 1 . 1 0 `S464 1 . 1 0 ]
+[v _RA5PPSbits RA5PPSbits `VES470  1 e 1 @3733 ]
+[s S382 . 1 `uc 1 RC0PPS 1 0 :5:0 
 ]
 "13989
-[s S355 . 1 `uc 1 RC0PPS0 1 0 :1:0 
+[s S384 . 1 `uc 1 RC0PPS0 1 0 :1:0 
 `uc 1 RC0PPS1 1 0 :1:1 
 `uc 1 RC0PPS2 1 0 :1:2 
 `uc 1 RC0PPS3 1 0 :1:3 
 `uc 1 RC0PPS4 1 0 :1:4 
 ]
-[u S361 . 1 `S353 1 . 1 0 `S355 1 . 1 0 ]
-[v _RC0PPSbits RC0PPSbits `VES361  1 e 1 @3744 ]
-[s S373 . 1 `uc 1 RC2PPS 1 0 :5:0 
+[u S390 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[v _RC0PPSbits RC0PPSbits `VES390  1 e 1 @3744 ]
+[s S402 . 1 `uc 1 RC2PPS 1 0 :5:0 
 ]
 "14093
-[s S375 . 1 `uc 1 RC2PPS0 1 0 :1:0 
+[s S404 . 1 `uc 1 RC2PPS0 1 0 :1:0 
 `uc 1 RC2PPS1 1 0 :1:1 
 `uc 1 RC2PPS2 1 0 :1:2 
 `uc 1 RC2PPS3 1 0 :1:3 
 `uc 1 RC2PPS4 1 0 :1:4 
 ]
-[u S381 . 1 `S373 1 . 1 0 `S375 1 . 1 0 ]
-[v _RC2PPSbits RC2PPSbits `VES381  1 e 1 @3746 ]
-[s S333 . 1 `uc 1 RC4PPS 1 0 :5:0 
+[u S410 . 1 `S402 1 . 1 0 `S404 1 . 1 0 ]
+[v _RC2PPSbits RC2PPSbits `VES410  1 e 1 @3746 ]
+[s S362 . 1 `uc 1 RC4PPS 1 0 :5:0 
 ]
 "14197
-[s S335 . 1 `uc 1 RC4PPS0 1 0 :1:0 
+[s S364 . 1 `uc 1 RC4PPS0 1 0 :1:0 
 `uc 1 RC4PPS1 1 0 :1:1 
 `uc 1 RC4PPS2 1 0 :1:2 
 `uc 1 RC4PPS3 1 0 :1:3 
 `uc 1 RC4PPS4 1 0 :1:4 
 ]
-[u S341 . 1 `S333 1 . 1 0 `S335 1 . 1 0 ]
-[v _RC4PPSbits RC4PPSbits `VES341  1 e 1 @3748 ]
-[s S635 BME280_Calibration_Data 33 `ui 1 dig_T1 2 0 `i 1 dig_T2 2 2 `i 1 dig_T3 2 4 `ui 1 dig_P1 2 6 `i 1 dig_P2 2 8 `i 1 dig_P3 2 10 `i 1 dig_P4 2 12 `i 1 dig_P5 2 14 `i 1 dig_P6 2 16 `i 1 dig_P7 2 18 `i 1 dig_P8 2 20 `i 1 dig_P9 2 22 `uc 1 dig_H1 1 24 `i 1 dig_H2 2 25 `uc 1 dig_H3 1 27 `i 1 dig_H4 2 28 `i 1 dig_H5 2 30 `c 1 dig_H6 1 32 ]
+[u S370 . 1 `S362 1 . 1 0 `S364 1 . 1 0 ]
+[v _RC4PPSbits RC4PPSbits `VES370  1 e 1 @3748 ]
+[s S701 BME280_Calibration_Data 33 `ui 1 dig_T1 2 0 `i 1 dig_T2 2 2 `i 1 dig_T3 2 4 `ui 1 dig_P1 2 6 `i 1 dig_P2 2 8 `i 1 dig_P3 2 10 `i 1 dig_P4 2 12 `i 1 dig_P5 2 14 `i 1 dig_P6 2 16 `i 1 dig_P7 2 18 `i 1 dig_P8 2 20 `i 1 dig_P9 2 22 `uc 1 dig_H1 1 24 `i 1 dig_H2 2 25 `uc 1 dig_H3 1 27 `i 1 dig_H4 2 28 `i 1 dig_H5 2 30 `c 1 dig_H6 1 32 ]
 "4 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
-[v _cal_data cal_data `S635  1 e 33 0 ]
+[v _cal_data cal_data `S701  1 e 33 0 ]
 "5
 [v _t_fine t_fine `l  1 e 4 0 ]
 "7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
@@ -413,37 +452,144 @@ SPI_ACTIVE_2_IDLE 64
 "44 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
+"53
+[v main@pressure pressure `f  1 a 3 67 ]
+"52
+[v main@humidity humidity `f  1 a 3 64 ]
+"51
+[v main@temperature temperature `f  1 a 3 61 ]
+"50
+[v main@lux lux `ui  1 a 2 70 ]
 "82
 } 0
-"6 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+"30 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+{
+[v spiWrite@dat dat `uc  1 a 1 wreg ]
+[v spiWrite@dat dat `uc  1 a 1 wreg ]
+"32
+[v spiWrite@dat dat `uc  1 a 1 3 ]
+"33
+} 0
+"106 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+[v _readSensorCoefficients readSensorCoefficients `(v  1 e 1 0 ]
+{
+"146
+} 0
+"88
+[v _BME280_readS16_LE BME280_readS16_LE `(i  1 e 2 0 ]
+{
+[v BME280_readS16_LE@reg reg `uc  1 a 1 wreg ]
+[v BME280_readS16_LE@reg reg `uc  1 a 1 wreg ]
+"90
+[v BME280_readS16_LE@reg reg `uc  1 a 1 28 ]
+"91
+} 0
+"80
+[v _BME280_read16_LE BME280_read16_LE `(ui  1 e 2 0 ]
+{
+[v BME280_read16_LE@reg reg `uc  1 a 1 wreg ]
+"82
+[v BME280_read16_LE@temp temp `ui  1 a 2 23 ]
+"80
+[v BME280_read16_LE@reg reg `uc  1 a 1 wreg ]
+"82
+[v BME280_read16_LE@reg reg `uc  1 a 1 22 ]
+"86
+} 0
+"7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"14
+"17
 } 0
-"30
+"7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+[v _spiInit spiInit `(v  1 e 1 0 ]
+{
+[v spiInit@sType sType `E7501  1 a 1 wreg ]
+[v spiInit@sType sType `E7501  1 a 1 wreg ]
+[v spiInit@sDataSample sDataSample `E7509  1 p 1 3 ]
+[v spiInit@sClockIdle sClockIdle `E7513  1 p 1 4 ]
+[v spiInit@sTransmitEdge sTransmitEdge `E7517  1 p 1 5 ]
+"9
+[v spiInit@sType sType `E7501  1 a 1 6 ]
+"23
+} 0
+"33 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 {
-"34
+"37
 } 0
-"36
+"39
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
-"50
+"53
 } 0
-"52
+"55
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
-"94
+"97
 } 0
-"16
+"19
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"28
+"31
+} 0
+"10 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+{
+[v I2C_Master_Init@c c `DCul  1 p 4 17 ]
+"18
 } 0
 "17 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 {
 "37
+} 0
+"28 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+[v _LireLux LireLux `(ui  1 e 2 0 ]
+{
+[v LireLux@resolution resolution `c  1 a 1 wreg ]
+"30
+[v LireLux@lux lux `ui  1 a 2 51 ]
+"28
+[v LireLux@resolution resolution `c  1 a 1 wreg ]
+"31
+[v LireLux@resolution resolution `c  1 a 1 50 ]
+"54
+} 0
+"28 /opt/microchip/xc8/v1.45/sources/common/lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 11 ]
+"31
+} 0
+"44 /opt/microchip/xc8/v1.45/sources/common/fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 42 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 46 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 41 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 33 ]
+"73
+} 0
+"3 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+[v _BH1750_Write BH1750_Write `(v  1 e 1 0 ]
+{
+[v BH1750_Write@data1 data1 `uc  1 a 1 wreg ]
+[v BH1750_Write@data1 data1 `uc  1 a 1 wreg ]
+"6
+[v BH1750_Write@data1 data1 `uc  1 a 1 7 ]
+"10
+} 0
+"12
+[v _BH1750_Read BH1750_Read `(ui  1 e 2 0 ]
+{
+"14
+[v BH1750_Read@res res `ui  1 a 2 11 ]
+"24
 } 0
 "28 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
 [v _EnableRXInterupts EnableRXInterupts `T(v  1 e 1 0 ]
@@ -460,10 +606,192 @@ SPI_ACTIVE_2_IDLE 64
 {
 "12
 } 0
+"180 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+[v _BME280_readTemperature BME280_readTemperature `(f  1 e 3 0 ]
+{
+"185
+[v BME280_readTemperature@adc_T adc_T `l  1 a 4 15 ]
+"183
+[v BME280_readTemperature@var2 var2 `l  1 a 4 4 ]
+[v BME280_readTemperature@var1 var1 `l  1 a 4 0 ]
+"182
+[v BME280_readTemperature@temperature temperature `f  1 a 3 12 ]
+"210
+} 0
+"249
+[v _BME280_readPressure BME280_readPressure `(f  1 e 3 0 ]
+{
+"252
+[v BME280_readPressure@var1 var1 `l  1 a 4 16 ]
+"253
+[v BME280_readPressure@p p `ul  1 a 4 12 ]
+"252
+[v BME280_readPressure@var2 var2 `l  1 a 4 8 ]
+"251
+[v BME280_readPressure@adc_P adc_P `l  1 a 4 0 ]
+"280
+} 0
+"35 /opt/microchip/xc8/v1.45/sources/common/lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+{
+"37
+[v ___lltoft@exp exp `uc  1 a 1 16 ]
+"35
+[v ___lltoft@c c `ul  1 p 4 11 ]
+"46
+} 0
+"6 /opt/microchip/xc8/v1.45/sources/common/lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 12 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 16 ]
+"6
+[v ___lldiv@divisor divisor `ul  1 p 4 3 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 7 ]
+"31
+} 0
+"49 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+[v _BME280_read24 BME280_read24 `T(ul  1 e 4 0 ]
+{
+[v BME280_read24@reg reg `uc  1 a 1 wreg ]
+"51
+[v BME280_read24@temp temp `ul  1 a 4 18 ]
+"49
+[v BME280_read24@reg reg `uc  1 a 1 wreg ]
+"52
+[v BME280_read24@reg reg `uc  1 a 1 17 ]
+"73
+} 0
+"215
+[v _BME280_readHumidity BME280_readHumidity `(f  1 e 3 0 ]
+{
+"219
+[v BME280_readHumidity@v_x1_u32r v_x1_u32r `l  1 a 4 27 ]
+"217
+[v BME280_readHumidity@adc_H adc_H `l  1 a 4 0 ]
+"243
+[v BME280_readHumidity@h h `f  1 a 3 20 ]
+"247
+} 0
+"15 /opt/microchip/xc8/v1.45/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 11 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 3 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 7 ]
+"129
+} 0
+"56 /opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+{
+"60
+[v ___ftdiv@f3 f3 `f  1 a 3 28 ]
+"59
+[v ___ftdiv@sign sign `uc  1 a 1 32 ]
+[v ___ftdiv@exp exp `uc  1 a 1 31 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 27 ]
+"56
+[v ___ftdiv@f2 f2 `f  1 p 3 17 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 20 ]
+"86
+} 0
+"42 /opt/microchip/xc8/v1.45/sources/common/altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+{
+"44
+[v ___altoft@sign sign `uc  1 a 1 22 ]
+[v ___altoft@exp exp `uc  1 a 1 21 ]
+"42
+[v ___altoft@c c `l  1 p 4 15 ]
+"57
+} 0
+"62 /opt/microchip/xc8/v1.45/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 3 ]
+[v ___ftpack@exp exp `uc  1 p 1 6 ]
+[v ___ftpack@sign sign `uc  1 p 1 7 ]
+"86
+} 0
+"27 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+[v _BME280_read16 BME280_read16 `T(ui  1 e 2 0 ]
+{
+[v BME280_read16@reg reg `uc  1 a 1 wreg ]
+"29
+[v BME280_read16@temp temp `ui  1 a 2 14 ]
+"27
+[v BME280_read16@reg reg `uc  1 a 1 wreg ]
+"30
+[v BME280_read16@reg reg `uc  1 a 1 13 ]
+"47
+} 0
+"172
+[v _BME280_goForceMode BME280_goForceMode `(v  1 e 1 0 ]
+{
+"174
+[v BME280_goForceMode@mode mode `uc  1 a 1 14 ]
+"178
+} 0
+"93
+[v _BME280_write8 BME280_write8 `T(c  1 e 1 0 ]
+{
+[v BME280_write8@reg reg `uc  1 a 1 wreg ]
+[v BME280_write8@reg reg `uc  1 a 1 wreg ]
+[v BME280_write8@value value `uc  1 p 1 5 ]
+"95
+[v BME280_write8@reg reg `uc  1 a 1 8 ]
+"104
+} 0
+"7
+[v _BME280_read8 BME280_read8 `T(uc  1 e 1 0 ]
+{
+[v BME280_read8@reg reg `uc  1 a 1 wreg ]
+"9
+[v BME280_read8@temp temp `uc  1 a 1 12 ]
+"7
+[v BME280_read8@reg reg `uc  1 a 1 wreg ]
+"10
+[v BME280_read8@reg reg `uc  1 a 1 11 ]
+"25
+} 0
+"36 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+{
+[v I2C_Master_Write@d d `ui  1 p 2 3 ]
 "40
+} 0
+"30
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+{
+"34
+} 0
+"24
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"28
+} 0
+"51
+[v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
+{
+"53
+[v I2C_Master_Read@temp temp `us  1 a 2 7 ]
+"51
+[v I2C_Master_Read@a a `us  1 p 2 3 ]
+"62
+} 0
+"19
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"22
+} 0
+"40 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
 [v _interupt1 interupt1 `II(v  1 e 1 0 ]
 {
-"71
+"66
 } 0
 "7 /home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
 [v _interpretation interpretation `(v  1 e 1 0 ]

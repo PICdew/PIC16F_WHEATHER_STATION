@@ -9570,7 +9570,101 @@ void WDT_Initialize(void);
 void PMD_Initialize(void);
 void PIN_MANAGER_Initialize(void);
 
-# 6 "system.c"
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
+# 7 "system.h"
+void SYSTEM_Initialize(void);
+void OSCILLATOR_Initialize(void);
+void WDT_Initialize(void);
+void PMD_Initialize(void);
+void PIN_MANAGER_Initialize(void);
+
+# 16 "I2C1.h"
+void I2C_Master_Init(const unsigned long c);
+void I2C_Master_Wait();
+void I2C_Master_Start();
+void I2C_Master_Stop();
+void I2C_Master_Write(unsigned d);
+int8_t I2C_Master_Write_V2(unsigned d);
+unsigned short I2C_Master_Read(unsigned short a);
+
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
+# 7 "system.h"
+void SYSTEM_Initialize(void);
+void OSCILLATOR_Initialize(void);
+void WDT_Initialize(void);
+void PMD_Initialize(void);
+void PIN_MANAGER_Initialize(void);
+
+# 15 "SPI2.h"
+typedef enum
+{
+SPI_MASTER_OSC_DIV4 = 0b00100000,
+SPI_MASTER_OSC_DIV16 = 0b00100001,
+SPI_MASTER_OSC_DIV64 = 0b00100010,
+SPI_MASTER_TMR2 = 0b00100011,
+SPI_SLAVE_SS_EN = 0b00100100,
+SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+SPI_CLOCK_IDLE_HIGH = 0b00010000,
+SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+SPI_IDLE_2_ACTIVE = 0b00000000,
+SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+
+# 7 "system.c"
 void SYSTEM_Initialize(void)
 {
 
@@ -9579,6 +9673,8 @@ PIN_MANAGER_Initialize();
 OSCILLATOR_Initialize();
 WDT_Initialize();
 EUSART_Initialize();
+I2C_Master_Init(100000);
+spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
 }
 
 void OSCILLATOR_Initialize(void)
@@ -9620,23 +9716,23 @@ PMD5 = 0x00;
 void PIN_MANAGER_Initialize(void)
 {
 
-# 57
+# 60
 LATA = 0x00;
 LATC = 0x00;
 
-# 63
+# 66
 TRISA = 0x37;
 TRISC = 0x2A;
 
-# 69
+# 72
 ANSELC = 0x1C;
 ANSELA = 0x07;
 
-# 75
+# 78
 WPUA = 0x00;
 WPUC = 0x00;
 
-# 81
+# 84
 ODCONA = 0x00;
 ODCONC = 0x00;
 SSP1DATPPSbits.SSP1DATPPS = 0x04;

@@ -34,7 +34,7 @@
 #include "eusart.h"
 #include "I2C1.h"
 #include "BH1750.h"
-//#include "bme280.h"
+#include "bme280.h"
 #include "SPI2.h"
 #include "interupt.h"
 #include <stdio.h>
@@ -51,9 +51,9 @@ void main()
     float temperature ; 
     float humidity ;
     float pressure ; 
-  /*  BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // regler avant  CONTROL !!!
+   BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // regler avant  CONTROL !!!
     BME280_write8(BME280_REGISTER_CONTROL, 0b00100100);
-    readSensorCoefficients(); */
+    readSensorCoefficients(); 
     EnableGlobalinterupts();
     EnablePeripheralInterupts();
     EnableRXInterupts();
@@ -63,20 +63,20 @@ void main()
         
        PORTCbits.RC3 =1;
         __delay_ms(1000);
-     //   BME280_goForceMode();
+      BME280_goForceMode();
         PORTCbits.RC3 =0;
-       // lux = LireLux(1);
+       lux = LireLux(1);
          __delay_ms(1000);
        
         
-    /*    temperature = BME280_readTemperature();
+      temperature = BME280_readTemperature();
         humidity = BME280_readHumidity();
         pressure = BME280_readPressure();
         
-         printf("temperature : %f \r\n",temperature);
-         printf("humidite : %f \r\n",humidity);
-         printf("pression : %f \r\n",pressure);
+      //   printf("temperature : %f \r\n",temperature);
+      //   printf("humidite : %f \r\n",humidity);
+       //  printf("pression : %f \r\n",pressure);
       
-     //  spiWrite(0xAA); */
+      spiWrite(0xAA); 
     }
 }

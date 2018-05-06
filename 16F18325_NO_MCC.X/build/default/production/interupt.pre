@@ -9653,7 +9653,6 @@ PIE1bits.RCIE = 0 ;
 void interrupt interupt1(void)
 {
 
-# 45
 if(PIR1bits.RCIF)
 {
 RX_byte = EUSART_Read();
@@ -9677,5 +9676,4 @@ monBuffer.len = 0 ;
 
 }
 
-# 71
 }

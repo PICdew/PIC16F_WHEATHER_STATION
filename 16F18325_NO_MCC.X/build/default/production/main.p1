@@ -1,19 +1,24 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "6 interupt.h
-[s S919 `uc -> 3 `i `uc 1 ]
-[n S919 . data len ]
+[s S920 `uc -> 3 `i `uc 1 ]
+[n S920 . data len ]
 [p mainexit ]
 "7 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-[v F7603 `(v ~T0 @X0 1 tf ]
+[v F7592 `(c ~T0 @X0 1 tf2`uc`uc ]
+"77 bme280.h
+[v _BME280_write8 `TF7592 ~T0 @X0 0 e ]
+"83
+[v _readSensorCoefficients `(v ~T0 @X0 0 ef ]
+[v F7668 `(v ~T0 @X0 1 tf ]
 "14 interupt.h
-[v _EnableGlobalinterupts `TF7603 ~T0 @X0 0 e ]
-[v F7609 `(v ~T0 @X0 1 tf ]
+[v _EnableGlobalinterupts `TF7668 ~T0 @X0 0 e ]
+[v F7674 `(v ~T0 @X0 1 tf ]
 "16
-[v _EnablePeripheralInterupts `TF7609 ~T0 @X0 0 e ]
-[v F7615 `(v ~T0 @X0 1 tf ]
+[v _EnablePeripheralInterupts `TF7674 ~T0 @X0 0 e ]
+[v F7680 `(v ~T0 @X0 1 tf ]
 "18
-[v _EnableRXInterupts `TF7615 ~T0 @X0 0 e ]
+[v _EnableRXInterupts `TF7680 ~T0 @X0 0 e ]
 "1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
@@ -34,6 +39,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "153 /opt/microchip/xc8/v1.45/include/pic.h
 [v __delay `JF7378 ~T0 @X0 0 e ]
 [p i __delay ]
+"85 bme280.h
+[v _BME280_goForceMode `(v ~T0 @X0 0 ef ]
+"8 BH1750.h
+[v _LireLux `(ui ~T0 @X0 0 ef1`c ]
+"86 bme280.h
+[v _BME280_readTemperature `(f ~T0 @X0 0 ef ]
+"87
+[v _BME280_readHumidity `(f ~T0 @X0 0 ef ]
+"88
+[v _BME280_readPressure `(f ~T0 @X0 0 ef ]
+"45 SPI2.h
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -7334,6 +7351,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 9: void WDT_Initialize(void);
 [; ;system.h: 10: void PMD_Initialize(void);
 [; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;I2C1.h: 16: void I2C_Master_Init(const unsigned long c);
+[; ;I2C1.h: 17: void I2C_Master_Wait();
+[; ;I2C1.h: 18: void I2C_Master_Start();
+[; ;I2C1.h: 19: void I2C_Master_Stop();
+[; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
+[; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
+[; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;bme280.h: 46: struct BME280_Calibration_Data
+[; ;bme280.h: 47: {
+[; ;bme280.h: 50: uint16_t dig_T1;
+[; ;bme280.h: 51: int16_t dig_T2;
+[; ;bme280.h: 52: int16_t dig_T3;
+[; ;bme280.h: 54: uint16_t dig_P1;
+[; ;bme280.h: 55: int16_t dig_P2;
+[; ;bme280.h: 56: int16_t dig_P3;
+[; ;bme280.h: 57: int16_t dig_P4;
+[; ;bme280.h: 58: int16_t dig_P5;
+[; ;bme280.h: 59: int16_t dig_P6;
+[; ;bme280.h: 60: int16_t dig_P7;
+[; ;bme280.h: 61: int16_t dig_P8;
+[; ;bme280.h: 62: int16_t dig_P9;
+[; ;bme280.h: 64: uint8_t dig_H1;
+[; ;bme280.h: 65: int16_t dig_H2;
+[; ;bme280.h: 66: uint8_t dig_H3;
+[; ;bme280.h: 67: int16_t dig_H4;
+[; ;bme280.h: 68: int16_t dig_H5;
+[; ;bme280.h: 69: int8_t dig_H6;
+[; ;bme280.h: 71: };
+[; ;bme280.h: 75: int8_t BME280_init(void);
+[; ;bme280.h: 76: inline uint8_t BME280_read8(uint8_t reg);
+[; ;bme280.h: 77: inline int8_t BME280_write8(uint8_t reg,uint8_t value);
+[; ;bme280.h: 78: inline uint16_t BME280_read16(uint8_t reg);
+[; ;bme280.h: 79: uint16_t BME280_read16_LE(uint8_t reg);
+[; ;bme280.h: 80: int16_t BME280_readS16(uint8_t reg);
+[; ;bme280.h: 81: inline uint32_t BME280_read24(uint8_t reg);
+[; ;bme280.h: 82: int16_t BME280_readS16_LE(uint8_t reg);
+[; ;bme280.h: 83: void readSensorCoefficients(void);
+[; ;bme280.h: 85: void BME280_goForceMode(void);
+[; ;bme280.h: 86: float BME280_readTemperature(void);
+[; ;bme280.h: 87: float BME280_readHumidity(void);
+[; ;bme280.h: 88: float BME280_readPressure(void);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;system.h: 7: void SYSTEM_Initialize(void);
+[; ;system.h: 8: void OSCILLATOR_Initialize(void);
+[; ;system.h: 9: void WDT_Initialize(void);
+[; ;system.h: 10: void PMD_Initialize(void);
+[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
 [; ;SPI2.h: 15: typedef enum
 [; ;SPI2.h: 16: {
 [; ;SPI2.h: 17: SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7373,7 +7442,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interupt.h: 8: uint8_t len ;
 [; ;interupt.h: 9: } RXbuffer;
 "10 interupt.h
-[v _monBuffer `S919 ~T0 @X0 1 e ]
+[v _monBuffer `S920 ~T0 @X0 1 e ]
 [; ;interupt.h: 10: RXbuffer monBuffer ;
 [; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
 [; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
@@ -7405,6 +7474,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 51: float temperature ;
 [; ;main.c: 52: float humidity ;
 [; ;main.c: 53: float pressure ;
+[; ;main.c: 54: BME280_write8(0xF2, 0x01);
+"54
+[e ( _BME280_write8 (2 , -> -> 242 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 55: BME280_write8(0xF4, 0b00100100);
+"55
+[e ( _BME280_write8 (2 , -> -> 244 `i `uc -> -> 36 `i `uc ]
+[; ;main.c: 56: readSensorCoefficients();
+"56
+[e ( _readSensorCoefficients ..  ]
 [; ;main.c: 57: EnableGlobalinterupts();
 "57
 [e ( _EnableGlobalinterupts ..  ]
@@ -7419,7 +7497,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
 [; ;main.c: 61: while(1)
 "61
-[e :U 922 ]
+[e :U 923 ]
 [; ;main.c: 62: {
 "62
 {
@@ -7429,20 +7507,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 65: _delay((unsigned long)((1000)*(2000000/4000.0)));
 "65
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;main.c: 66: BME280_goForceMode();
+"66
+[e ( _BME280_goForceMode ..  ]
 [; ;main.c: 67: PORTCbits.RC3 =0;
 "67
 [e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 68: lux = LireLux(1);
+"68
+[e = _lux ( _LireLux (1 -> -> 1 `i `c ]
 [; ;main.c: 69: _delay((unsigned long)((1000)*(2000000/4000.0)));
 "69
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;main.c: 72: temperature = BME280_readTemperature();
+"72
+[e = _temperature ( _BME280_readTemperature ..  ]
+[; ;main.c: 73: humidity = BME280_readHumidity();
+"73
+[e = _humidity ( _BME280_readHumidity ..  ]
+[; ;main.c: 74: pressure = BME280_readPressure();
+"74
+[e = _pressure ( _BME280_readPressure ..  ]
+[; ;main.c: 80: spiWrite(0xAA);
+"80
+[e ( _spiWrite (1 -> -> 170 `i `uc ]
 "81
 }
-[e :U 921 ]
+[e :U 922 ]
 "61
-[e $U 922  ]
-[e :U 923 ]
+[e $U 923  ]
+[e :U 924 ]
 [; ;main.c: 81: }
 [; ;main.c: 82: }
 "82
-[e :UE 920 ]
+[e :UE 921 ]
 }

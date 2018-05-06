@@ -7373,62 +7373,62 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interupt.c: 41: {
 [e :U _interupt1 ]
 [f ]
-[; ;interupt.c: 45: if(PIR1bits.RCIF)
-"45
+[; ;interupt.c: 43: if(PIR1bits.RCIF)
+"43
 [e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 928  ]
-[; ;interupt.c: 46: {
-"46
+[; ;interupt.c: 44: {
+"44
 {
-[; ;interupt.c: 47: RX_byte = EUSART_Read();
-"47
+[; ;interupt.c: 45: RX_byte = EUSART_Read();
+"45
 [e = _RX_byte ( _EUSART_Read ..  ]
-[; ;interupt.c: 48: if(RX_byte == 0x0D)
-"48
+[; ;interupt.c: 46: if(RX_byte == 0x0D)
+"46
 [e $ ! == -> _RX_byte `i -> 13 `i 929  ]
-[; ;interupt.c: 49: {
+[; ;interupt.c: 47: {
+"47
+{
+[; ;interupt.c: 49: interpretation();
 "49
-{
-[; ;interupt.c: 51: interpretation();
-"51
 [e ( _interpretation ..  ]
-"52
+"50
 }
-[; ;interupt.c: 52: }
+[; ;interupt.c: 50: }
 [e $U 930  ]
-"53
+"51
 [e :U 929 ]
-[; ;interupt.c: 53: else
-[; ;interupt.c: 54: {
+[; ;interupt.c: 51: else
+[; ;interupt.c: 52: {
+"52
+{
+[; ;interupt.c: 54: monBuffer.data[monBuffer.len] = RX_byte;
 "54
-{
-[; ;interupt.c: 56: monBuffer.data[monBuffer.len] = RX_byte;
-"56
 [e = *U + &U . _monBuffer 0 * -> . _monBuffer 1 `ux -> -> # *U &U . _monBuffer 0 `ui `ux _RX_byte ]
-[; ;interupt.c: 57: monBuffer.len++;
-"57
+[; ;interupt.c: 55: monBuffer.len++;
+"55
 [e ++ . _monBuffer 1 -> -> 1 `i `uc ]
-[; ;interupt.c: 58: if(monBuffer.len > 3)
-"58
+[; ;interupt.c: 56: if(monBuffer.len > 3)
+"56
 [e $ ! > -> . _monBuffer 1 `i -> 3 `i 931  ]
-[; ;interupt.c: 59: {
-"59
+[; ;interupt.c: 57: {
+"57
 {
-[; ;interupt.c: 60: monBuffer.len = 0 ;
-"60
+[; ;interupt.c: 58: monBuffer.len = 0 ;
+"58
 [e = . _monBuffer 1 -> -> 0 `i `uc ]
-"61
+"59
 }
 [e :U 931 ]
-"62
+"60
 }
 [e :U 930 ]
-"66
+"64
 }
 [e :U 928 ]
-[; ;interupt.c: 61: }
-[; ;interupt.c: 62: }
+[; ;interupt.c: 59: }
+[; ;interupt.c: 60: }
+[; ;interupt.c: 64: }
 [; ;interupt.c: 66: }
-[; ;interupt.c: 71: }
-"71
+"66
 [e :UE 927 ]
 }

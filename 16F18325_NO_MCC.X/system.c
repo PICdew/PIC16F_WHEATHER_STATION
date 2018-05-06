@@ -1,7 +1,8 @@
 
 
 #include "system.h"
-
+#include "I2C1.h"
+#include "SPI2.h"
 
 void SYSTEM_Initialize(void)
 {
@@ -11,6 +12,8 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     WDT_Initialize();
     EUSART_Initialize();
+    I2C_Master_Init(100000);
+    spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
 }
 
 void OSCILLATOR_Initialize(void)

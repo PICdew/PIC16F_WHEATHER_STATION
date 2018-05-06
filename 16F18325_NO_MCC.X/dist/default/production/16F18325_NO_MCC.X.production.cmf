@@ -12,32 +12,64 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production/16F18325_NO_MCC.X.production.obj
-cinit CODE 0 32 32 B 2
-text1 CODE 0 12D 12D F 2
-text2 CODE 0 17B 17B 4 2
-text3 CODE 0 15C 15C 8 2
-text4 CODE 0 84 84 40 2
-text5 CODE 0 153 153 9 2
-text6 CODE 0 148 148 B 2
-text7 CODE 0 17F 17F 3 2
-text8 CODE 0 182 182 2 2
-text9 CODE 0 184 184 2 2
-text11 CODE 0 F1 F1 27 2
-text12 CODE 0 3D 3D 47 2
-text13 CODE 0 172 172 5 2
-text14 CODE 0 164 164 8 2
-text15 CODE 0 13C 13C C 2
-maintext CODE 0 C4 C4 2D 2
+cinit CODE 0 35 35 11 2
+text1 CODE 0 1606 1606 6 2
+text2 CODE 0 BF2 BF2 FE 2
+text3 CODE 0 1645 1645 B 2
+text4 CODE 0 16BD 16BD 1B 2
+text5 CODE 0 16D8 16D8 23 2
+text6 CODE 0 16A2 16A2 1B 2
+text7 CODE 0 800 800 4 2
+text8 CODE 0 1629 1629 8 2
+text9 CODE 0 837 837 40 2
+text10 CODE 0 1631 1631 9 2
+text11 CODE 0 17D0 17D0 30 2
+text12 CODE 0 163A 163A B 2
+text13 CODE 0 9AB 9AB 62 2
+text14 CODE 0 165C 165C 15 2
+text15 CODE 0 AE0 AE0 87 2
+text16 CODE 0 1687 1687 1B 2
+text17 CODE 0 804 804 33 2
+text18 CODE 0 15F4 15F4 3 2
+text19 CODE 0 2 2 2 2
+text20 CODE 0 15F2 15F2 2 2
+text21 CODE 0 521 521 1F9 2
+text22 CODE 0 46 46 4DB 2
+text23 CODE 0 1747 1747 2A 2
+text24 CODE 0 901 901 53 2
+text25 CODE 0 B67 B67 8B 2
+text26 CODE 0 CF0 CF0 310 2
+text27 CODE 0 17A0 17A0 30 2
+text28 CODE 0 71A 71A A9 2
+text29 CODE 0 7C3 7C3 3D 2
+text30 CODE 0 A0D A0D 65 2
+text31 CODE 0 954 954 57 2
+text32 CODE 0 1671 1671 16 2
+text33 CODE 0 1771 1771 2F 2
+text34 CODE 0 877 877 43 2
+text35 CODE 0 1612 1612 7 2
+text36 CODE 0 1601 1601 5 2
+text37 CODE 0 15FC 15FC 5 2
+text38 CODE 0 16FB 16FB 25 2
+text39 CODE 0 1621 1621 8 2
+text41 CODE 0 1720 1720 27 2
+text42 CODE 0 8BA 8BA 47 2
+text43 CODE 0 15F7 15F7 5 2
+text44 CODE 0 1619 1619 8 2
+text45 CODE 0 1650 1650 C 2
+maintext CODE 0 A72 A72 6E 2
 cstackCOMMON COMMON 1 70 70 E 1
-cstackBANK0 BANK0 1 4A 4A 5 1
-stringtext1 STRCODE 0 118 118 15 2
-stringtext2 STRCODE 0 177 177 4 2
-intentry CODE 0 4 4 2C 2
-bssBANK0 BANK0 1 20 20 2A 1
-clrtext CODE 0 16C 16C 6 2
-$/tmp/xcXbzOcd5.obj
+cstackBANK0 BANK0 1 20 20 48 1
+cstackBANK1 BANK1 1 C5 C5 1F 1
+stringtext1 STRCODE 0 1800 1800 15 2
+stringtext2 STRCODE 0 1815 1815 4 2
+intentry CODE 0 4 4 2F 2
+bssBANK0 BANK0 1 68 68 5 1
+bssBANK1 BANK1 1 A0 A0 25 1
+clrtext CODE 0 160C 160C 6 2
+$/tmp/xcXJX1Jlc.obj
 reset_vec CODE 0 0 0 2 2
-end_init CODE 0 30 30 2 2
+end_init CODE 0 33 33 2 2
 config CONFIG 0 8007 8007 4 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -45,8 +77,8 @@ config CONFIG 0 8007 8007 4 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 4F-6F 1
-RAM A0-EF 1
+RAM 6D-6F 1
+RAM E4-EF 1
 RAM 120-16F 1
 RAM 1A0-1EF 1
 RAM 220-26F 1
@@ -58,8 +90,8 @@ RAM 4A0-4EF 1
 RAM 520-56F 1
 RAM 5A0-5EF 1
 RAM 620-64F 1
-BANK0 4F-6F 1
-BANK1 A0-EF 1
+BANK0 6D-6F 1
+BANK1 E4-EF 1
 BANK2 120-16F 1
 BANK3 1A0-1EF 1
 BANK4 220-26F 1
@@ -68,10 +100,10 @@ BANK6 320-36F 1
 BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
-CONST 2-3 2
-CONST 186-1FFF 2
-ENTRY 2-3 2
-ENTRY 186-1FFF 2
+CONST 1000-15F1 2
+CONST 1819-1FFF 2
+ENTRY 1000-15F1 2
+ENTRY 1819-1FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -95,9 +127,9 @@ SFR28 E00-E6F 1
 SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
-STACK 202F-23EF 1
-CODE 2-3 2
-CODE 186-1FFF 2
+STACK 2094-23EF 1
+CODE 1000-15F1 2
+CODE 1819-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -113,10 +145,10 @@ BANK11 5A0-5EF 1
 BANK12 620-64F 1
 BIGRAM 2000-23EF 1
 EEDATA F000-F0FF 2
-STRCODE 2-3 2
-STRCODE 186-1FFF 2
-STRING 2-3 2
-STRING 186-1FFF 2
+STRCODE 1000-15F1 2
+STRCODE 1819-1FFF 2
+STRING 1000-15F1 2
+STRING 1819-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -131,147 +163,475 @@ STRING 186-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/16F18325_NO_MCC.X.production.obj
-32 cinit CODE >6294:/tmp/xcXHiirvw
-32 cinit CODE >6297:/tmp/xcXHiirvw
-32 cinit CODE >6330:/tmp/xcXHiirvw
-33 cinit CODE >6331:/tmp/xcXHiirvw
-34 cinit CODE >6332:/tmp/xcXHiirvw
-35 cinit CODE >6333:/tmp/xcXHiirvw
-36 cinit CODE >6334:/tmp/xcXHiirvw
-37 cinit CODE >6335:/tmp/xcXHiirvw
-39 cinit CODE >6341:/tmp/xcXHiirvw
-39 cinit CODE >6343:/tmp/xcXHiirvw
-3A cinit CODE >6344:/tmp/xcXHiirvw
-3B cinit CODE >6345:/tmp/xcXHiirvw
+35 cinit CODE >6365:/tmp/xcXoO8CJW
+35 cinit CODE >6368:/tmp/xcXoO8CJW
+35 cinit CODE >6404:/tmp/xcXoO8CJW
+36 cinit CODE >6405:/tmp/xcXoO8CJW
+37 cinit CODE >6406:/tmp/xcXoO8CJW
+38 cinit CODE >6407:/tmp/xcXoO8CJW
+39 cinit CODE >6408:/tmp/xcXoO8CJW
+3A cinit CODE >6409:/tmp/xcXoO8CJW
+3B cinit CODE >6413:/tmp/xcXoO8CJW
+3C cinit CODE >6414:/tmp/xcXoO8CJW
+3D cinit CODE >6415:/tmp/xcXoO8CJW
+3E cinit CODE >6416:/tmp/xcXoO8CJW
+3F cinit CODE >6417:/tmp/xcXoO8CJW
+40 cinit CODE >6418:/tmp/xcXoO8CJW
+42 cinit CODE >6424:/tmp/xcXoO8CJW
+42 cinit CODE >6426:/tmp/xcXoO8CJW
+43 cinit CODE >6427:/tmp/xcXoO8CJW
+44 cinit CODE >6428:/tmp/xcXoO8CJW
+4 intentry CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
 4 intentry CODE >40:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-9 intentry CODE >45:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-B intentry CODE >47:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-12 intentry CODE >48:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-16 intentry CODE >51:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-19 intentry CODE >52:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-1A intentry CODE >56:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-23 intentry CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-27 intentry CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-2A intentry CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-2B intentry CODE >71:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-13C text15 CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-13C text15 CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-13E text15 CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-13E text15 CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-141 text15 CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-144 text15 CODE >68:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-145 text15 CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-146 text15 CODE >72:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-164 text14 CODE >75:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-165 text14 CODE >77:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-165 text14 CODE >79:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-168 text14 CODE >81:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-16B text14 CODE >82:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-172 text13 CODE >89:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-173 text13 CODE >91:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-176 text13 CODE >92:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-3D text12 CODE >464:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-3D text12 CODE >533:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-41 text12 CODE >536:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-53 text12 CODE >538:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-57 text12 CODE >541:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-5B text12 CODE >542:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-5C text12 CODE >548:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-5D text12 CODE >635:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-5E text12 CODE >799:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-69 text12 CODE >809:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-6D text12 CODE >822:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-6E text12 CODE >635:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-82 text12 CODE >536:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-83 text12 CODE >1541:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
-F1 text11 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-F1 text11 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-F3 text11 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-FA text11 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-100 text11 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-112 text11 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
-184 text9 CODE >9:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-184 text9 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-185 text9 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-182 text8 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-182 text8 CODE >20:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-183 text8 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-17F text7 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-17F text7 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-181 text7 CODE >31:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
-148 text6 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-148 text6 CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-14B text6 CODE >26:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-14D text6 CODE >29:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-14F text6 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-151 text6 CODE >35:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-152 text6 CODE >37:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
-153 text5 CODE >16:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-153 text5 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-156 text5 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-157 text5 CODE >23:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-158 text5 CODE >25:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15A text5 CODE >27:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15B text5 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-84 text4 CODE >52:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-84 text4 CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-86 text4 CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-87 text4 CODE >63:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-8A text4 CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-8C text4 CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-8F text4 CODE >70:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-91 text4 CODE >75:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-93 text4 CODE >76:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-94 text4 CODE >81:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-96 text4 CODE >82:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-97 text4 CODE >83:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-9C text4 CODE >84:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-A0 text4 CODE >85:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-A4 text4 CODE >86:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-A9 text4 CODE >87:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-AD text4 CODE >88:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-B1 text4 CODE >89:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-B5 text4 CODE >90:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-BA text4 CODE >91:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-BE text4 CODE >92:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-C3 text4 CODE >94:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15C text3 CODE >36:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15C text3 CODE >39:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15E text3 CODE >41:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-15F text3 CODE >43:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-160 text3 CODE >45:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-161 text3 CODE >47:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-162 text3 CODE >49:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-163 text3 CODE >50:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-17B text2 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-17B text2 CODE >33:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-17E text2 CODE >34:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-12D text1 CODE >6:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-12D text1 CODE >9:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-130 text1 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-133 text1 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-136 text1 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-139 text1 CODE >13:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-13B text1 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
-C4 maintext CODE >44:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-C4 maintext CODE >47:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-C7 maintext CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-CA maintext CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-CD maintext CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-D0 maintext CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-D2 maintext CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-D4 maintext CODE >65:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-E1 maintext CODE >67:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-E3 maintext CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-F0 maintext CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
-16C clrtext CODE >6319:/tmp/xcXHiirvw
-16C clrtext CODE >6320:/tmp/xcXHiirvw
-16D clrtext CODE >6321:/tmp/xcXHiirvw
-16D clrtext CODE >6322:/tmp/xcXHiirvw
-16E clrtext CODE >6323:/tmp/xcXHiirvw
-16F clrtext CODE >6324:/tmp/xcXHiirvw
-170 clrtext CODE >6325:/tmp/xcXHiirvw
-171 clrtext CODE >6326:/tmp/xcXHiirvw
+9 intentry CODE >43:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+B intentry CODE >45:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+12 intentry CODE >46:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+16 intentry CODE >49:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+19 intentry CODE >50:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+1A intentry CODE >54:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+25 intentry CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+2A intentry CODE >56:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+2D intentry CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+2E intentry CODE >66:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+1650 text45 CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1650 text45 CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1652 text45 CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1652 text45 CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1655 text45 CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1658 text45 CODE >68:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1659 text45 CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+165A text45 CODE >72:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1619 text44 CODE >75:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+161A text44 CODE >77:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+161A text44 CODE >79:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+161D text44 CODE >81:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1620 text44 CODE >82:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+15F7 text43 CODE >89:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+15F8 text43 CODE >91:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+15FB text43 CODE >92:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+8BA text42 CODE >464:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8BA text42 CODE >533:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8BE text42 CODE >536:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8D0 text42 CODE >538:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8D4 text42 CODE >541:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8D8 text42 CODE >542:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8D9 text42 CODE >548:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8DA text42 CODE >635:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8DB text42 CODE >799:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8E6 text42 CODE >809:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8EA text42 CODE >822:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8EB text42 CODE >635:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+8FF text42 CODE >536:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+900 text42 CODE >1541:/opt/microchip/xc8/v1.45/sources/common/doprnt.c
+1720 text41 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+1720 text41 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+1722 text41 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+1729 text41 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+172F text41 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+1741 text41 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/app.c
+1621 text39 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1621 text39 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+16FB text38 CODE >51:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+16FB text38 CODE >54:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+16FE text38 CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1700 text38 CODE >56:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1703 text38 CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+170C text38 CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+170F text38 CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1719 text38 CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+171A text38 CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+15FC text37 CODE >24:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+15FC text37 CODE >26:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+15FE text37 CODE >27:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1600 text37 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1601 text36 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1601 text36 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1603 text36 CODE >33:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1605 text36 CODE >34:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1612 text35 CODE >36:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1612 text35 CODE >38:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1614 text35 CODE >39:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1618 text35 CODE >40:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+877 text34 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+879 text34 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+87C text34 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+884 text34 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+887 text34 CODE >13:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+892 text34 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+895 text34 CODE >15:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+898 text34 CODE >16:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+89B text34 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+8A3 text34 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+8A6 text34 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+8B2 text34 CODE >20:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+8B5 text34 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+8B7 text34 CODE >23:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1771 text33 CODE >93:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1773 text33 CODE >95:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1776 text33 CODE >96:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+177E text33 CODE >97:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1781 text33 CODE >98:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+178C text33 CODE >99:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+178F text33 CODE >100:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+179A text33 CODE >101:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+179D text33 CODE >102:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+179F text33 CODE >104:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1671 text32 CODE >172:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1671 text32 CODE >175:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1679 text32 CODE >176:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+167F text32 CODE >177:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1686 text32 CODE >178:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+954 text31 CODE >27:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+956 text31 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+959 text31 CODE >31:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+961 text31 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+964 text31 CODE >33:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+96F text31 CODE >34:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+972 text31 CODE >35:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+975 text31 CODE >36:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+978 text31 CODE >37:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+980 text31 CODE >38:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+983 text31 CODE >39:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+990 text31 CODE >40:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+995 text31 CODE >41:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+9A0 text31 CODE >42:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+9A3 text31 CODE >43:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+9A5 text31 CODE >45:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+A0D text30 CODE >62:/opt/microchip/xc8/v1.45/sources/common/float.c
+A0D text30 CODE >64:/opt/microchip/xc8/v1.45/sources/common/float.c
+A16 text30 CODE >65:/opt/microchip/xc8/v1.45/sources/common/float.c
+A1D text30 CODE >67:/opt/microchip/xc8/v1.45/sources/common/float.c
+A21 text30 CODE >68:/opt/microchip/xc8/v1.45/sources/common/float.c
+A27 text30 CODE >66:/opt/microchip/xc8/v1.45/sources/common/float.c
+A2C text30 CODE >71:/opt/microchip/xc8/v1.45/sources/common/float.c
+A30 text30 CODE >72:/opt/microchip/xc8/v1.45/sources/common/float.c
+A3A text30 CODE >73:/opt/microchip/xc8/v1.45/sources/common/float.c
+A40 text30 CODE >70:/opt/microchip/xc8/v1.45/sources/common/float.c
+A40 text30 CODE >74:/opt/microchip/xc8/v1.45/sources/common/float.c
+A45 text30 CODE >76:/opt/microchip/xc8/v1.45/sources/common/float.c
+A47 text30 CODE >77:/opt/microchip/xc8/v1.45/sources/common/float.c
+A4D text30 CODE >75:/opt/microchip/xc8/v1.45/sources/common/float.c
+A53 text30 CODE >79:/opt/microchip/xc8/v1.45/sources/common/float.c
+A55 text30 CODE >80:/opt/microchip/xc8/v1.45/sources/common/float.c
+A5B text30 CODE >81:/opt/microchip/xc8/v1.45/sources/common/float.c
+A5D text30 CODE >82:/opt/microchip/xc8/v1.45/sources/common/float.c
+A6D text30 CODE >83:/opt/microchip/xc8/v1.45/sources/common/float.c
+A70 text30 CODE >84:/opt/microchip/xc8/v1.45/sources/common/float.c
+A71 text30 CODE >86:/opt/microchip/xc8/v1.45/sources/common/float.c
+7C3 text29 CODE >42:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7C3 text29 CODE >45:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7C5 text29 CODE >46:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7C9 text29 CODE >47:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7CB text29 CODE >48:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7D6 text29 CODE >49:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7D8 text29 CODE >52:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7DC text29 CODE >53:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7E3 text29 CODE >54:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7E7 text29 CODE >52:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+7E8 text29 CODE >56:/opt/microchip/xc8/v1.45/sources/common/altoft.c
+71A text28 CODE >56:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+71A text28 CODE >63:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+72A text28 CODE >64:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+731 text28 CODE >65:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+740 text28 CODE >66:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+747 text28 CODE >67:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+74D text28 CODE >68:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+752 text28 CODE >69:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+762 text28 CODE >70:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+772 text28 CODE >71:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+776 text28 CODE >72:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+777 text28 CODE >73:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+77D text28 CODE >74:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+77E text28 CODE >75:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+784 text28 CODE >76:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+788 text28 CODE >78:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+78E text28 CODE >79:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+79A text28 CODE >80:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+7A0 text28 CODE >81:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+7A1 text28 CODE >83:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+7A7 text28 CODE >84:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+7AB text28 CODE >85:/opt/microchip/xc8/v1.45/sources/common/ftdiv.c
+17A0 text27 CODE >15:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17A0 text27 CODE >119:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17A9 text27 CODE >121:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17AB text27 CODE >122:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17B3 text27 CODE >123:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17BA text27 CODE >124:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17C1 text27 CODE >125:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+17C7 text27 CODE >128:/opt/microchip/xc8/v1.45/sources/common/Umul32.c
+CF0 text26 CODE >215:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CF0 text26 CODE >217:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CFE text26 CODE >221:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+D12 text26 CODE >231:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+EEF text26 CODE >236:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+FB5 text26 CODE >243:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+FE3 text26 CODE >245:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B67 text25 CODE >49:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B69 text25 CODE >52:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B6C text25 CODE >53:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B74 text25 CODE >54:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B77 text25 CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B82 text25 CODE >56:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B85 text25 CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B88 text25 CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B8B text25 CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B93 text25 CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+B96 text25 CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BA5 text25 CODE >62:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BAC text25 CODE >63:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BAF text25 CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BC6 text25 CODE >65:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BCD text25 CODE >66:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BD0 text25 CODE >67:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BE6 text25 CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BE8 text25 CODE >71:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+901 text24 CODE >6:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+901 text24 CODE >14:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+90A text24 CODE >15:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+910 text24 CODE >16:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+912 text24 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+914 text24 CODE >18:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+91B text24 CODE >19:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+91F text24 CODE >17:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+920 text24 CODE >22:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+927 text24 CODE >23:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+937 text24 CODE >24:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+93F text24 CODE >25:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+940 text24 CODE >27:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+947 text24 CODE >28:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+94B text24 CODE >30:/opt/microchip/xc8/v1.45/sources/common/lldiv.c
+1747 text23 CODE >35:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+1747 text23 CODE >38:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+174C text23 CODE >41:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+1750 text23 CODE >42:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+1757 text23 CODE >43:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+175B text23 CODE >41:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+175C text23 CODE >45:/opt/microchip/xc8/v1.45/sources/common/lltoft.c
+46 text22 CODE >249:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+46 text22 CODE >251:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+5A text22 CODE >257:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+7E text22 CODE >258:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+10F text22 CODE >259:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+165 text22 CODE >260:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1A4 text22 CODE >261:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+286 text22 CODE >262:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+2C6 text22 CODE >263:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+2CC text22 CODE >264:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+2D4 text22 CODE >266:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+336 text22 CODE >267:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+33A text22 CODE >268:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+36C text22 CODE >269:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+36D text22 CODE >270:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+39F text22 CODE >271:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+39F text22 CODE >272:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+43D text22 CODE >273:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+48B text22 CODE >274:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+4F6 text22 CODE >275:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+521 text21 CODE >180:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+521 text21 CODE >185:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+535 text21 CODE >187:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+540 text21 CODE >191:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+5B4 text21 CODE >197:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+68F text21 CODE >199:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+6AA text21 CODE >202:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+6ED text21 CODE >204:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+70E text21 CODE >206:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+15F2 text20 CODE >9:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+15F2 text20 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+15F3 text20 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+2 text19 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+2 text19 CODE >20:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+3 text19 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+15F4 text18 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+15F4 text18 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+15F6 text18 CODE >31:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/interupt.c
+804 text17 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+804 text17 CODE >15:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+807 text17 CODE >16:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+80F text17 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+81C text17 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+821 text17 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+82C text17 CODE >20:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+82F text17 CODE >21:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+831 text17 CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+1687 text16 CODE >3:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+1689 text16 CODE >6:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+168C text16 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+1694 text16 CODE >8:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+169F text16 CODE >9:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+16A1 text16 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+AE0 text15 CODE >44:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+AE0 text15 CODE >49:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+AF0 text15 CODE >50:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+AF9 text15 CODE >51:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B09 text15 CODE >52:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B0A text15 CODE >53:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B10 text15 CODE >54:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B17 text15 CODE >55:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B19 text15 CODE >56:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B1B text15 CODE >57:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B20 text15 CODE >58:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B29 text15 CODE >60:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B30 text15 CODE >61:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B37 text15 CODE >63:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B3B text15 CODE >64:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B44 text15 CODE >66:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B4B text15 CODE >67:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B4D text15 CODE >65:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B4D text15 CODE >68:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B50 text15 CODE >70:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B53 text15 CODE >71:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+B5E text15 CODE >72:/opt/microchip/xc8/v1.45/sources/common/fttol.c
+165C text14 CODE >28:/opt/microchip/xc8/v1.45/sources/common/lwtoft.c
+165C text14 CODE >30:/opt/microchip/xc8/v1.45/sources/common/lwtoft.c
+9AB text13 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9AD text13 CODE >31:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9B1 text13 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9B2 text13 CODE >35:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9B6 text13 CODE >36:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9B7 text13 CODE >38:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9BB text13 CODE >39:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9BC text13 CODE >41:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9C0 text13 CODE >42:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9C1 text13 CODE >44:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9C5 text13 CODE >46:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9C6 text13 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9D2 text13 CODE >48:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9DB text13 CODE >49:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+9E3 text13 CODE >50:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+A08 text13 CODE >51:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/BH1750.c
+163A text12 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+163A text12 CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+163D text12 CODE >26:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+163F text12 CODE >29:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1641 text12 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1643 text12 CODE >35:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+1644 text12 CODE >37:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/eusart.c
+17D0 text11 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17D0 text11 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17D3 text11 CODE >13:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17D4 text11 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17FB text11 CODE >15:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17FC text11 CODE >16:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17FE text11 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+17FF text11 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/I2C1.c
+1631 text10 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1631 text10 CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1634 text10 CODE >24:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1635 text10 CODE >26:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1636 text10 CODE >28:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1638 text10 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1639 text10 CODE >31:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+837 text9 CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+837 text9 CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+839 text9 CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+83A text9 CODE >66:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+83D text9 CODE >67:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+83F text9 CODE >72:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+842 text9 CODE >73:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+844 text9 CODE >78:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+846 text9 CODE >79:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+847 text9 CODE >84:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+849 text9 CODE >85:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+84A text9 CODE >86:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+84F text9 CODE >87:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+853 text9 CODE >88:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+857 text9 CODE >89:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+85C text9 CODE >90:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+860 text9 CODE >91:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+864 text9 CODE >92:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+868 text9 CODE >93:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+86D text9 CODE >94:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+871 text9 CODE >95:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+876 text9 CODE >97:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1629 text8 CODE >39:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1629 text8 CODE >42:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+162B text8 CODE >44:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+162C text8 CODE >46:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+162D text8 CODE >48:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+162E text8 CODE >50:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+162F text8 CODE >52:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+1630 text8 CODE >53:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+800 text7 CODE >33:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+800 text7 CODE >36:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+803 text7 CODE >37:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16A2 text6 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16A4 text6 CODE >9:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16A6 text6 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16A7 text6 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16AA text6 CODE >13:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16AD text6 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16AF text6 CODE >15:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16B0 text6 CODE >18:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16B5 text6 CODE >19:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16B7 text6 CODE >20:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16B7 text6 CODE >22:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16BC text6 CODE >23:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+16D8 text5 CODE >7:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16D8 text5 CODE >10:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16DB text5 CODE >11:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16DE text5 CODE >12:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16E1 text5 CODE >13:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16E4 text5 CODE >14:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16E7 text5 CODE >15:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16F3 text5 CODE >16:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16FA text5 CODE >17:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c
+16BD text4 CODE >80:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+16BF text4 CODE >82:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+16C7 text4 CODE >84:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1645 text3 CODE >88:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1647 text3 CODE >90:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BF2 text2 CODE >106:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BF2 text2 CODE >109:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+BFE text2 CODE >111:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C0A text2 CODE >113:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C16 text2 CODE >115:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C22 text2 CODE >117:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C2E text2 CODE >119:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C3A text2 CODE >121:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C46 text2 CODE >123:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C52 text2 CODE >125:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C5E text2 CODE >127:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C6A text2 CODE >129:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C76 text2 CODE >131:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C82 text2 CODE >133:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C8B text2 CODE >135:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+C97 text2 CODE >137:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CA0 text2 CODE >139:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CC1 text2 CODE >141:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CE7 text2 CODE >143:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+CEF text2 CODE >146:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/bme280.c
+1606 text1 CODE >30:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+1608 text1 CODE >32:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+160B text1 CODE >33:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.c
+A72 maintext CODE >44:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A72 maintext CODE >47:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A75 maintext CODE >54:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A7C maintext CODE >55:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A85 maintext CODE >56:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A88 maintext CODE >57:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A8B maintext CODE >58:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A8E maintext CODE >59:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A91 maintext CODE >60:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A93 maintext CODE >64:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+A95 maintext CODE >65:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AA2 maintext CODE >66:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AA5 maintext CODE >67:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AA7 maintext CODE >68:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AB0 maintext CODE >69:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+ABD maintext CODE >72:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AC7 maintext CODE >73:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+AD1 maintext CODE >74:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+ADB maintext CODE >80:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+ADF maintext CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c
+160C clrtext CODE >6393:/tmp/xcXoO8CJW
+160C clrtext CODE >6394:/tmp/xcXoO8CJW
+160D clrtext CODE >6395:/tmp/xcXoO8CJW
+160D clrtext CODE >6396:/tmp/xcXoO8CJW
+160E clrtext CODE >6397:/tmp/xcXoO8CJW
+160F clrtext CODE >6398:/tmp/xcXoO8CJW
+1610 clrtext CODE >6399:/tmp/xcXoO8CJW
+1611 clrtext CODE >6400:/tmp/xcXoO8CJW
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -286,16 +646,23 @@ F0 maintext CODE >61:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F1
 %SYMTAB
 _RA5PPSbits E95 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 ___latbits 2 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_EUSART_Read 278 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
+_EUSART_Read 2CA0 0 CODE 0 text45 dist/default/production/16F18325_NO_MCC.X.production.obj
+_readSensorCoefficients 17E4 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hspace_0 800B 0 ABS 0 - -
-__Hspace_1 7E 0 ABS 0 - -
+__Hspace_1 E4 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
+spiInit@sTransmitEdge 25 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@exp 3F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+I2C_Master_Init@c 31 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_readPressure 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RXPPSbits E24 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_PMD_Initialize 2B8 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_WDT_Initialize 2FE 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+_PMD_Initialize 2C52 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BH1750_Write 2D0E 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read24@temp 32 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_WDT_Initialize 1008 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
 _LATA 10C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _LATC 10E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
@@ -307,70 +674,130 @@ _PMD4 915 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _PMD5 916 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _WPUA 20C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _WPUC 20E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXbzOcd5.obj
-_main 188 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+___sp 0 0 STACK 2 stack /tmp/xcXJX1Jlc.obj
+_main 14E4 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readPressure@adc_P C5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-start 60 0 CODE 0 init /tmp/xcXbzOcd5.obj
-_EUSART_Write 2C8 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
+start 66 0 CODE 0 init /tmp/xcXJX1Jlc.obj
+_EUSART_Write 2C32 0 CODE 0 text44 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___ftdiv 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___fttol 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___lldiv 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RA4PPSbits E94 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_write8@reg 28 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_read16_LE 2D7A 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_EnableGlobalinterupts 30C 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_EUSART_Initialize 2A6 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+?___lmul 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readTemperature@temperature D1 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@f1 34 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@f2 31 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@f3 3C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BH1750_Read 29 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EnableGlobalinterupts 2BE8 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_read16 29 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_read24 29 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EUSART_Initialize 2C8A 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 printf@c 7B 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 printf@f 72 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+I2C_Master_Read@a 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXbzOcd5.obj
+?_LireLux 4F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXJX1Jlc.obj
+__size_of_BH1750_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2CLKPPSbits E1D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC2PPSbits EA2 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readTemperature$1420 CD 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
-_EnableGlobalinterupts 308 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+_EnableGlobalinterupts 2BE4 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
+I2C_Master_Read@temp 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC1STAbits 19D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EnableRXInterupts 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_PMD_Initialize 2C8 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BH1750_Read 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_readHumidity 2000 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_PMD_Initialize 2C62 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EUSART_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
+_BME280_readTemperature A42 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
 printf@flag 79 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
 _ANSELA 18C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _ANSELC 18E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_EUSART_Write 2D8 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readPressure@p D1 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BH1750_Write 2D44 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___altoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+LireLux@lux 53 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___altoft@c 2F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___lmul 2FA0 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EUSART_Write 2C42 0 CODE 0 text44 dist/default/production/16F18325_NO_MCC.X.production.obj
+main@lux 66 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_spiInit 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___fttol@f1 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of_EnablePeripheralInterupts 308 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EnablePeripheralInterupts 8 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
 ?_printf 72 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___ftpack 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_FEXTOSC$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-interpretation@i 4A 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_EUSART_Initialize 290 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___ftdiv F86 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___fttol 16CE 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___lldiv 12A8 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_read16_LE 2DB0 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_readTemperature 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_readPressure 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+interpretation@i 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_read16_LE 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_EUSART_Initialize 2C74 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_putch 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC0PPSbits EA0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_PIN_MANAGER_Initialize 108 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
-start_initialization 64 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___lltoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___lwtoft 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___lldiv@counter 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_PIN_MANAGER_Initialize 106E 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+spiInit@sDataSample 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_readSensorCoefficients 19E0 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+start_initialization 6A 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
 _ODCONA 28C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _ODCONC 28E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCFRQ 91F 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___altoft F86 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISAbits 8C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISCbits 8E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___lldiv@dividend 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_readS16_LE 39 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC1REG 199 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC1STA 19D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_SYSTEM_Initialize 278 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
-clear_ram0 2D8 0 CODE 0 clrtext dist/default/production/16F18325_NO_MCC.X.production.obj
-__pcstackBANK0 4A 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_SYSTEM_Initialize 2DF6 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___altoft 1000 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
+clear_ram0 2C18 0 CODE 0 clrtext dist/default/production/16F18325_NO_MCC.X.production.obj
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pcstackBANK1 C5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSPBUF 211 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___fttol@exp1 4E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___fttol@lval 4A 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_interpretation 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_read16 12A8 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_read24 16CE 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1REG 19A 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1STA 19E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_printf 108 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_EnableRXInterupts 304 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readPressure 8C 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lltoft@c 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftpack 141A 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_printf 1202 0 CODE 0 text42 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_EnableRXInterupts 2BEE 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftpack@arg 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftpack@exp 26 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _WDTCON 97 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcXbzOcd5.obj
-__end_of_EUSART_Read 290 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_goForceMode 2D0E 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
+___int_sp 0 0 STACK 2 stack /tmp/xcXJX1Jlc.obj
+__end_of_EUSART_Read 2CB8 0 CODE 0 text45 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EnablePeripheralInterupts 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___ftpack 14E4 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -381,7 +808,7 @@ __Hbank6 0 0 ABS 0 bank6 -
 __Hbank7 0 0 ABS 0 bank7 -
 __Hbank8 0 0 ABS 0 bank8 -
 __Hbank9 0 0 ABS 0 bank9 -
-__Hcinit 7A 0 CODE 0 cinit -
+__Hcinit 8C 0 CODE 0 cinit -
 __Hidloc 0 0 IDLOC 0 idloc -
 __size_of_OSCILLATOR_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hsfr10 0 0 ABS 0 sfr10 -
@@ -407,6 +834,8 @@ __Hsfr29 0 0 ABS 0 sfr29 -
 __Hsfr30 0 0 ABS 0 sfr30 -
 __Hsfr31 0 0 ABS 0 sfr31 -
 __Hstack 0 0 STACK 2 stack -
+I2C_Master_Write@d 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read16@reg 2D 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hbank10 0 0 ABS 0 bank10 -
 __Hbank11 0 0 ABS 0 bank11 -
 __Hbank12 0 0 ABS 0 bank12 -
@@ -429,11 +858,16 @@ __Hbank28 0 0 BANK28 1 bank28 -
 __Hbank29 0 0 BANK29 1 bank29 -
 __Hbank30 0 0 BANK30 1 bank30 -
 __Hbank31 0 0 BANK31 1 bank31 -
+_BME280_write8 2EE2 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
 _BAUD1CON 19F 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_spiInit 2D7A 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read24@reg 31 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lltoft 2E8E 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10016 0 CONFIG 0 config -
+___lwtoft 2CB8 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -444,7 +878,7 @@ __Lbank6 0 0 ABS 0 bank6 -
 __Lbank7 0 0 ABS 0 bank7 -
 __Lbank8 0 0 ABS 0 bank8 -
 __Lbank9 0 0 ABS 0 bank9 -
-__Lcinit 64 0 CODE 0 cinit -
+__Lcinit 6A 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lsfr10 0 0 ABS 0 sfr10 -
 __Lsfr11 0 0 ABS 0 sfr11 -
@@ -469,13 +903,17 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-_monBuffer 24 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_LireLux 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___lltoft 2EE2 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
+_monBuffer A0 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2DATPPSbits E1E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of___lwtoft 2CE2 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
 _PORTCbits E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _INTCONbits B 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_read8 10EE 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
-__Hinit 60 0 CODE 0 init -
+__Hinit 66 0 CODE 0 init -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Hsfr2 0 0 ABS 0 sfr2 -
@@ -489,7 +927,7 @@ __Hsfr9 0 0 ABS 0 sfr9 -
 __Htext 0 0 ABS 0 text -
 __Labs1 0 0 ABS 0 abs1 -
 __Lcode 0 0 ABS 0 code -
-__Linit 60 0 CODE 0 init -
+__Linit 66 0 CODE 0 init -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
@@ -501,44 +939,104 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-__pstringtext1 230 0 STRCODE 0 stringtext1 dist/default/production/16F18325_NO_MCC.X.production.obj
-__pstringtext2 2EE 0 STRCODE 0 stringtext2 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pstringtext1 3000 0 STRCODE 0 stringtext1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pstringtext2 302A 0 STRCODE 0 stringtext2 dist/default/production/16F18325_NO_MCC.X.production.obj
 __pstringtext3 0 0 STRCODE 0 stringtext3 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON1 215 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON2 216 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1STAT 214 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2CON1 21D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2STAT 21C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___lmul 2F40 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 -
 _SSP2STATbits 21C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 int$flags 7E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__end_of_BME280_readTemperature E34 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_goForceMode 2CE2 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read8@temp 2C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_WDT_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BH1750_Read 1008 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
 __S0 800B 0 ABS 0 - -
-__S1 7E 0 ABS 0 - -
+__S1 E4 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_SYSTEM_Initialize 25A 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
+main@humidity 60 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Start 2BF8 0 CODE 0 text37 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Write 2C24 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
+_SYSTEM_Initialize 2DB0 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_BOREN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_BORV$LOW 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXbzOcd5.obj
+___lldiv@divisor 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXJX1Jlc.obj
+__size_of_BME280_read8 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EnableGlobalinterupts 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_EnableRXInterupts 2FE 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readTemperature@var1 C5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readTemperature@var2 C9 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_read16 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_read24 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_readS16_LE 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_EnableRXInterupts 2BE8 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_readPressure A42 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
+LireLux@resolution 52 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_read16_LE 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of___lmul 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
+__LbssBANK1 0 0 ABS 0 bssBANK1 -
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lstringtext1 0 0 ABS 0 stringtext1 -
 __Lstringtext2 0 0 ABS 0 stringtext2 -
 __Lstringtext3 0 0 ABS 0 stringtext3 -
+?___altoft 2F 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_PMD_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _PIE1bits 91 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext11 1E2 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext12 7A 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext13 2E4 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext14 2C8 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext15 278 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_PIN_MANAGER_Initialize 188 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
-_EnablePeripheralInterupts 304 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+___altoft@exp 35 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readPressure@var1 D5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readPressure@var2 CD 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext10 2C62 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext11 2FA0 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext12 2C74 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext13 1356 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext14 2CB8 0 CODE 0 text14 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext15 15C0 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext16 2D0E 0 CODE 0 text16 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext17 1008 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext18 2BE8 0 CODE 0 text18 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext19 4 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext20 2BE4 0 CODE 0 text20 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext21 A42 0 CODE 0 text21 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext22 8C 0 CODE 0 text22 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext23 2E8E 0 CODE 0 text23 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext24 1202 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext25 16CE 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext26 19E0 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext27 2F40 0 CODE 0 text27 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext28 E34 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext29 F86 0 CODE 0 text29 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext30 141A 0 CODE 0 text30 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext31 12A8 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext32 2CE2 0 CODE 0 text32 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext33 2EE2 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext34 10EE 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext35 2C24 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext36 2C02 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext37 2BF8 0 CODE 0 text37 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext38 2DF6 0 CODE 0 text38 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext39 2C42 0 CODE 0 text39 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext41 2E40 0 CODE 0 text41 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext42 1174 0 CODE 0 text42 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext43 2BEE 0 CODE 0 text43 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext44 2C32 0 CODE 0 text44 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext45 2CA0 0 CODE 0 text45 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_PIN_MANAGER_Initialize 10EE 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+_EnablePeripheralInterupts 4 0 CODE 0 text19 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv E34 0 CODE 0 text28 dist/default/production/16F18325_NO_MCC.X.production.obj
+___fttol 15C0 0 CODE 0 text15 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_write8 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+___lldiv 1202 0 CODE 0 text24 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_goForceMode@mode 2E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbank10 0 0 ABS 0 bank10 -
 __Lbank11 0 0 ABS 0 bank11 -
 __Lbank12 0 0 ABS 0 bank12 -
@@ -561,99 +1059,178 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
+BH1750_Read@res 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readHumidity@adc_H C5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CLKPPSbits E20 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__pmaintext 188 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+__pmaintext 14E4 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lbigram 0 0 ABS 0 bigram -
+___lmul@multiplier 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_read8 1174 0 CODE 0 text34 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_RSTOSC$HFINT1 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_readSensorCoefficients 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+?_BME280_readHumidity 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
-_printf 7A 0 CODE 0 text12 dist/default/production/16F18325_NO_MCC.X.production.obj
+?___ftpack 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_printf 1174 0 CODE 0 text42 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_LireLux 141A 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_RX_byte 28 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
-_t_fine 20 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_RX_byte 6C 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_read16 1356 0 CODE 0 text31 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_read24 17E4 0 CODE 0 text25 dist/default/production/16F18325_NO_MCC.X.production.obj
+_t_fine 68 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?_I2C_Master_Read 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EUSART_Read 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-stackhi 23EF 0 ABS 0 - /tmp/xcXbzOcd5.obj
-stacklo 202F 0 ABS 0 - /tmp/xcXbzOcd5.obj
+BME280_readHumidity@h D9 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readTemperature@adc_T D4 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lwtoft@c 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+stackhi 23EF 0 ABS 0 - /tmp/xcXJX1Jlc.obj
+stacklo 2094 0 ABS 0 - /tmp/xcXJX1Jlc.obj
+?___lltoft 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCCON1 919 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCCON3 91B 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCTUNE 91E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Init 3000 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Read 2E40 0 CODE 0 text38 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Stop 2C0C 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Wait 2C52 0 CODE 0 text39 dist/default/production/16F18325_NO_MCC.X.production.obj
+?___lwtoft 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_write8 2F40 0 CODE 0 text33 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_I2C_Master_Start 2C02 0 CODE 0 text37 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
+__end_of_I2C_Master_Write 2C32 0 CODE 0 text35 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_LPBOREN$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read16_LE@temp 37 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 -
 _PIR1bits 11 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__Lend_init 60 0 CODE 0 end_init -
-_cal_data 29 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__Lend_init 66 0 CODE 0 end_init -
+_cal_data A4 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_LVP$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+BH1750_Write@data1 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CSWEN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 printf@ap 7A 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-end_of_initialization 72 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
-__Hintentry 60 0 CODE 0 intentry -
+__size_of_I2C_Master_Start 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_I2C_Master_Write 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+end_of_initialization 84 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
+__Hintentry 66 0 CODE 0 intentry -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_printf 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TX1STAbits 19E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
+?___ftdiv 31 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?___fttol 41 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+?___lldiv 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-__ptext1 25A 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext2 2F6 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext3 2B8 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext4 108 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext5 2A6 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext6 290 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext7 2FE 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext8 304 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
-__ptext9 308 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_interupt1 60 0 CODE 0 intentry dist/default/production/16F18325_NO_MCC.X.production.obj
+__HbssBANK1 0 0 ABS 0 bssBANK1 -
+BME280_read16@temp 2E 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lltoft@exp 30 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext1 2C0C 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext2 17E4 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext3 2C8A 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext4 2D7A 0 CODE 0 text4 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext5 2DB0 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext6 2D44 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext7 1000 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext8 2C52 0 CODE 0 text8 dist/default/production/16F18325_NO_MCC.X.production.obj
+__ptext9 106E 0 CODE 0 text9 dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read16_LE@reg 36 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_interupt1 66 0 CODE 0 intentry dist/default/production/16F18325_NO_MCC.X.production.obj
+_spiInit 2D44 0 CODE 0 text6 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_interupt1 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+spiWrite@dat 23 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BME280_readS16_LE 2CA0 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
+__size_of_BME280_readTemperature 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+spiInit@sType 26 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
+_I2C_Master_Init 2FA0 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Read 2DF6 0 CODE 0 text38 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Stop 2C02 0 CODE 0 text36 dist/default/production/16F18325_NO_MCC.X.production.obj
+_I2C_Master_Wait 2C42 0 CODE 0 text39 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_interpretation 1E2 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+_interpretation 2E40 0 CODE 0 text41 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hstringtext1 0 0 ABS 0 stringtext1 -
 __Hstringtext2 0 0 ABS 0 stringtext2 -
 __Hstringtext3 0 0 ABS 0 stringtext3 -
+BME280_readHumidity@v_x1_u32r E0 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _interupt1 8 0 CODE 0 intentry dist/default/production/16F18325_NO_MCC.X.production.obj
 EUSART_Write@txData 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of__initialization 72 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of__initialization 84 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_spiWrite 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_BME280_goForceMode 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lfunctab 0 0 ENTRY 0 functab -
+__size_of_BME280_readHumidity 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SP1BRGH 19C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SP1BRGL 19B 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity$1421 DC 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity$1422 C9 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity$1423 CD 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity$1424 D1 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity$1425 D5 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext -
+___altoft@sign 36 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1CON2bits 216 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_read8@reg 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftpack@sign 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lmul@product 2B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+main@temperature 5D 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_EUSART_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readPressure$1426 C9 0 BANK1 1 cstackBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lmul@multiplicand 27 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___lldiv@quotient 2C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@cntr 3B 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+___ftdiv@sign 40 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_BH1750_Read 106E 0 CODE 0 text17 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1ADD 212 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP2BUF 219 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__Hend_init 64 0 CODE 0 end_init -
+__Hend_init 6A 0 CODE 0 end_init -
+BME280_write8@value 25 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 putch@txData 71 0 COMMON 1 cstackCOMMON dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_main 1E2 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_main 15C0 0 CODE 0 maintext dist/default/production/16F18325_NO_MCC.X.production.obj
+BME280_readS16_LE@reg 3C 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _OSCEN 91D 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+main@pressure 63 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISA 8C 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 _TRISC 8E 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_putch 2EE 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_putch 2BF8 0 CODE 0 text43 dist/default/production/16F18325_NO_MCC.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_putch 2E4 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
+_putch 2BEE 0 CODE 0 text43 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
 __size_of_PIN_MANAGER_Initialize 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_WDT_Initialize 2F6 0 CODE 0 text2 dist/default/production/16F18325_NO_MCC.X.production.obj
+_WDT_Initialize 1000 0 CODE 0 text7 dist/default/production/16F18325_NO_MCC.X.production.obj
 __pintentry 8 0 CODE 0 intentry dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_interpretation 230 0 CODE 0 text11 dist/default/production/16F18325_NO_MCC.X.production.obj
+___fttol@sign1 49 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_interpretation 2E8E 0 CODE 0 text41 dist/default/production/16F18325_NO_MCC.X.production.obj
 _SSP1DATPPSbits E21 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__end_of_OSCILLATOR_Initialize 2B8 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_OSCILLATOR_Initialize 2C74 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_PPS1WAY$ON 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__initialization 64 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
+spiInit@sClockIdle 24 0 BANK0 1 cstackBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__initialization 6A 0 CODE 0 cinit dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readHumidity 19E0 0 CODE 0 text26 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pbssBANK0 68 0 BANK0 1 bssBANK0 dist/default/production/16F18325_NO_MCC.X.production.obj
+__pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_spiWrite 2C0C 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+_BME280_readS16_LE 2C8A 0 CODE 0 text3 dist/default/production/16F18325_NO_MCC.X.production.obj
 _RC4PPSbits EA4 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
-_OSCILLATOR_Initialize 2A6 0 CODE 0 text5 dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_I2C_Master_Read 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_I2C_Master_Stop 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__size_of_I2C_Master_Wait 0 0 ABS 0 - dist/default/production/16F18325_NO_MCC.X.production.obj
+__end_of_spiWrite 2C18 0 CODE 0 text1 dist/default/production/16F18325_NO_MCC.X.production.obj
+_OSCILLATOR_Initialize 2C62 0 CODE 0 text10 dist/default/production/16F18325_NO_MCC.X.production.obj
+_LireLux 1356 0 CODE 0 text13 dist/default/production/16F18325_NO_MCC.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -679,12 +1256,50 @@ _OSCILLATOR_Initialize 2A6 0 CODE 0 text5 dist/default/production/16F18325_NO_MC
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text1 0 12D 25A 4A 2
-text2 0 17B 2F6 B 2
+text1 0 1606 2C0C 6 2
+text2 0 BF2 17E4 FE 2
+text3 0 1645 2C8A B 2
+text4 0 16BD 2D7A 1B 2
+text5 0 16D8 2DB0 23 2
+text6 0 16A2 2D44 1B 2
+text8 0 1629 2C52 8 2
+text9 0 837 106E 40 2
+text10 0 1631 2C62 9 2
+text11 0 17D0 2FA0 30 2
+text12 0 163A 2C74 B 2
+text13 0 9AB 1356 62 2
+text14 0 165C 2CB8 15 2
+text15 0 AE0 15C0 87 2
+text16 0 1687 2D0E 1B 2
+text17 0 804 1008 33 2
+text18 0 15F4 2BE8 3 2
+text20 0 15F2 2BE4 2 2
+text23 0 1747 2E8E 2A 2
+text24 0 901 1202 53 2
+text25 0 B67 16CE 8B 2
+text26 0 CF0 19E0 310 2
+text27 0 17A0 2F40 30 2
+text30 0 A0D 141A 65 2
+text31 0 954 12A8 57 2
+text32 0 1671 2CE2 16 2
+text33 0 1771 2EE2 2F 2
+text34 0 877 10EE 43 2
+text35 0 1612 2C24 7 2
+text36 0 1601 2C02 5 2
+text37 0 15FC 2BF8 5 2
+text38 0 16FB 2DF6 25 2
+text39 0 1621 2C42 8 2
+text41 0 1720 2E40 27 2
+text42 0 8BA 1174 47 2
+text43 0 15F7 2BEE 5 2
+text44 0 1619 2C32 8 2
+text45 0 1650 2CA0 C 2
+maintext 0 A72 14E4 6E 2
 cstackCOMMON 1 70 70 E 1
-stringtext1 0 118 230 15 2
-stringtext2 0 177 2EE 4 2
-intentry 0 4 8 114 2
-reset_vec 0 0 0 2 2
-bssBANK0 1 20 20 2F 1
+cstackBANK0 1 20 20 4D 1
+stringtext1 0 1800 3000 19 2
+intentry 0 4 8 800 2
+reset_vec 0 0 0 4 2
+bssBANK1 1 A0 A0 44 1
+clrtext 0 160C 2C18 6 2
 config 0 8007 1000E 4 2
