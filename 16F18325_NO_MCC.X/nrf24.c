@@ -130,7 +130,7 @@ void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus)
 {
     set_csn(0,bus);
     spi_transfer(R_REGISTER | (REGISTER_MASK & reg));
-    nrf24_transferSync(value,value,len);
+    nrf24_transferSync(&value,&value,len);
     set_csn(1,bus);
 }
 
