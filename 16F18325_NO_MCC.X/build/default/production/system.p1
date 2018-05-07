@@ -7471,9 +7471,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 14: EUSART_Initialize();
 "14
 [e ( _EUSART_Initialize ..  ]
-[; ;system.c: 17: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_END,SPI_CLOCK_IDLE_HIGH,SPI_IDLE_2_ACTIVE);
+[; ;system.c: 17: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 "17
-[e ( _spiInit (4 , , , . `E7534 0 . `E7542 1 . `E7546 0 . `E7550 0 ]
+[e ( _spiInit (4 , , , . `E7534 0 . `E7542 0 . `E7546 1 . `E7550 1 ]
 [; ;system.c: 19: }
 "19
 [e :UE 919 ]

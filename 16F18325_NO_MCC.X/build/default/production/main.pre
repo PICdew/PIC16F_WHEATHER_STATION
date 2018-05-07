@@ -9909,8 +9909,8 @@ PORTCbits.RC3 =1;
 _delay((unsigned long)((1000)*(2000000/4000.0)));
 
 # 75
-nrf24_configRegister(0x05,20,1);
-nrf24_readRegister(0x05,&reg,1,1);
+nrf24_configRegister(0x05,17,1);
+nrf24_readRegister(0x05,reg,1,1);
 
 printf("lecture registre RF_CH : %u \r\n",reg);
 

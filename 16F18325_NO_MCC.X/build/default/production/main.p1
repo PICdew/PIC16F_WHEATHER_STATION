@@ -7495,12 +7495,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 65: _delay((unsigned long)((1000)*(2000000/4000.0)));
 "65
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 75: nrf24_configRegister(0x05,20,1);
+[; ;main.c: 75: nrf24_configRegister(0x05,17,1);
 "75
-[e ( _nrf24_configRegister (3 , , -> -> 5 `i `uc -> -> 20 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 76: nrf24_readRegister(0x05,&reg,1,1);
+[e ( _nrf24_configRegister (3 , , -> -> 5 `i `uc -> -> 17 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 76: nrf24_readRegister(0x05,reg,1,1);
 "76
-[e ( _nrf24_readRegister (4 , , , -> -> 5 `i `uc &U _reg -> -> 1 `i `uc -> -> 1 `i `uc ]
+[e ( _nrf24_readRegister (4 , , , -> -> 5 `i `uc -> _reg `*uc -> -> 1 `i `uc -> -> 1 `i `uc ]
 [; ;main.c: 78: printf("lecture registre RF_CH : %u \r\n",reg);
 "78
 [e ( _printf , (. :s 1C -> _reg `i ]

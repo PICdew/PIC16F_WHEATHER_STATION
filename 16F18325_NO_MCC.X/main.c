@@ -72,8 +72,8 @@ void main()
         SPI2_Exchange8bit(R_REGISTER | (REGISTER_MASK & RF_CH));
         reg = SPI2_Exchange8bit(0x00);
         set_csn(1,1); */
-       nrf24_configRegister(RF_CH,20,1);
-       nrf24_readRegister(RF_CH,&reg,1,1);
+       nrf24_configRegister(RF_CH,17,1);
+       nrf24_readRegister(RF_CH,reg,1,1);
         
         printf("lecture registre RF_CH : %u \r\n",reg);
         
