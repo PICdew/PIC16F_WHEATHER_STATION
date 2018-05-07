@@ -5,20 +5,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "7 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-[v F7592 `(c ~T0 @X0 1 tf2`uc`uc ]
-"77 bme280.h
-[v _BME280_write8 `TF7592 ~T0 @X0 0 e ]
-"83
-[v _readSensorCoefficients `(v ~T0 @X0 0 ef ]
-[v F7670 `(v ~T0 @X0 1 tf ]
-"14 interupt.h
-[v _EnableGlobalinterupts `TF7670 ~T0 @X0 0 e ]
-[v F7676 `(v ~T0 @X0 1 tf ]
-"16
-[v _EnablePeripheralInterupts `TF7676 ~T0 @X0 0 e ]
-[v F7682 `(v ~T0 @X0 1 tf ]
-"18
-[v _EnableRXInterupts `TF7682 ~T0 @X0 0 e ]
 "1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
@@ -27,7 +13,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S80 . . ]
 "1557
 [v _TRISCbits `VS80 ~T0 @X0 0 e@142 ]
-"438
+"25 nrf24.h
+[v _set_csn `(v ~T0 @X0 0 ef2`uc`uc ]
+"438 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S30 . RC0 RC1 RC2 RC3 RC4 RC5 ]
 "437
@@ -39,18 +27,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "153 /opt/microchip/xc8/v1.45/include/pic.h
 [v __delay `JF7378 ~T0 @X0 0 e ]
 [p i __delay ]
-"85 bme280.h
-[v _BME280_goForceMode `(v ~T0 @X0 0 ef ]
-"8 BH1750.h
-[v _LireLux `(ui ~T0 @X0 0 ef1`c ]
-"86 bme280.h
-[v _BME280_readTemperature `(f ~T0 @X0 0 ef ]
-"87
-[v _BME280_readHumidity `(f ~T0 @X0 0 ef ]
-"88
-[v _BME280_readPressure `(f ~T0 @X0 0 ef ]
-"48 SPI2.h
-[v _SPI2_exchange8bit `(uc ~T0 @X0 0 ef1`uc ]
+"32 nrf24.h
+[v _nrf24_configRegister `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"33
+[v _nrf24_readRegister `(v ~T0 @X0 0 ef4`uc`*uc`uc`uc ]
+"195 /opt/microchip/xc8/v1.45/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -7398,6 +7380,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart.h: 53: bool EUSART_is_tx_done(void);
 [; ;eusart.h: 60: uint8_t EUSART_Read(void);
 [; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 6: typedef struct {
+[; ;interupt.h: 7: char data[3];
+[; ;interupt.h: 8: uint8_t len ;
+[; ;interupt.h: 9: } RXbuffer;
+"10 interupt.h
+[v _monBuffer `S920 ~T0 @X0 1 e ]
+[; ;interupt.h: 10: RXbuffer monBuffer ;
+[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 18: inline void EnableRXInterupts(void);
+[; ;interupt.h: 19: inline void DisableRXInterupts(void);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7431,26 +7432,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 45: void spiWrite(char);
 [; ;SPI2.h: 46: unsigned spiDataReady();
 [; ;SPI2.h: 47: uint8_t spiRead();
-[; ;SPI2.h: 48: uint8_t SPI2_exchange8bit(uint8_t tx);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
-[; ;interupt.h: 6: typedef struct {
-[; ;interupt.h: 7: char data[3];
-[; ;interupt.h: 8: uint8_t len ;
-[; ;interupt.h: 9: } RXbuffer;
-"10 interupt.h
-[v _monBuffer `S920 ~T0 @X0 1 e ]
-[; ;interupt.h: 10: RXbuffer monBuffer ;
-[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
-[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
-[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
-[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
-[; ;interupt.h: 18: inline void EnableRXInterupts(void);
-[; ;interupt.h: 19: inline void DisableRXInterupts(void);
+[; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
+[; ;nrf24.h: 24: void set_ce(uint8_t state,uint8_t radioNb);
+[; ;nrf24.h: 25: void set_csn(uint8_t state,uint8_t bus);
+[; ;nrf24.h: 26: void set_sck(uint8_t state);
+[; ;nrf24.h: 27: void set_mosi(uint8_t state);
+[; ;nrf24.h: 28: uint8_t get_miso();
+[; ;nrf24.h: 29: uint8_t spi_transfer(uint8_t tx);
+[; ;nrf24.h: 30: void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+[; ;nrf24.h: 31: void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+[; ;nrf24.h: 32: void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+[; ;nrf24.h: 33: void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+[; ;nrf24.h: 34: void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+[; ;nrf24.h: 35: void nrf24_powerUpRx(uint8_t radioNb);
+[; ;nrf24.h: 36: void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb);
+[; ;nrf24.h: 37: void nrf24_displayConfiguration(uint8_t radioNb);
+[; ;nrf24.h: 38: void clearTable(uint8_t* tab,uint8_t size);
+[; ;nrf24.h: 39: void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+[; ;nrf24.h: 40: void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+[; ;nrf24.h: 41: uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+[; ;nrf24.h: 42: uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+[; ;nrf24.h: 43: uint8_t nrf24_payloadLength(uint8_t RadioNb);
+[; ;nrf24.h: 44: void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+[; ;nrf24.h: 45: uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+[; ;nrf24.h: 46: void nrf24_send(uint8_t* value,uint8_t RadioNb);
+[; ;nrf24.h: 47: uint8_t nrf24_isSending(uint8_t RadioNb);
+[; ;nrf24.h: 48: uint8_t nrf24_getStatus(uint8_t RadioNb);
+[; ;nrf24.h: 49: uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+[; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
+[; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
 [v $root$_main `(v ~T0 @X0 0 e ]
 "44 main.c
 [v _main `(v ~T0 @X0 1 ef ]
@@ -7463,39 +7473,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 47: SYSTEM_Initialize();
 "47
 [e ( _SYSTEM_Initialize ..  ]
-"50
-[v _lux `ui ~T0 @X0 1 a ]
-"51
-[v _temperature `f ~T0 @X0 1 a ]
-"52
-[v _humidity `f ~T0 @X0 1 a ]
-"53
-[v _pressure `f ~T0 @X0 1 a ]
-[; ;main.c: 50: uint16_t lux ;
-[; ;main.c: 51: float temperature ;
-[; ;main.c: 52: float humidity ;
-[; ;main.c: 53: float pressure ;
-[; ;main.c: 54: BME280_write8(0xF2, 0x01);
-"54
-[e ( _BME280_write8 (2 , -> -> 242 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 55: BME280_write8(0xF4, 0b00100100);
-"55
-[e ( _BME280_write8 (2 , -> -> 244 `i `uc -> -> 36 `i `uc ]
-[; ;main.c: 56: readSensorCoefficients();
-"56
-[e ( _readSensorCoefficients ..  ]
-[; ;main.c: 57: EnableGlobalinterupts();
-"57
-[e ( _EnableGlobalinterupts ..  ]
-[; ;main.c: 58: EnablePeripheralInterupts();
+[; ;main.c: 58: TRISCbits.TRISC3 = 0 ;
 "58
-[e ( _EnablePeripheralInterupts ..  ]
-[; ;main.c: 59: EnableRXInterupts();
-"59
-[e ( _EnableRXInterupts ..  ]
-[; ;main.c: 60: TRISCbits.TRISC3 = 0 ;
-"60
 [e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+"59
+[v _reg `uc ~T0 @X0 1 a ]
+[; ;main.c: 59: uint8_t reg = 0x00;
+[e = _reg -> -> 0 `i `uc ]
+[; ;main.c: 60: set_csn(1,1);
+"60
+[e ( _set_csn (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 [; ;main.c: 61: while(1)
 "61
 [e :U 923 ]
@@ -7508,38 +7495,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 65: _delay((unsigned long)((1000)*(2000000/4000.0)));
 "65
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 66: BME280_goForceMode();
-"66
-[e ( _BME280_goForceMode ..  ]
-[; ;main.c: 67: PORTCbits.RC3 =0;
-"67
-[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 68: lux = LireLux(1);
-"68
-[e = _lux ( _LireLux (1 -> -> 1 `i `c ]
-[; ;main.c: 69: _delay((unsigned long)((1000)*(2000000/4000.0)));
-"69
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 72: temperature = BME280_readTemperature();
-"72
-[e = _temperature ( _BME280_readTemperature ..  ]
-[; ;main.c: 73: humidity = BME280_readHumidity();
-"73
-[e = _humidity ( _BME280_readHumidity ..  ]
-[; ;main.c: 74: pressure = BME280_readPressure();
-"74
-[e = _pressure ( _BME280_readPressure ..  ]
-[; ;main.c: 80: SPI2_exchange8bit(0xAA);
-"80
-[e ( _SPI2_exchange8bit (1 -> -> 170 `i `uc ]
+[; ;main.c: 75: nrf24_configRegister(0x05,20,1);
+"75
+[e ( _nrf24_configRegister (3 , , -> -> 5 `i `uc -> -> 20 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 76: nrf24_readRegister(0x05,&reg,1,1);
+"76
+[e ( _nrf24_readRegister (4 , , , -> -> 5 `i `uc &U _reg -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 78: printf("lecture registre RF_CH : %u \r\n",reg);
+"78
+[e ( _printf , (. :s 1C -> _reg `i ]
+[; ;main.c: 81: PORTCbits.RC3 =0;
 "81
+[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 83: _delay((unsigned long)((1000)*(2000000/4000.0)));
+"83
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+"95
 }
 [e :U 922 ]
 "61
 [e $U 923  ]
 [e :U 924 ]
-[; ;main.c: 81: }
-[; ;main.c: 82: }
-"82
+[; ;main.c: 95: }
+[; ;main.c: 96: }
+"96
 [e :UE 921 ]
 }
+[p f _printf 8389632 ]
+[a 1C 108 101 99 116 117 114 101 32 114 101 103 105 115 116 114 101 32 82 70 95 67 72 32 58 32 37 117 32 13 10 0 ]
+

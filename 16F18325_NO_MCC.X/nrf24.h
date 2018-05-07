@@ -1,13 +1,8 @@
 
 #include <xc.h>
-#include <stdint.h>
-#include <stdbool.h>
-#define _XTAL_FREQ  32000000UL
-#define FCY 16000000UL
-#include <libpic30.h>
 #include "nRF24L01.h"
-
-#define SOFT
+#include "SPI2.h"
+//#define SOFT
 #define nrf24_ADDR_LEN 5
 #define nrf24_CONFIG ((1<<EN_CRC)|(0<<CRCO))
 
@@ -16,15 +11,16 @@
 
 #define PAYLOAD_LEN 4
 
-#define csnPin1 LATBbits.LATB15
-#define cePin1  LATBbits.LATB14
-#define csnPin2 LATBbits.LATB13 
-#define cePin2  LATBbits.LATB9
+#define csnPin1 PORTAbits.RA2
+#define cePin1  PORTAbits.RA1
+#define csnPin2 PORTAbits.RA2
+#define cePin2  PORTAbits.RA1
 
-#define sckPin  LATBbits.LATB10
-#define mosiPin LATBbits.LATB12
-#define misoPin PORTBbits.RB11
-
+#ifdef SOFT
+#define sckPin  PORTCbits.RC0
+#define mosiPin PORTCbits.RC2
+#define misoPin PORTCbits.RC1
+#endif
 void set_ce(uint8_t state,uint8_t radioNb);
 void set_csn(uint8_t state,uint8_t bus);
 void set_sck(uint8_t state);

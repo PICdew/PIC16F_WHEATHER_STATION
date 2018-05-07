@@ -1,11 +1,10 @@
 
 #include "nrf24.h"
-#include <stddef.h>
 #ifndef SOFT
 
 uint8_t spi_transfer(uint8_t tx)
 {
-    return SPI1_Exchange8bit(tx);
+    return SPI2_Exchange8bit(tx);
 }
 #else
 
@@ -72,6 +71,7 @@ void set_csn(uint8_t state,uint8_t bus)
     }
     
 }
+#ifdef SOFT
 /* ------------------------------------------------------------------------- */
 void set_sck(uint8_t state)
 {
@@ -87,6 +87,8 @@ uint8_t get_miso()
 {
     return misoPin;
 }
+
+#endif
 
 
 
@@ -143,7 +145,10 @@ void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus)
 
 void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb)
 {
-  
+    set_csn(1,1);
+    set_ce(0,1);
+    set_csn(1,2);
+    set_ce(0,2);
 
     // Set RF channel
     nrf24_configRegister(RF_CH,channel,radioNb);
@@ -372,7 +377,7 @@ void nrf24_powerDown(uint8_t RadioNb)
     nrf24_configRegister(CONFIG,nrf24_CONFIG,RadioNb);
 }
 
-void nrf24_displayConfiguration(uint8_t radioNb)
+/*void nrf24_displayConfiguration(uint8_t radioNb)
 
 {
 
@@ -644,18 +649,7 @@ void nrf24_displayConfiguration(uint8_t radioNb)
 
                clearTable(tab,5);
 
-              
-
-/*               nrf24_readRegister(FEATURE,tab,1,radioNb);
-
-               UART1_SendStr("FEATURE  (Feature Register):");
-
-               printTable(tab,5);
-
-               UART1_SendStr("\r\n");
-
-               clearTable(tab,5);*/
-
+       
               
 
               
@@ -671,4 +665,4 @@ void clearTable(uint8_t  *tab,uint8_t size)
     }
 }
 
-
+*/

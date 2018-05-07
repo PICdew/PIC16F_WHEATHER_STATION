@@ -2,8 +2,10 @@
  build/default/production/main.p1:  \
  main.c  \
 interupt.h  \
+nRF24L01.h  \
 SPI2.h  \
 I2C1.h  \
+nrf24.h  \
 system.h  \
 eusart.h  \
 bme280.h  \

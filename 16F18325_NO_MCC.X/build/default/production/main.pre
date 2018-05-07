@@ -9785,6 +9785,40 @@ uint8_t EUSART_Read(void);
 # 69
 void EUSART_Write(uint8_t txData);
 
+# 6 "interupt.h"
+typedef struct {
+char data[3];
+uint8_t len ;
+} RXbuffer;
+RXbuffer monBuffer ;
+
+
+
+inline void EnableGlobalinterupts(void);
+inline void DisableGlobalinterupts(void);
+inline void EnablePeripheralInterupts(void);
+inline void DisablePeripheralInterupts(void);
+inline void EnableRXInterupts(void);
+inline void DisableRXInterupts(void);
+
+# 26 "eusart.h"
+void EUSART_Initialize(void);
+
+# 35
+bool EUSART_is_tx_ready(void);
+
+# 44
+bool EUSART_is_rx_ready(void);
+
+# 53
+bool EUSART_is_tx_done(void);
+
+# 60
+uint8_t EUSART_Read(void);
+
+# 69
+void EUSART_Write(uint8_t txData);
+
 # 7 "system.h"
 void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
@@ -9826,41 +9860,37 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 uint8_t spiRead();
-uint8_t SPI2_exchange8bit(uint8_t tx);
+uint8_t SPI2_Exchange8bit(uint8_t tx);
 
-# 26 "eusart.h"
-void EUSART_Initialize(void);
-
-# 35
-bool EUSART_is_tx_ready(void);
-
-# 44
-bool EUSART_is_rx_ready(void);
-
-# 53
-bool EUSART_is_tx_done(void);
-
-# 60
-uint8_t EUSART_Read(void);
-
-# 69
-void EUSART_Write(uint8_t txData);
-
-# 6 "interupt.h"
-typedef struct {
-char data[3];
-uint8_t len ;
-} RXbuffer;
-RXbuffer monBuffer ;
-
-
-
-inline void EnableGlobalinterupts(void);
-inline void DisableGlobalinterupts(void);
-inline void EnablePeripheralInterupts(void);
-inline void DisablePeripheralInterupts(void);
-inline void EnableRXInterupts(void);
-inline void DisableRXInterupts(void);
+# 24 "nrf24.h"
+void set_ce(uint8_t state,uint8_t radioNb);
+void set_csn(uint8_t state,uint8_t bus);
+void set_sck(uint8_t state);
+void set_mosi(uint8_t state);
+uint8_t get_miso();
+uint8_t spi_transfer(uint8_t tx);
+void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+void nrf24_powerUpRx(uint8_t radioNb);
+void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb);
+void nrf24_displayConfiguration(uint8_t radioNb);
+void clearTable(uint8_t* tab,uint8_t size);
+void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+uint8_t nrf24_payloadLength(uint8_t RadioNb);
+void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+void nrf24_send(uint8_t* value,uint8_t RadioNb);
+uint8_t nrf24_isSending(uint8_t RadioNb);
+uint8_t nrf24_getStatus(uint8_t RadioNb);
+uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+void nrf24_powerUpTx(uint8_t RadioNb);
+void nrf24_powerDown(uint8_t RadioNb);
 
 # 44 "main.c"
 void main()
@@ -9868,34 +9898,27 @@ void main()
 
 SYSTEM_Initialize();
 
-
-uint16_t lux ;
-float temperature ;
-float humidity ;
-float pressure ;
-BME280_write8(0xF2, 0x01);
-BME280_write8(0xF4, 0b00100100);
-readSensorCoefficients();
-EnableGlobalinterupts();
-EnablePeripheralInterupts();
-EnableRXInterupts();
+# 58
 TRISCbits.TRISC3 = 0 ;
+uint8_t reg = 0x00;
+set_csn(1,1);
 while(1)
 {
 
 PORTCbits.RC3 =1;
 _delay((unsigned long)((1000)*(2000000/4000.0)));
-BME280_goForceMode();
+
+# 75
+nrf24_configRegister(0x05,20,1);
+nrf24_readRegister(0x05,&reg,1,1);
+
+printf("lecture registre RF_CH : %u \r\n",reg);
+
+
 PORTCbits.RC3 =0;
-lux = LireLux(1);
+
 _delay((unsigned long)((1000)*(2000000/4000.0)));
 
-
-temperature = BME280_readTemperature();
-humidity = BME280_readHumidity();
-pressure = BME280_readPressure();
-
-# 80
-SPI2_exchange8bit(0xAA);
+# 95
 }
 }

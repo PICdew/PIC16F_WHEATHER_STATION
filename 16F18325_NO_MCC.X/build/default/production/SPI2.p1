@@ -7266,7 +7266,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 45: void spiWrite(char);
 [; ;SPI2.h: 46: unsigned spiDataReady();
 [; ;SPI2.h: 47: uint8_t spiRead();
-[; ;SPI2.h: 48: uint8_t SPI2_exchange8bit(uint8_t tx);
+[; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
 "7 SPI2.c
 [v _spiInit `(v ~T0 @X0 1 ef4`E7501`E7509`E7513`E7517 ]
 "8
@@ -7411,12 +7411,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 930 ]
 }
 "50
-[v _SPI2_exchange8bit `(uc ~T0 @X0 1 ef1`uc ]
+[v _SPI2_Exchange8bit `(uc ~T0 @X0 1 ef1`uc ]
 "51
 {
-[; ;SPI2.c: 50: uint8_t SPI2_exchange8bit(uint8_t tx)
+[; ;SPI2.c: 50: uint8_t SPI2_Exchange8bit(uint8_t tx)
 [; ;SPI2.c: 51: {
-[e :U _SPI2_exchange8bit ]
+[e :U _SPI2_Exchange8bit ]
 "50
 [v _tx `uc ~T0 @X0 1 r1 ]
 "51

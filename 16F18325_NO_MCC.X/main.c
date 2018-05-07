@@ -35,19 +35,17 @@
 #include "I2C1.h"
 #include "BH1750.h"
 #include "bme280.h"
-#include "SPI2.h"
+//#include "SPI2.h"
 #include "interupt.h"
 #include <stdio.h>
-
+#include "nrf24.h"
 
 
 void main()
 {
     
     SYSTEM_Initialize();
-    //I2C_Master_Init(100000);
-   // spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
-    uint16_t  lux ;
+  /*  uint16_t  lux ;
     float temperature ; 
     float humidity ;
     float pressure ; 
@@ -56,27 +54,43 @@ void main()
     readSensorCoefficients(); 
     EnableGlobalinterupts();
     EnablePeripheralInterupts();
-    EnableRXInterupts();
+    EnableRXInterupts(); */
     TRISCbits.TRISC3 = 0 ;
+    uint8_t reg = 0x00;
+    set_csn(1,1);
 	while(1)
 	{
         
        PORTCbits.RC3 =1;
         __delay_ms(1000);
-      BME280_goForceMode();
+      /*  set_csn(0,1);
+        SPI2_Exchange8bit(W_REGISTER | (REGISTER_MASK & RF_CH)); //ecriture
+        SPI2_Exchange8bit(20);
+        set_csn(1,1);
+        __delay_ms(10);
+        set_csn(0,1);
+        SPI2_Exchange8bit(R_REGISTER | (REGISTER_MASK & RF_CH));
+        reg = SPI2_Exchange8bit(0x00);
+        set_csn(1,1); */
+       nrf24_configRegister(RF_CH,20,1);
+       nrf24_readRegister(RF_CH,&reg,1,1);
+        
+        printf("lecture registre RF_CH : %u \r\n",reg);
+        
+     // BME280_goForceMode();
         PORTCbits.RC3 =0;
-       lux = LireLux(1);
+      // lux = LireLux(1);
          __delay_ms(1000);
        
         
-      temperature = BME280_readTemperature();
+    /*  temperature = BME280_readTemperature();
         humidity = BME280_readHumidity();
         pressure = BME280_readPressure();
         
       //   printf("temperature : %f \r\n",temperature);
       //   printf("humidite : %f \r\n",humidity);
-       //  printf("pression : %f \r\n",pressure);
+       //  printf("pression : %f \r\n",pressure);  */
       
-      SPI2_exchange8bit(0xAA);
+     
     }
 }

@@ -47,7 +47,7 @@ uint8_t spiRead() //REad the received data
 }
 
 
-uint8_t SPI2_exchange8bit(uint8_t tx)
+uint8_t SPI2_Exchange8bit(uint8_t tx)
 {
    spiWrite(tx);
    return spiRead();

@@ -12,8 +12,10 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     WDT_Initialize();
     EUSART_Initialize();
-    I2C_Master_Init(100000);
-    spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
+   // I2C_Master_Init(100000);
+#ifndef SOFT
+  spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_END,SPI_CLOCK_IDLE_HIGH,SPI_IDLE_2_ACTIVE);
+#endif
 }
 
 void OSCILLATOR_Initialize(void)
@@ -65,12 +67,19 @@ void PIN_MANAGER_Initialize(void)
     */
     TRISA = 0x37;
     TRISC = 0x2A;
-
+    TRISAbits.TRISA1 = 0 ;
+    TRISAbits.TRISA2 = 0 ;
+    #ifdef SOFT
+    TRISCbits.TRISC0 = 0 ;
+    TRISCbits.TRISC1 = 1 ;
+    TRISCbits.TRISC2 = 0 ;   
+    #endif
     /**
     ANSELx registers
     */
-    ANSELC = 0x1C;
-    ANSELA = 0x07;
+    ANSELC = 0x00;
+    ANSELA = 0x00;
+    
 
     /**
     WPUx registers
@@ -88,10 +97,11 @@ void PIN_MANAGER_Initialize(void)
     RXPPSbits.RXPPS = 0x15;   //RC5->EUSART:RX;    
     RA4PPSbits.RA4PPS = 0x19;   //RA4->MSSP1:SDA1;    
     RC4PPSbits.RC4PPS = 0x14;   //RC4->EUSART:TX;    
+    #ifndef SOFT
     RC0PPSbits.RC0PPS = 0x1A;   //RC0->MSSP2:SCK2;    
     RC2PPSbits.RC2PPS = 0x1B;   //RC2->MSSP2:SDO2;    
     SSP2CLKPPSbits.SSP2CLKPPS = 0x10;   //RC0->MSSP2:SCK2;    
     SSP2DATPPSbits.SSP2DATPPS = 0x11;   //RC1->MSSP2:SDI2;    
     RA5PPSbits.RA5PPS = 0x18;   //RA5->MSSP1:SCL1;    
-   
+    #endif
 }
