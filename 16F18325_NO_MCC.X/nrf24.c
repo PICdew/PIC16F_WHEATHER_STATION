@@ -385,6 +385,7 @@ void nrf24_powerDown(uint8_t RadioNb)
 {
     set_ce(0,RadioNb);
     nrf24_configRegister(CONFIG,nrf24_CONFIG,RadioNb);
+    
 }
 
 /*void nrf24_displayConfiguration(uint8_t radioNb)
