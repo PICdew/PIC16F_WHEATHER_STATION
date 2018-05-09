@@ -35,7 +35,6 @@
 #include "I2C1.h"
 #include "BH1750.h"
 #include "bme280.h"
-//#include "SPI2.h"
 #include "interupt.h"
 #include <stdio.h>
 #include "nrf24.h"
