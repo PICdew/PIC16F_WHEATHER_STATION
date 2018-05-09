@@ -5,16 +5,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "7 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
-[s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
-"1547
-[u S80 `S81 1 ]
-[n S80 . . ]
-"1557
-[v _TRISCbits `VS80 ~T0 @X0 0 e@142 ]
-"25 nrf24.h
-[v _set_csn `(v ~T0 @X0 0 ef2`uc`uc ]
 "438 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S30 . RC0 RC1 RC2 RC3 RC4 RC5 ]
@@ -23,16 +13,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S29 . . ]
 "447
 [v _PORTCbits `VS29 ~T0 @X0 0 e@14 ]
-[v F7378 `(v ~T0 @X0 1 tf1`ul ]
-"153 /opt/microchip/xc8/v1.45/include/pic.h
-[v __delay `JF7378 ~T0 @X0 0 e ]
-[p i __delay ]
-"32 nrf24.h
-[v _nrf24_configRegister `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"33
-[v _nrf24_readRegister `(v ~T0 @X0 0 ef4`uc`*uc`uc`uc ]
-"195 /opt/microchip/xc8/v1.45/include/stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -48,7 +28,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "15
 [p x PWRTE=OFF ]
 "16
-[p x WDTE=OFF ]
+[p x WDTE=ON ]
 "17
 [p x LPBOREN=OFF ]
 "18
@@ -7462,65 +7442,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
 [; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"44 main.c
+"43 main.c
 [v _main `(v ~T0 @X0 1 ef ]
-"45
+"44
 {
-[; ;main.c: 44: void main()
-[; ;main.c: 45: {
+[; ;main.c: 43: void main()
+[; ;main.c: 44: {
 [e :U _main ]
 [f ]
-[; ;main.c: 47: SYSTEM_Initialize();
-"47
+[; ;main.c: 46: SYSTEM_Initialize();
+"46
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 58: TRISCbits.TRISC3 = 0 ;
-"58
-[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
-"59
-[v _reg `uc ~T0 @X0 1 a ]
-[; ;main.c: 59: uint8_t reg = 0x00;
-[e = _reg -> -> 0 `i `uc ]
-[; ;main.c: 60: set_csn(1,1);
-"60
-[e ( _set_csn (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 61: while(1)
-"61
-[e :U 923 ]
-[; ;main.c: 62: {
-"62
-{
-[; ;main.c: 64: PORTCbits.RC3 =1;
-"64
-[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 65: _delay((unsigned long)((1000)*(2000000/4000.0)));
-"65
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 75: nrf24_configRegister(0x05,17,1);
-"75
-[e ( _nrf24_configRegister (3 , , -> -> 5 `i `uc -> -> 17 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 76: nrf24_readRegister(0x05,reg,1,1);
-"76
-[e ( _nrf24_readRegister (4 , , , -> -> 5 `i `uc -> _reg `*uc -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 78: printf("lecture registre RF_CH : %u \r\n",reg);
-"78
-[e ( _printf , (. :s 1C -> _reg `i ]
-[; ;main.c: 81: PORTCbits.RC3 =0;
-"81
+[; ;main.c: 55: PORTCbits.RC3 = 0 ;
+"55
 [e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 83: _delay((unsigned long)((1000)*(2000000/4000.0)));
-"83
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-"95
+[; ;main.c: 56: asm("clrwdt");
+"56
+[; <" clrwdt ;# ">
+[; ;main.c: 57: asm("sleep");
+"57
+[; <" sleep ;# ">
+[; ;main.c: 59: while(1)
+"59
+[e :U 923 ]
+[; ;main.c: 60: {
+"60
+{
+[; ;main.c: 61: asm("clrwdt");
+"61
+[; <" clrwdt ;# ">
+[; ;main.c: 62: PORTCbits.RC3 = 1 ;
+"62
+[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+"63
 }
 [e :U 922 ]
-"61
+"59
 [e $U 923  ]
 [e :U 924 ]
-[; ;main.c: 95: }
-[; ;main.c: 96: }
-"96
+[; ;main.c: 63: }
+[; ;main.c: 64: }
+"64
 [e :UE 921 ]
 }
-[p f _printf 8389632 ]
-[a 1C 108 101 99 116 117 114 101 32 114 101 103 105 115 116 114 101 32 82 70 95 67 72 32 58 32 37 117 32 13 10 0 ]
-

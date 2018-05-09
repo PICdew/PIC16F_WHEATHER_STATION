@@ -36,7 +36,7 @@ void WDT_Initialize(void)
 {
     // WDTPS 1:65536; SWDTEN OFF; 
     CLRWDT();
-    WDTCON = 0x17;
+    WDTCON = 0x1B;
 }
 
 void PMD_Initialize(void)

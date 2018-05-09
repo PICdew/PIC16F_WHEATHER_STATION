@@ -99,6 +99,7 @@ void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len)
 
     for(i=0;i<len;i++)
     {
+        
         datain[i] = spi_transfer(dataout[i]);
     }
 
@@ -128,9 +129,10 @@ void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus)
 /* Read single register from nrf24 */
 void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus)
 {
+   
     set_csn(0,bus);
     spi_transfer(R_REGISTER | (REGISTER_MASK & reg));
-    nrf24_transferSync(&value,&value,len);
+    nrf24_transferSync(0x00,value,len);
     set_csn(1,bus);
 }
 

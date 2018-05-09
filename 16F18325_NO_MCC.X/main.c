@@ -52,10 +52,13 @@ void main()
     EnableGlobalinterupts();
     EnablePeripheralInterupts();
     EnableRXInterupts(); */
-    PORTCbits.RC3 = ~PORTCbits.RC3 ;
+     PORTCbits.RC3 = 0 ;  
+    CLRWDT();
+    SLEEP();
 
 	while(1)
 	{
-            
-  }
+      CLRWDT();
+      PORTCbits.RC3 = 1 ;  
+    }
 }

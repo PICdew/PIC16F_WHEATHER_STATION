@@ -25,7 +25,7 @@ void InitBME280andPowerDown(void)
 void Bme280_OneMeasure(float *temp,float * humi,float *press)
 {
 	 BME280_goForceMode();
-     *temperature = BME280_readTemperature();
-     *humidity = BME280_readHumidity();
-     *pressure = BME280_readPressure();
+     *temp = BME280_readTemperature();
+     *humi = BME280_readHumidity();
+     *press = BME280_readPressure();
 }

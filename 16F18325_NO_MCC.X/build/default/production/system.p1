@@ -9,6 +9,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
 "26 eusart.h
 [v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
+"16 I2C1.h
+[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 "17 system.c
 [c E7534 32 33 34 35 36 37 .. ]
 [n E7534 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
@@ -60,6 +62,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S78 . . ]
 "1512
 [v _TRISAbits `VS78 ~T0 @X0 0 e@140 ]
+"1548
+[s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
+"1547
+[u S80 `S81 1 ]
+[n S80 . . ]
+"1557
+[v _TRISCbits `VS80 ~T0 @X0 0 e@142 ]
 "2822
 [v _ANSELC `Vuc ~T0 @X0 0 e@398 ]
 "2777
@@ -7471,6 +7481,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 14: EUSART_Initialize();
 "14
 [e ( _EUSART_Initialize ..  ]
+[; ;system.c: 15: I2C_Master_Init(100000);
+"15
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
 [; ;system.c: 17: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 "17
 [e ( _spiInit (4 , , , . `E7534 0 . `E7542 0 . `E7546 1 . `E7550 1 ]
@@ -7495,136 +7508,142 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 28: OSCEN = 0x00;
 "28
 [e = _OSCEN -> -> 0 `i `uc ]
-[; ;system.c: 30: OSCFRQ = 0x01;
-"30
+[; ;system.c: 31: OSCFRQ = 0x01;
+"31
 [e = _OSCFRQ -> -> 1 `i `uc ]
-[; ;system.c: 32: OSCTUNE = 0x00;
-"32
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;system.c: 33: }
+[; ;system.c: 33: OSCTUNE = 0x00;
 "33
+[e = _OSCTUNE -> -> 0 `i `uc ]
+[; ;system.c: 34: }
+"34
 [e :UE 920 ]
 }
-"35
-[v _WDT_Initialize `(v ~T0 @X0 1 ef ]
 "36
+[v _WDT_Initialize `(v ~T0 @X0 1 ef ]
+"37
 {
-[; ;system.c: 35: void WDT_Initialize(void)
-[; ;system.c: 36: {
+[; ;system.c: 36: void WDT_Initialize(void)
+[; ;system.c: 37: {
 [e :U _WDT_Initialize ]
 [f ]
-[; ;system.c: 38: WDTCON = 0x16;
-"38
-[e = _WDTCON -> -> 22 `i `uc ]
-[; ;system.c: 39: }
+[; ;system.c: 39: asm("clrwdt");
 "39
+[; <" clrwdt ;# ">
+[; ;system.c: 40: WDTCON = 0x1B;
+"40
+[e = _WDTCON -> -> 27 `i `uc ]
+[; ;system.c: 41: }
+"41
 [e :UE 921 ]
 }
-"41
+"43
 [v _PMD_Initialize `(v ~T0 @X0 1 ef ]
-"42
+"44
 {
-[; ;system.c: 41: void PMD_Initialize(void)
-[; ;system.c: 42: {
+[; ;system.c: 43: void PMD_Initialize(void)
+[; ;system.c: 44: {
 [e :U _PMD_Initialize ]
 [f ]
-[; ;system.c: 44: PMD0 = 0x00;
-"44
-[e = _PMD0 -> -> 0 `i `uc ]
-[; ;system.c: 46: PMD1 = 0x00;
-"46
-[e = _PMD1 -> -> 0 `i `uc ]
-[; ;system.c: 48: PMD2 = 0x00;
+[; ;system.c: 48: PMD0 = 0x07;
 "48
-[e = _PMD2 -> -> 0 `i `uc ]
-[; ;system.c: 50: PMD3 = 0x00;
+[e = _PMD0 -> -> 7 `i `uc ]
+[; ;system.c: 50: PMD1 = 0xFC;
 "50
-[e = _PMD3 -> -> 0 `i `uc ]
-[; ;system.c: 52: PMD4 = 0x00;
+[e = _PMD1 -> -> 252 `i `uc ]
+[; ;system.c: 52: PMD2 = 0x66;
 "52
-[e = _PMD4 -> -> 0 `i `uc ]
-[; ;system.c: 54: PMD5 = 0x00;
+[e = _PMD2 -> -> 102 `i `uc ]
+[; ;system.c: 54: PMD3 = 0xFF;
 "54
-[e = _PMD5 -> -> 0 `i `uc ]
-[; ;system.c: 55: }
-"55
+[e = _PMD3 -> -> 255 `i `uc ]
+[; ;system.c: 56: PMD4 = 0x00;
+"56
+[e = _PMD4 -> -> 0 `i `uc ]
+[; ;system.c: 58: PMD5 = 0x1F;
+"58
+[e = _PMD5 -> -> 31 `i `uc ]
+[; ;system.c: 59: }
+"59
 [e :UE 922 ]
 }
-"57
+"61
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
-"58
+"62
 {
-[; ;system.c: 57: void PIN_MANAGER_Initialize(void)
-[; ;system.c: 58: {
+[; ;system.c: 61: void PIN_MANAGER_Initialize(void)
+[; ;system.c: 62: {
 [e :U _PIN_MANAGER_Initialize ]
 [f ]
-[; ;system.c: 62: LATA = 0x00;
-"62
+[; ;system.c: 66: LATA = 0x00;
+"66
 [e = _LATA -> -> 0 `i `uc ]
-[; ;system.c: 63: LATC = 0x00;
-"63
+[; ;system.c: 67: LATC = 0x00;
+"67
 [e = _LATC -> -> 0 `i `uc ]
-[; ;system.c: 68: TRISA = 0x37;
-"68
+[; ;system.c: 72: TRISA = 0x37;
+"72
 [e = _TRISA -> -> 55 `i `uc ]
-[; ;system.c: 69: TRISC = 0x2A;
-"69
+[; ;system.c: 73: TRISC = 0x2A;
+"73
 [e = _TRISC -> -> 42 `i `uc ]
-[; ;system.c: 70: TRISAbits.TRISA1 = 0 ;
-"70
+[; ;system.c: 74: TRISAbits.TRISA1 = 0 ;
+"74
 [e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-[; ;system.c: 71: TRISAbits.TRISA2 = 0 ;
-"71
+[; ;system.c: 75: TRISAbits.TRISA2 = 0 ;
+"75
 [e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
-[; ;system.c: 80: ANSELC = 0x00;
-"80
+[; ;system.c: 76: TRISCbits.TRISC3 = 0 ;
+"76
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+[; ;system.c: 85: ANSELC = 0x00;
+"85
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;system.c: 81: ANSELA = 0x00;
-"81
+[; ;system.c: 86: ANSELA = 0x00;
+"86
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;system.c: 87: WPUA = 0x00;
-"87
+[; ;system.c: 92: WPUA = 0x00;
+"92
 [e = _WPUA -> -> 0 `i `uc ]
-[; ;system.c: 88: WPUC = 0x00;
-"88
-[e = _WPUC -> -> 0 `i `uc ]
-[; ;system.c: 93: ODCONA = 0x00;
+[; ;system.c: 93: WPUC = 0x00;
 "93
-[e = _ODCONA -> -> 0 `i `uc ]
-[; ;system.c: 94: ODCONC = 0x00;
-"94
-[e = _ODCONC -> -> 0 `i `uc ]
-[; ;system.c: 95: SSP1DATPPSbits.SSP1DATPPS = 0x04;
-"95
-[e = . . _SSP1DATPPSbits 0 0 -> -> 4 `i `uc ]
-[; ;system.c: 96: SSP1CLKPPSbits.SSP1CLKPPS = 0x05;
-"96
-[e = . . _SSP1CLKPPSbits 0 0 -> -> 5 `i `uc ]
-[; ;system.c: 97: RXPPSbits.RXPPS = 0x15;
-"97
-[e = . . _RXPPSbits 0 0 -> -> 21 `i `uc ]
-[; ;system.c: 98: RA4PPSbits.RA4PPS = 0x19;
+[e = _WPUC -> -> 0 `i `uc ]
+[; ;system.c: 98: ODCONA = 0x00;
 "98
-[e = . . _RA4PPSbits 0 0 -> -> 25 `i `uc ]
-[; ;system.c: 99: RC4PPSbits.RC4PPS = 0x14;
+[e = _ODCONA -> -> 0 `i `uc ]
+[; ;system.c: 99: ODCONC = 0x00;
 "99
-[e = . . _RC4PPSbits 0 0 -> -> 20 `i `uc ]
-[; ;system.c: 101: RC0PPSbits.RC0PPS = 0x1A;
+[e = _ODCONC -> -> 0 `i `uc ]
+[; ;system.c: 100: SSP1DATPPSbits.SSP1DATPPS = 0x04;
+"100
+[e = . . _SSP1DATPPSbits 0 0 -> -> 4 `i `uc ]
+[; ;system.c: 101: SSP1CLKPPSbits.SSP1CLKPPS = 0x05;
 "101
-[e = . . _RC0PPSbits 0 0 -> -> 26 `i `uc ]
-[; ;system.c: 102: RC2PPSbits.RC2PPS = 0x1B;
+[e = . . _SSP1CLKPPSbits 0 0 -> -> 5 `i `uc ]
+[; ;system.c: 102: RXPPSbits.RXPPS = 0x15;
 "102
-[e = . . _RC2PPSbits 0 0 -> -> 27 `i `uc ]
-[; ;system.c: 103: SSP2CLKPPSbits.SSP2CLKPPS = 0x10;
+[e = . . _RXPPSbits 0 0 -> -> 21 `i `uc ]
+[; ;system.c: 103: RA4PPSbits.RA4PPS = 0x19;
 "103
-[e = . . _SSP2CLKPPSbits 0 0 -> -> 16 `i `uc ]
-[; ;system.c: 104: SSP2DATPPSbits.SSP2DATPPS = 0x11;
+[e = . . _RA4PPSbits 0 0 -> -> 25 `i `uc ]
+[; ;system.c: 104: RC4PPSbits.RC4PPS = 0x14;
 "104
-[e = . . _SSP2DATPPSbits 0 0 -> -> 17 `i `uc ]
-[; ;system.c: 105: RA5PPSbits.RA5PPS = 0x18;
-"105
-[e = . . _RA5PPSbits 0 0 -> -> 24 `i `uc ]
-[; ;system.c: 107: }
+[e = . . _RC4PPSbits 0 0 -> -> 20 `i `uc ]
+[; ;system.c: 106: RC0PPSbits.RC0PPS = 0x1A;
+"106
+[e = . . _RC0PPSbits 0 0 -> -> 26 `i `uc ]
+[; ;system.c: 107: RC2PPSbits.RC2PPS = 0x1B;
 "107
+[e = . . _RC2PPSbits 0 0 -> -> 27 `i `uc ]
+[; ;system.c: 108: SSP2CLKPPSbits.SSP2CLKPPS = 0x10;
+"108
+[e = . . _SSP2CLKPPSbits 0 0 -> -> 16 `i `uc ]
+[; ;system.c: 109: SSP2DATPPSbits.SSP2DATPPS = 0x11;
+"109
+[e = . . _SSP2DATPPSbits 0 0 -> -> 17 `i `uc ]
+[; ;system.c: 110: RA5PPSbits.RA5PPS = 0x18;
+"110
+[e = . . _RA5PPSbits 0 0 -> -> 24 `i `uc ]
+[; ;system.c: 112: }
+"112
 [e :UE 923 ]
 }

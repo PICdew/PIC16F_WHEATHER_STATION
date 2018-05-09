@@ -7263,7 +7263,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
 [; ;interupt.h: 18: inline void EnableRXInterupts(void);
 [; ;interupt.h: 19: inline void DisableRXInterupts(void);
+[; ;eusart.h: 26: void EUSART_Initialize(void);
+[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 60: uint8_t EUSART_Read(void);
+[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;system.h: 7: void SYSTEM_Initialize(void);
+[; ;system.h: 8: void OSCILLATOR_Initialize(void);
+[; ;system.h: 9: void WDT_Initialize(void);
+[; ;system.h: 10: void PMD_Initialize(void);
+[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;I2C1.h: 16: void I2C_Master_Init(const unsigned long c);
+[; ;I2C1.h: 17: void I2C_Master_Wait();
+[; ;I2C1.h: 18: void I2C_Master_Start();
+[; ;I2C1.h: 19: void I2C_Master_Stop();
+[; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
+[; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
+[; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;bme280.h: 46: struct BME280_Calibration_Data
+[; ;bme280.h: 47: {
+[; ;bme280.h: 50: uint16_t dig_T1;
+[; ;bme280.h: 51: int16_t dig_T2;
+[; ;bme280.h: 52: int16_t dig_T3;
+[; ;bme280.h: 54: uint16_t dig_P1;
+[; ;bme280.h: 55: int16_t dig_P2;
+[; ;bme280.h: 56: int16_t dig_P3;
+[; ;bme280.h: 57: int16_t dig_P4;
+[; ;bme280.h: 58: int16_t dig_P5;
+[; ;bme280.h: 59: int16_t dig_P6;
+[; ;bme280.h: 60: int16_t dig_P7;
+[; ;bme280.h: 61: int16_t dig_P8;
+[; ;bme280.h: 62: int16_t dig_P9;
+[; ;bme280.h: 64: uint8_t dig_H1;
+[; ;bme280.h: 65: int16_t dig_H2;
+[; ;bme280.h: 66: uint8_t dig_H3;
+[; ;bme280.h: 67: int16_t dig_H4;
+[; ;bme280.h: 68: int16_t dig_H5;
+[; ;bme280.h: 69: int8_t dig_H6;
+[; ;bme280.h: 71: };
+[; ;bme280.h: 75: int8_t BME280_init(void);
+[; ;bme280.h: 76: inline uint8_t BME280_read8(uint8_t reg);
+[; ;bme280.h: 77: inline int8_t BME280_write8(uint8_t reg,uint8_t value);
+[; ;bme280.h: 78: inline uint16_t BME280_read16(uint8_t reg);
+[; ;bme280.h: 79: uint16_t BME280_read16_LE(uint8_t reg);
+[; ;bme280.h: 80: int16_t BME280_readS16(uint8_t reg);
+[; ;bme280.h: 81: inline uint32_t BME280_read24(uint8_t reg);
+[; ;bme280.h: 82: int16_t BME280_readS16_LE(uint8_t reg);
+[; ;bme280.h: 83: void readSensorCoefficients(void);
+[; ;bme280.h: 85: void BME280_goForceMode(void);
+[; ;bme280.h: 86: float BME280_readTemperature(void);
+[; ;bme280.h: 87: float BME280_readHumidity(void);
+[; ;bme280.h: 88: float BME280_readPressure(void);
 [; ;app.h: 5: void interpretation(void);
+[; ;app.h: 6: void Bme280_OneMeasure(float *temp,float * humi,float *press);
+[; ;app.h: 7: void InitBME280andPowerDown(void);
 "7 interupt.c
 [v _RX_byte `uc ~T0 @X0 1 e ]
 [; ;interupt.c: 7: unsigned char RX_byte ;
@@ -7281,7 +7335,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 [; ;interupt.c: 12: }
 "12
-[e :UE 921 ]
+[e :UE 922 ]
 }
 [v F7501 `(v ~T0 @X0 1 tf ]
 "13
@@ -7297,7 +7351,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 3 -> -> 0 `i `uc ]
 [; ;interupt.c: 16: }
 "16
-[e :UE 922 ]
+[e :UE 923 ]
 }
 [v F7504 `(v ~T0 @X0 1 tf ]
 "18
@@ -7313,7 +7367,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
 [; ;interupt.c: 21: }
 "21
-[e :UE 923 ]
+[e :UE 924 ]
 }
 [v F7507 `(v ~T0 @X0 1 tf ]
 "23
@@ -7329,7 +7383,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 [; ;interupt.c: 26: }
 "26
-[e :UE 924 ]
+[e :UE 925 ]
 }
 [v F7510 `(v ~T0 @X0 1 tf ]
 "28
@@ -7345,7 +7399,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 [; ;interupt.c: 31: }
 "31
-[e :UE 925 ]
+[e :UE 926 ]
 }
 [v F7513 `(v ~T0 @X0 1 tf ]
 "33
@@ -7361,12 +7415,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
 [; ;interupt.c: 36: }
 "36
-[e :UE 926 ]
+[e :UE 927 ]
 }
 [v $root$_interupt1 `(v ~T0 @X0 0 e ]
-[v F7552 `(v ~T0 @X0 1 tf ]
+[v F7635 `(v ~T0 @X0 1 tf ]
 "40
-[v _interupt1 `IF7552 ~T0 @X0 1 e ]
+[v _interupt1 `IF7635 ~T0 @X0 1 e ]
 "41
 {
 [; ;interupt.c: 40: void interrupt interupt1(void)
@@ -7375,7 +7429,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;interupt.c: 43: if(PIR1bits.RCIF)
 "43
-[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 928  ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 929  ]
 [; ;interupt.c: 44: {
 "44
 {
@@ -7384,7 +7438,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RX_byte ( _EUSART_Read ..  ]
 [; ;interupt.c: 46: if(RX_byte == 0x0D)
 "46
-[e $ ! == -> _RX_byte `i -> 13 `i 929  ]
+[e $ ! == -> _RX_byte `i -> 13 `i 930  ]
 [; ;interupt.c: 47: {
 "47
 {
@@ -7394,9 +7448,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "50
 }
 [; ;interupt.c: 50: }
-[e $U 930  ]
+[e $U 931  ]
 "51
-[e :U 929 ]
+[e :U 930 ]
 [; ;interupt.c: 51: else
 [; ;interupt.c: 52: {
 "52
@@ -7409,7 +7463,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . _monBuffer 1 -> -> 1 `i `uc ]
 [; ;interupt.c: 56: if(monBuffer.len > 3)
 "56
-[e $ ! > -> . _monBuffer 1 `i -> 3 `i 931  ]
+[e $ ! > -> . _monBuffer 1 `i -> 3 `i 932  ]
 [; ;interupt.c: 57: {
 "57
 {
@@ -7418,17 +7472,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . _monBuffer 1 -> -> 0 `i `uc ]
 "59
 }
-[e :U 931 ]
+[e :U 932 ]
 "60
 }
-[e :U 930 ]
+[e :U 931 ]
 "64
 }
-[e :U 928 ]
+[e :U 929 ]
 [; ;interupt.c: 59: }
 [; ;interupt.c: 60: }
 [; ;interupt.c: 64: }
 [; ;interupt.c: 66: }
 "66
-[e :UE 927 ]
+[e :UE 928 ]
 }

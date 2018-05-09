@@ -12,7 +12,7 @@
 
 #pragma config MCLRE = ON
 #pragma config PWRTE = OFF
-#pragma config WDTE = OFF
+#pragma config WDTE = ON
 #pragma config LPBOREN = OFF
 #pragma config BOREN = ON
 #pragma config BORV = LOW
@@ -9892,33 +9892,20 @@ uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
 void nrf24_powerUpTx(uint8_t RadioNb);
 void nrf24_powerDown(uint8_t RadioNb);
 
-# 44 "main.c"
+# 43 "main.c"
 void main()
 {
 
 SYSTEM_Initialize();
 
-# 58
-TRISCbits.TRISC3 = 0 ;
-uint8_t reg = 0x00;
-set_csn(1,1);
+# 55
+PORTCbits.RC3 = 0 ;
+asm("clrwdt");
+asm("sleep");
+
 while(1)
 {
-
-PORTCbits.RC3 =1;
-_delay((unsigned long)((1000)*(2000000/4000.0)));
-
-# 75
-nrf24_configRegister(0x05,17,1);
-nrf24_readRegister(0x05,reg,1,1);
-
-printf("lecture registre RF_CH : %u \r\n",reg);
-
-
-PORTCbits.RC3 =0;
-
-_delay((unsigned long)((1000)*(2000000/4000.0)));
-
-# 95
+asm("clrwdt");
+PORTCbits.RC3 = 1 ;
 }
 }

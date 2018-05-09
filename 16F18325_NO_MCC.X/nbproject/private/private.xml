@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/SPI2.h</file>
             <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/main.c</file>
+            <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/nrf24.c</file>
             <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/nRF24L01.h</file>
             <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/nrf24.h</file>
             <file>file:/home/pierre/Git_Workspace/16F/PIC16F_WHEATHER_STATION/16F18325_NO_MCC.X/system.c</file>

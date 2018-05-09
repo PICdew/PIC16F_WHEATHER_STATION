@@ -9674,7 +9674,7 @@ PIN_MANAGER_Initialize();
 OSCILLATOR_Initialize();
 WDT_Initialize();
 EUSART_Initialize();
-
+I2C_Master_Init(100000);
 
 spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 
@@ -9689,6 +9689,7 @@ OSCCON3 = 0x00;
 
 OSCEN = 0x00;
 
+
 OSCFRQ = 0x01;
 
 OSCTUNE = 0x00;
@@ -9697,47 +9698,51 @@ OSCTUNE = 0x00;
 void WDT_Initialize(void)
 {
 
-WDTCON = 0x16;
+asm("clrwdt");
+WDTCON = 0x1B;
 }
 
 void PMD_Initialize(void)
 {
 
-PMD0 = 0x00;
 
-PMD1 = 0x00;
 
-PMD2 = 0x00;
+PMD0 = 0x07;
 
-PMD3 = 0x00;
+PMD1 = 0xFC;
+
+PMD2 = 0x66;
+
+PMD3 = 0xFF;
 
 PMD4 = 0x00;
 
-PMD5 = 0x00;
+PMD5 = 0x1F;
 }
 
 void PIN_MANAGER_Initialize(void)
 {
 
-# 62
+# 66
 LATA = 0x00;
 LATC = 0x00;
 
-# 68
+# 72
 TRISA = 0x37;
 TRISC = 0x2A;
 TRISAbits.TRISA1 = 0 ;
 TRISAbits.TRISA2 = 0 ;
+TRISCbits.TRISC3 = 0 ;
 
-# 80
+# 85
 ANSELC = 0x00;
 ANSELA = 0x00;
 
-# 87
+# 92
 WPUA = 0x00;
 WPUC = 0x00;
 
-# 93
+# 98
 ODCONA = 0x00;
 ODCONC = 0x00;
 SSP1DATPPSbits.SSP1DATPPS = 0x04;
