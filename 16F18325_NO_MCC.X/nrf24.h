@@ -9,7 +9,7 @@
 #define NRF24_TRANSMISSON_OK 0
 #define NRF24_MESSAGE_LOST   1
 
-#define PAYLOAD_LEN 4
+//#define PAYLOAD_LEN 4
 
 #define csnPin1 PORTAbits.RA2
 #define cePin1  PORTAbits.RA1
@@ -33,7 +33,7 @@ void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
 void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
 void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
 void nrf24_powerUpRx(uint8_t radioNb);
-void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb);
+void nrf24_config(uint8_t channel,uint8_t radioNb);
 void nrf24_displayConfiguration(uint8_t radioNb);
 void clearTable(uint8_t* tab,uint8_t size);
 void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
@@ -49,4 +49,5 @@ uint8_t nrf24_getStatus(uint8_t RadioNb);
 uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
 void nrf24_powerUpTx(uint8_t RadioNb);
 void nrf24_powerDown(uint8_t RadioNb);
+void nrf24_setPayload(uint8_t pay_length);
 

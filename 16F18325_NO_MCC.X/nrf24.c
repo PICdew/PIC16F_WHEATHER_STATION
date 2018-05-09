@@ -1,5 +1,8 @@
 
 #include "nrf24.h"
+
+uint8_t payload_len = 0 ;
+
 #ifndef SOFT
 
 uint8_t spi_transfer(uint8_t tx)
@@ -145,19 +148,24 @@ void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus)
     set_csn(1,bus);
 }
 
-void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb)
+void nrf24_setPayload(uint8_t pay_length)
+{
+  payload_len = pay_length;
+}
+
+void nrf24_config(uint8_t channel,uint8_t radioNb)
 {
     set_csn(1,1);
     set_ce(0,1);
     set_csn(1,2);
     set_ce(0,2);
-
+    
     // Set RF channel
     nrf24_configRegister(RF_CH,channel,radioNb);
 
     // Set length of incoming payload 
     nrf24_configRegister(RX_PW_P0, 0x00,radioNb); // Auto-ACK pipe ...
-    nrf24_configRegister(RX_PW_P1, pay_length,radioNb); // Data payload pipe
+    nrf24_configRegister(RX_PW_P1, payload_len,radioNb); // Data payload pipe
     nrf24_configRegister(RX_PW_P2, 0x00,radioNb); // Pipe not used 
     nrf24_configRegister(RX_PW_P3, 0x00,radioNb); // Pipe not used 
     nrf24_configRegister(RX_PW_P4, 0x00,radioNb); // Pipe not used 
@@ -260,7 +268,7 @@ void nrf24_getData(uint8_t* dta,uint8_t RadioNb)
     spi_transfer( R_RX_PAYLOAD );
     
     /* Read payload */
-    nrf24_transferSync(dta,dta,PAYLOAD_LEN);
+    nrf24_transferSync(dta,dta,payload_len);
     
     /* Pull up chip select */
     set_csn(1,RadioNb);
@@ -307,7 +315,7 @@ void nrf24_send(uint8_t* value,uint8_t RadioNb)
     spi_transfer(W_TX_PAYLOAD);
 
     /* Write payload */
-    nrf24_transmitSync(value,PAYLOAD_LEN);   
+    nrf24_transmitSync(value,payload_len);   
 
     /* Pull up chip select */
     set_csn(1,RadioNb);

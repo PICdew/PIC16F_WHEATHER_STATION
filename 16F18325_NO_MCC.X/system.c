@@ -24,7 +24,7 @@ void OSCILLATOR_Initialize(void)
     OSCCON1 = 0x60;
     // CSWHOLD may proceed; SOSCPWR Low power; SOSCBE crystal oscillator; 
     OSCCON3 = 0x00;
-    // LFOEN disabled; ADOEN disabled; SOSCEN disabled; EXTOEN disabled; HFOEN disabled;  // peut etre activer LFOEN pour le WDT a verifier ...
+    // LFOEN disabled; ADOEN disabled; SOSCEN disabled; EXTOEN disabled; HFOEN disabled;  // peut etre activer LFOEN pour le WDT a verifier --> ( pas la peine)
     OSCEN = 0x00;
     // HFFRQ 2_MHz; 
     OSCFRQ = 0x01;
