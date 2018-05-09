@@ -12,7 +12,7 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     WDT_Initialize();
     EUSART_Initialize();
-   // I2C_Master_Init(100000);
+    I2C_Master_Init(100000);
 #ifndef SOFT
   spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 #endif
@@ -24,7 +24,7 @@ void OSCILLATOR_Initialize(void)
     OSCCON1 = 0x60;
     // CSWHOLD may proceed; SOSCPWR Low power; SOSCBE crystal oscillator; 
     OSCCON3 = 0x00;
-    // LFOEN disabled; ADOEN disabled; SOSCEN disabled; EXTOEN disabled; HFOEN disabled; 
+    // LFOEN disabled; ADOEN disabled; SOSCEN disabled; EXTOEN disabled; HFOEN disabled;  // peut etre activer LFOEN pour le WDT a verifier ...
     OSCEN = 0x00;
     // HFFRQ 2_MHz; 
     OSCFRQ = 0x01;
@@ -35,7 +35,8 @@ void OSCILLATOR_Initialize(void)
 void WDT_Initialize(void)
 {
     // WDTPS 1:65536; SWDTEN OFF; 
-    WDTCON = 0x16;
+    CLRWDT();
+    WDTCON = 0x17;
 }
 
 void PMD_Initialize(void)
@@ -71,6 +72,7 @@ void PIN_MANAGER_Initialize(void)
     TRISC = 0x2A;
     TRISAbits.TRISA1 = 0 ;
     TRISAbits.TRISA2 = 0 ;
+    TRISCbits.TRISC3 = 0 ;  // A revoir ! 
     #ifdef SOFT
     TRISCbits.TRISC0 = 0 ;
     TRISCbits.TRISC1 = 1 ;
@@ -78,7 +80,7 @@ void PIN_MANAGER_Initialize(void)
     #endif
     /**
     ANSELx registers
-    */
+    */                //pas d'analogique !
     ANSELC = 0x00;
     ANSELA = 0x00;
     

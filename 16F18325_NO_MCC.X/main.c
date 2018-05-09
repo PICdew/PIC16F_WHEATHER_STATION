@@ -13,7 +13,7 @@
 // CONFIG2
 #pragma config MCLRE = ON    // Master Clear Enable bit->MCLR/VPP pin function is MCLR; Weak pull-up enabled
 #pragma config PWRTE = OFF    // Power-up Timer Enable bit->PWRT disabled
-#pragma config WDTE = OFF    // Watchdog Timer Enable bits->WDT disabled; SWDTEN is ignored
+#pragma config WDTE = ON    // Watchdog Timer Enable bits->WDT enabled; SWDTEN 
 #pragma config LPBOREN = OFF    // Low-power BOR enable bit->ULPBOR disabled
 #pragma config BOREN = ON    // Brown-out Reset Enable bits->Brown-out Reset enabled, SBOREN bit ignored
 #pragma config BORV = LOW    // Brown-out Reset Voltage selection bit->Brown-out voltage (Vbor) set to 2.45V
@@ -48,48 +48,14 @@ void main()
     float temperature ; 
     float humidity ;
     float pressure ; 
-   BME280_write8(BME280_REGISTER_CONTROLHUMID, 0x01); // regler avant  CONTROL !!!
-    BME280_write8(BME280_REGISTER_CONTROL, 0b00100100);
-    readSensorCoefficients(); 
+    
     EnableGlobalinterupts();
     EnablePeripheralInterupts();
     EnableRXInterupts(); */
-    TRISCbits.TRISC3 = 0 ;
-    uint8_t reg = 0x00;
-    set_csn(1,1);
+    PORTCbits.RC3 = ~PORTCbits.RC3 ;
+
 	while(1)
 	{
-        
-       PORTCbits.RC3 =1;
-        __delay_ms(1000);
-      /*  set_csn(0,1);
-        SPI2_Exchange8bit(W_REGISTER | (REGISTER_MASK & RF_CH)); //ecriture
-        SPI2_Exchange8bit(20);
-        set_csn(1,1);
-        __delay_ms(10);
-        set_csn(0,1);
-        SPI2_Exchange8bit(R_REGISTER | (REGISTER_MASK & RF_CH));
-        reg = SPI2_Exchange8bit(0x00);
-        set_csn(1,1); */
-       nrf24_configRegister(RF_CH,17,1);
-       nrf24_readRegister(RF_CH,reg,1,1);
-        
-        printf("lecture registre RF_CH : %u \r\n",reg);
-        
-     // BME280_goForceMode();
-        PORTCbits.RC3 =0;
-      // lux = LireLux(1);
-         __delay_ms(1000);
-       
-        
-    /*  temperature = BME280_readTemperature();
-        humidity = BME280_readHumidity();
-        pressure = BME280_readPressure();
-        
-      //   printf("temperature : %f \r\n",temperature);
-      //   printf("humidite : %f \r\n",humidity);
-       //  printf("pression : %f \r\n",pressure);  */
-      
-     
-    }
+            
+  }
 }
