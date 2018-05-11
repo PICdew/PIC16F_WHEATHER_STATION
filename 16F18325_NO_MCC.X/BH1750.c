@@ -6,13 +6,13 @@ void BH1750_Write(unsigned char data1)
 	I2C_Master_Start();
 	I2C_Master_Write(BH1750_address_w);
 	I2C_Master_Write(data1);
-    I2C_Master_Stop();
+  I2C_Master_Stop();
 }
 
 uint16_t BH1750_Read()
 {
 	uint16_t res ;
-    I2C_Master_Start();
+  I2C_Master_Start();
 	I2C_Master_Write(BH1750_address_r);
     res =  I2C_Master_Read(I2C_ACK);
     res <<= 8;

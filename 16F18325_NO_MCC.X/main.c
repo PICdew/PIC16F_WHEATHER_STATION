@@ -89,7 +89,7 @@ void main()
         
         temp = nrf24_retransmissionCount(1);
 		UART1_SendStr("> Retranmission count:");
-        UART1_SendDec(temp);
+    UART1_SendDec(temp);
 		UART1_SendStr("\r\n");  
        PORTCbits.RC3 = 1 ; 
       //  set_csn(0,1);
