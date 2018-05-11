@@ -10,6 +10,13 @@
 
 #define RX_BUFFER_SIZE 3
 
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size); 
+
 
 /**
   Section: Macro Declarations

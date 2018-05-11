@@ -12,7 +12,7 @@
 
 #pragma config MCLRE = ON
 #pragma config PWRTE = OFF
-#pragma config WDTE = ON
+#pragma config WDTE = OFF
 #pragma config LPBOREN = OFF
 #pragma config BOREN = ON
 #pragma config BORV = LOW
@@ -9572,22 +9572,30 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 26 "eusart.h"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
+# 76
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9597,40 +9605,56 @@ void WDT_Initialize(void);
 void PMD_Initialize(void);
 void PIN_MANAGER_Initialize(void);
 
-# 26 "eusart.h"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
+# 76
 void EUSART_Write(uint8_t txData);
 
-# 26
+# 13
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
+# 76
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9649,22 +9673,30 @@ void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
 
-# 26 "eusart.h"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
+# 76
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9688,22 +9720,98 @@ uint16_t LireLux(int8_t resolution);
 void BH1750_Write(unsigned char data);
 uint16_t BH1750_Read(void);
 
-# 26 "eusart.h"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
+# 76
+void EUSART_Write(uint8_t txData);
+
+# 11 "interupt.h"
+inline void EnableGlobalinterupts(void);
+inline void DisableGlobalinterupts(void);
+inline void EnablePeripheralInterupts(void);
+inline void DisablePeripheralInterupts(void);
+inline void EnableRXInterupts(void);
+inline void DisableRXInterupts(void);
+
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
+void EUSART_Initialize(void);
+
+# 42
+bool EUSART_is_tx_ready(void);
+
+# 51
+bool EUSART_is_rx_ready(void);
+
+# 60
+bool EUSART_is_tx_done(void);
+
+# 67
+uint8_t EUSART_Read(void);
+
+# 76
+void EUSART_Write(uint8_t txData);
+
+# 11 "interupt.h"
+inline void EnableGlobalinterupts(void);
+inline void DisableGlobalinterupts(void);
+inline void EnablePeripheralInterupts(void);
+inline void DisablePeripheralInterupts(void);
+inline void EnableRXInterupts(void);
+inline void DisableRXInterupts(void);
+
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
+void EUSART_Initialize(void);
+
+# 42
+bool EUSART_is_tx_ready(void);
+
+# 51
+bool EUSART_is_rx_ready(void);
+
+# 60
+bool EUSART_is_tx_done(void);
+
+# 67
+uint8_t EUSART_Read(void);
+
+# 76
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9767,56 +9875,30 @@ float BME280_readTemperature(void);
 float BME280_readHumidity(void);
 float BME280_readPressure(void);
 
-# 26 "eusart.h"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
 void EUSART_Initialize(void);
 
-# 35
+# 42
 bool EUSART_is_tx_ready(void);
 
-# 44
+# 51
 bool EUSART_is_rx_ready(void);
 
-# 53
+# 60
 bool EUSART_is_tx_done(void);
 
-# 60
+# 67
 uint8_t EUSART_Read(void);
 
-# 69
-void EUSART_Write(uint8_t txData);
-
-# 6 "interupt.h"
-typedef struct {
-char data[3];
-uint8_t len ;
-} RXbuffer;
-RXbuffer monBuffer ;
-
-
-
-inline void EnableGlobalinterupts(void);
-inline void DisableGlobalinterupts(void);
-inline void EnablePeripheralInterupts(void);
-inline void DisablePeripheralInterupts(void);
-inline void EnableRXInterupts(void);
-inline void DisableRXInterupts(void);
-
-# 26 "eusart.h"
-void EUSART_Initialize(void);
-
-# 35
-bool EUSART_is_tx_ready(void);
-
-# 44
-bool EUSART_is_rx_ready(void);
-
-# 53
-bool EUSART_is_tx_done(void);
-
-# 60
-uint8_t EUSART_Read(void);
-
-# 69
+# 76
 void EUSART_Write(uint8_t txData);
 
 # 7 "system.h"
@@ -9875,7 +9957,7 @@ void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
 void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
 void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
 void nrf24_powerUpRx(uint8_t radioNb);
-void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb);
+void nrf24_config(uint8_t channel,uint8_t radioNb);
 void nrf24_displayConfiguration(uint8_t radioNb);
 void clearTable(uint8_t* tab,uint8_t size);
 void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
@@ -9891,21 +9973,99 @@ uint8_t nrf24_getStatus(uint8_t RadioNb);
 uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
 void nrf24_powerUpTx(uint8_t RadioNb);
 void nrf24_powerDown(uint8_t RadioNb);
+void nrf24_setPayload(uint8_t pay_length);
 
-# 43 "main.c"
+# 7 "app.h"
+typedef struct {
+char data[3];
+uint8_t len ;
+} buffer;
+
+typedef struct {
+char data[14];
+uint8_t len ;
+} Airbuffer;
+
+union unpackFloat {
+float f;
+uint8_t b[3];
+};
+
+union unpackU16 {
+uint16_t u;
+uint8_t b[2];
+};
+
+void interpretation(void);
+void Bme280_OneMeasure(float *temp,float * humi,float *press);
+void InitBME280andPowerDown(void);
+void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[]);
+void AddTX_U16(uint16_t value );
+void AddTXfloat(float the_float);
+void AddTXAddr(uint8_t *addr);
+void PushDataInTheAir(void);
+
+# 42 "main.c"
+uint16_t lux ;
+float temperature ;
+float humidity ;
+float pressure ;
+uint8_t tx_address1[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+uint8_t rx_address1[5] = {0xD7,0xD5,0xD7,0xD7,0xD7};
+
+uint8_t device_address[5] = {0xAA,0xBB,0xCC,0xDD,0xEE};
+
+uint8_t temp ;
 void main()
 {
 
 SYSTEM_Initialize();
+set_csn(1,1);
+set_ce(0,1);
+set_csn(1,2);
+set_ce(0,2);
+_delay((unsigned long)((5500)*(2000000/4000.0)));
 
-# 55
+Init_RF_andPowerDown(20,14,tx_address1,rx_address1);
+nrf24_displayConfiguration(1);
+
+# 78
 PORTCbits.RC3 = 0 ;
-asm("clrwdt");
-asm("sleep");
+
+
 
 while(1)
 {
-asm("clrwdt");
+nrf24_send(device_address,1);
+
+
+while(nrf24_isSending(1));
+
+
+temp = nrf24_lastMessageStatus(1);
+
+if(temp == 0)
+{
+UART1_SendStr("> Tranmission went OK\r\n");
+}
+else if(temp == 1)
+{
+UART1_SendStr("> Message is lost ...\r\n");
+}
+
+temp = nrf24_retransmissionCount(1);
+UART1_SendStr("> Retranmission count:");
+UART1_SendDec(temp);
+UART1_SendStr("\r\n");
 PORTCbits.RC3 = 1 ;
+
+_delay((unsigned long)((500)*(2000000/4000.0)));
+PORTCbits.RC3 = 0 ;
+
+_delay((unsigned long)((500)*(2000000/4000.0)));
+
+
+
+
 }
 }

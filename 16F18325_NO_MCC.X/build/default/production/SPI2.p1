@@ -1,13 +1,13 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "8 SPI2.c
-[c E7501 32 33 34 35 36 37 .. ]
-[n E7501 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E7509 0 128 .. ]
-[n E7509 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E7513 16 0 .. ]
-[n E7513 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E7517 0 64 .. ]
-[n E7517 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+[c E7514 32 33 34 35 36 37 .. ]
+[n E7514 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E7522 0 128 .. ]
+[n E7522 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E7526 16 0 .. ]
+[n E7526 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E7530 0 64 .. ]
+[n E7530 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
 "1548 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S81 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
@@ -7227,12 +7227,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7268,17 +7274,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 47: uint8_t spiRead();
 [; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
 "7 SPI2.c
-[v _spiInit `(v ~T0 @X0 1 ef4`E7501`E7509`E7513`E7517 ]
+[v _spiInit `(v ~T0 @X0 1 ef4`E7514`E7522`E7526`E7530 ]
 "8
 {
 [; ;SPI2.c: 7: void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge)
 [; ;SPI2.c: 8: {
 [e :U _spiInit ]
 "7
-[v _sType `E7501 ~T0 @X0 1 r1 ]
-[v _sDataSample `E7509 ~T0 @X0 1 r2 ]
-[v _sClockIdle `E7513 ~T0 @X0 1 r3 ]
-[v _sTransmitEdge `E7517 ~T0 @X0 1 r4 ]
+[v _sType `E7514 ~T0 @X0 1 r1 ]
+[v _sDataSample `E7522 ~T0 @X0 1 r2 ]
+[v _sClockIdle `E7526 ~T0 @X0 1 r3 ]
+[v _sTransmitEdge `E7530 ~T0 @X0 1 r4 ]
 "8
 [f ]
 [; ;SPI2.c: 9: TRISCbits.TRISC2 = 0;

@@ -3,7 +3,7 @@
 #include "interupt.h"
 #include "app.h"
 
-
+extern buffer monBuffer ;
 unsigned char RX_byte ;
 
 inline void EnableGlobalinterupts(void)

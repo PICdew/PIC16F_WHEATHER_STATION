@@ -3,11 +3,8 @@
 #include "eusart.h"
 #include <stdio.h>
 
-typedef struct { 
-    char data[RX_BUFFER_SIZE];
-    uint8_t len ;
-} RXbuffer;
-RXbuffer monBuffer ;
+
+
 
 
 

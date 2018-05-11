@@ -123,6 +123,7 @@ void nrf24_transmitSync(uint8_t* dataout,uint8_t len)
 /* Clocks only one byte into the given nrf24 register */
 void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus)
 {
+    
     set_csn(0,bus);
     spi_transfer(W_REGISTER | (REGISTER_MASK & reg));
     spi_transfer(value);
@@ -388,7 +389,7 @@ void nrf24_powerDown(uint8_t RadioNb)
     
 }
 
-/*void nrf24_displayConfiguration(uint8_t radioNb)
+void nrf24_displayConfiguration(uint8_t radioNb)
 
 {
 
@@ -676,4 +677,4 @@ void clearTable(uint8_t  *tab,uint8_t size)
     }
 }
 
-*/
+

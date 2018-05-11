@@ -7209,12 +7209,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7267,9 +7273,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5
 [v _t_fine `l ~T0 @X0 1 e ]
 [; ;bme280.c: 5: int32_t t_fine;
-[v F7535 `(uc ~T0 @X0 1 tf1`uc ]
+[v F7548 `(uc ~T0 @X0 1 tf1`uc ]
 "7
-[v _BME280_read8 `TF7535 ~T0 @X0 1 e ]
+[v _BME280_read8 `TF7548 ~T0 @X0 1 e ]
 "8
 {
 [; ;bme280.c: 7: inline uint8_t BME280_read8(uint8_t reg)
@@ -7326,9 +7332,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [e :UE 920 ]
 }
-[v F7542 `(ui ~T0 @X0 1 tf1`uc ]
+[v F7555 `(ui ~T0 @X0 1 tf1`uc ]
 "27
-[v _BME280_read16 `TF7542 ~T0 @X0 1 e ]
+[v _BME280_read16 `TF7555 ~T0 @X0 1 e ]
 "28
 {
 [; ;bme280.c: 27: inline uint16_t BME280_read16(uint8_t reg)
@@ -7391,9 +7397,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "47
 [e :UE 921 ]
 }
-[v F7549 `(ul ~T0 @X0 1 tf1`uc ]
+[v F7562 `(ul ~T0 @X0 1 tf1`uc ]
 "49
-[v _BME280_read24 `TF7549 ~T0 @X0 1 e ]
+[v _BME280_read24 `TF7562 ~T0 @X0 1 e ]
 "50
 {
 [; ;bme280.c: 49: inline uint32_t BME280_read24(uint8_t reg)
@@ -7522,9 +7528,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "91
 [e :UE 925 ]
 }
-[v F7539 `(c ~T0 @X0 1 tf2`uc`uc ]
+[v F7552 `(c ~T0 @X0 1 tf2`uc`uc ]
 "93
-[v _BME280_write8 `TF7539 ~T0 @X0 1 e ]
+[v _BME280_write8 `TF7552 ~T0 @X0 1 e ]
 "94
 {
 [; ;bme280.c: 93: inline int8_t BME280_write8(uint8_t reg,uint8_t value)

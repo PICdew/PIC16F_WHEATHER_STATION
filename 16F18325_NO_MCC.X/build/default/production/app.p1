@@ -1,12 +1,15 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"6 interupt.h
-[s S919 `uc -> 3 `i `uc 1 ]
-[n S919 . data len ]
+"7 app.h
+[s S920 `uc -> 3 `i `uc 1 ]
+[n S920 . data len ]
+"12
+[s S921 `uc -> 14 `i `uc 1 ]
+[n S921 . data len ]
 "195 /opt/microchip/xc8/v1.45/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-[v F7568 `(c ~T0 @X0 1 tf2`uc`uc ]
+[v F7583 `(c ~T0 @X0 1 tf2`uc`uc ]
 "77 bme280.h
-[v _BME280_write8 `TF7568 ~T0 @X0 0 e ]
+[v _BME280_write8 `TF7583 ~T0 @X0 0 e ]
 "83
 [v _readSensorCoefficients `(v ~T0 @X0 0 ef ]
 "85
@@ -17,6 +20,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BME280_readHumidity `(f ~T0 @X0 0 ef ]
 "88
 [v _BME280_readPressure `(f ~T0 @X0 0 ef ]
+"52 nrf24.h
+[v _nrf24_setPayload `(v ~T0 @X0 0 ef1`uc ]
+"36
+[v _nrf24_config `(v ~T0 @X0 0 ef2`uc`uc ]
+"40
+[v _nrf24_tx_address `(v ~T0 @X0 0 ef2`*uc`uc ]
+"39
+[v _nrf24_rx_address `(v ~T0 @X0 0 ef2`*uc`uc ]
+"51
+[v _nrf24_powerDown `(v ~T0 @X0 0 ef1`uc ]
+"17 app.h
+[u S922 `f 1 `uc -> 3 `i ]
+[n S922 unpackFloat f b ]
+"22
+[u S923 `ui 1 `uc -> 2 `i ]
+[n S923 unpackU16 u b ]
+"46 nrf24.h
+[v _nrf24_send `(v ~T0 @X0 0 ef2`*uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7214,31 +7235,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
-[; ;interupt.h: 6: typedef struct {
-[; ;interupt.h: 7: char data[3];
-[; ;interupt.h: 8: uint8_t len ;
-[; ;interupt.h: 9: } RXbuffer;
-"10 interupt.h
-[v _monBuffer `S919 ~T0 @X0 1 e ]
-[; ;interupt.h: 10: RXbuffer monBuffer ;
-[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
-[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
-[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
-[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
-[; ;interupt.h: 18: inline void EnableRXInterupts(void);
-[; ;interupt.h: 19: inline void DisableRXInterupts(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 11: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 12: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 13: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 14: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 15: inline void EnableRXInterupts(void);
+[; ;interupt.h: 16: inline void DisableRXInterupts(void);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7285,102 +7311,392 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;bme280.h: 86: float BME280_readTemperature(void);
 [; ;bme280.h: 87: float BME280_readHumidity(void);
 [; ;bme280.h: 88: float BME280_readPressure(void);
-[; ;app.h: 5: void interpretation(void);
-[; ;app.h: 6: void Bme280_OneMeasure(float *temp,float * humi,float *press);
-[; ;app.h: 7: void InitBME280andPowerDown(void);
-[; ;app.c: 5: extern RXbuffer monBuffer ;
-"7 app.c
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;system.h: 7: void SYSTEM_Initialize(void);
+[; ;system.h: 8: void OSCILLATOR_Initialize(void);
+[; ;system.h: 9: void WDT_Initialize(void);
+[; ;system.h: 10: void PMD_Initialize(void);
+[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;SPI2.h: 15: typedef enum
+[; ;SPI2.h: 16: {
+[; ;SPI2.h: 17: SPI_MASTER_OSC_DIV4 = 0b00100000,
+[; ;SPI2.h: 18: SPI_MASTER_OSC_DIV16 = 0b00100001,
+[; ;SPI2.h: 19: SPI_MASTER_OSC_DIV64 = 0b00100010,
+[; ;SPI2.h: 20: SPI_MASTER_TMR2 = 0b00100011,
+[; ;SPI2.h: 21: SPI_SLAVE_SS_EN = 0b00100100,
+[; ;SPI2.h: 22: SPI_SLAVE_SS_DIS = 0b00100101
+[; ;SPI2.h: 23: }Spi_Type;
+[; ;SPI2.h: 25: typedef enum
+[; ;SPI2.h: 26: {
+[; ;SPI2.h: 27: SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+[; ;SPI2.h: 28: SPI_DATA_SAMPLE_END = 0b10000000
+[; ;SPI2.h: 29: }Spi_Data_Sample;
+[; ;SPI2.h: 31: typedef enum
+[; ;SPI2.h: 32: {
+[; ;SPI2.h: 33: SPI_CLOCK_IDLE_HIGH = 0b00010000,
+[; ;SPI2.h: 34: SPI_CLOCK_IDLE_LOW = 0b00000000
+[; ;SPI2.h: 35: }Spi_Clock_Idle;
+[; ;SPI2.h: 37: typedef enum
+[; ;SPI2.h: 38: {
+[; ;SPI2.h: 39: SPI_IDLE_2_ACTIVE = 0b00000000,
+[; ;SPI2.h: 40: SPI_ACTIVE_2_IDLE = 0b01000000
+[; ;SPI2.h: 41: }Spi_Transmit_Edge;
+[; ;SPI2.h: 44: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+[; ;SPI2.h: 45: void spiWrite(char);
+[; ;SPI2.h: 46: unsigned spiDataReady();
+[; ;SPI2.h: 47: uint8_t spiRead();
+[; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
+[; ;nrf24.h: 24: void set_ce(uint8_t state,uint8_t radioNb);
+[; ;nrf24.h: 25: void set_csn(uint8_t state,uint8_t bus);
+[; ;nrf24.h: 26: void set_sck(uint8_t state);
+[; ;nrf24.h: 27: void set_mosi(uint8_t state);
+[; ;nrf24.h: 28: uint8_t get_miso();
+[; ;nrf24.h: 29: uint8_t spi_transfer(uint8_t tx);
+[; ;nrf24.h: 30: void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+[; ;nrf24.h: 31: void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+[; ;nrf24.h: 32: void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+[; ;nrf24.h: 33: void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+[; ;nrf24.h: 34: void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+[; ;nrf24.h: 35: void nrf24_powerUpRx(uint8_t radioNb);
+[; ;nrf24.h: 36: void nrf24_config(uint8_t channel,uint8_t radioNb);
+[; ;nrf24.h: 37: void nrf24_displayConfiguration(uint8_t radioNb);
+[; ;nrf24.h: 38: void clearTable(uint8_t* tab,uint8_t size);
+[; ;nrf24.h: 39: void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+[; ;nrf24.h: 40: void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+[; ;nrf24.h: 41: uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+[; ;nrf24.h: 42: uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+[; ;nrf24.h: 43: uint8_t nrf24_payloadLength(uint8_t RadioNb);
+[; ;nrf24.h: 44: void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+[; ;nrf24.h: 45: uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+[; ;nrf24.h: 46: void nrf24_send(uint8_t* value,uint8_t RadioNb);
+[; ;nrf24.h: 47: uint8_t nrf24_isSending(uint8_t RadioNb);
+[; ;nrf24.h: 48: uint8_t nrf24_getStatus(uint8_t RadioNb);
+[; ;nrf24.h: 49: uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+[; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
+[; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
+[; ;nrf24.h: 52: void nrf24_setPayload(uint8_t pay_length);
+[; ;app.h: 7: typedef struct {
+[; ;app.h: 8: char data[3];
+[; ;app.h: 9: uint8_t len ;
+[; ;app.h: 10: } buffer;
+[; ;app.h: 12: typedef struct {
+[; ;app.h: 13: char data[14];
+[; ;app.h: 14: uint8_t len ;
+[; ;app.h: 15: } Airbuffer;
+[; ;app.h: 17: union unpackFloat {
+[; ;app.h: 18: float f;
+[; ;app.h: 19: uint8_t b[3];
+[; ;app.h: 20: };
+[; ;app.h: 22: union unpackU16 {
+[; ;app.h: 23: uint16_t u;
+[; ;app.h: 24: uint8_t b[2];
+[; ;app.h: 25: };
+[; ;app.h: 27: void interpretation(void);
+[; ;app.h: 28: void Bme280_OneMeasure(float *temp,float * humi,float *press);
+[; ;app.h: 29: void InitBME280andPowerDown(void);
+[; ;app.h: 30: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[]);
+[; ;app.h: 31: void AddTX_U16(uint16_t value );
+[; ;app.h: 32: void AddTXfloat(float the_float);
+[; ;app.h: 33: void AddTXAddr(uint8_t *addr);
+[; ;app.h: 34: void PushDataInTheAir(void);
+"5 app.c
+[v _monBuffer `S920 ~T0 @X0 1 e ]
+[; ;app.c: 5: buffer monBuffer;
+"7
+[v _TXbuffer `S921 ~T0 @X0 1 e ]
+[; ;app.c: 7: Airbuffer TXbuffer;
+"10
 [v _interpretation `(v ~T0 @X0 1 ef ]
-"8
+"11
 {
-[; ;app.c: 7: void interpretation(void)
-[; ;app.c: 8: {
+[; ;app.c: 10: void interpretation(void)
+[; ;app.c: 11: {
 [e :U _interpretation ]
 [f ]
-"9
-[v _i `uc ~T0 @X0 1 a ]
-[; ;app.c: 9: uint8_t i ;
-[; ;app.c: 10: monBuffer.len = 0;
-"10
-[e = . _monBuffer 1 -> -> 0 `i `uc ]
-[; ;app.c: 11: printf("la commande est : \r\n");
-"11
-[e ( _printf :s 1C ]
-[; ;app.c: 12: for(i=0;i<3;i++)
 "12
+[v _i `uc ~T0 @X0 1 a ]
+[; ;app.c: 12: uint8_t i ;
+[; ;app.c: 13: monBuffer.len = 0;
+"13
+[e = . _monBuffer 1 -> -> 0 `i `uc ]
+[; ;app.c: 14: printf("la commande est : \r\n");
+"14
+[e ( _printf :s 1C ]
+[; ;app.c: 15: for(i=0;i<3;i++)
+"15
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 922  ]
-[e $U 923  ]
-"13
-[e :U 922 ]
-[; ;app.c: 13: {
-{
-[; ;app.c: 14: printf(" %c",monBuffer.data[i]);
-"14
-[e ( _printf , (. :s 2C -> *U + &U . _monBuffer 0 * -> _i `ux -> -> # *U &U . _monBuffer 0 `ui `ux `i ]
-"15
-}
-"12
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 922  ]
-[e :U 923 ]
-"15
-}
-[; ;app.c: 15: }
-[; ;app.c: 16: }
+[e $ < -> _i `i -> 3 `i 925  ]
+[e $U 926  ]
 "16
-[e :UE 921 ]
-}
-"18
-[v _InitBME280andPowerDown `(v ~T0 @X0 1 ef ]
-"19
+[e :U 925 ]
+[; ;app.c: 16: {
 {
-[; ;app.c: 18: void InitBME280andPowerDown(void)
-[; ;app.c: 19: {
+[; ;app.c: 17: printf(" %c",monBuffer.data[i]);
+"17
+[e ( _printf , (. :s 2C -> *U + &U . _monBuffer 0 * -> _i `ux -> -> # *U &U . _monBuffer 0 `ui `ux `i ]
+"18
+}
+"15
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 925  ]
+[e :U 926 ]
+"18
+}
+[; ;app.c: 18: }
+[; ;app.c: 19: }
+"19
+[e :UE 924 ]
+}
+"21
+[v _InitBME280andPowerDown `(v ~T0 @X0 1 ef ]
+"22
+{
+[; ;app.c: 21: void InitBME280andPowerDown(void)
+[; ;app.c: 22: {
 [e :U _InitBME280andPowerDown ]
 [f ]
-[; ;app.c: 20: BME280_write8(0xF2, 0x01);
-"20
-[e ( _BME280_write8 (2 , -> -> 242 `i `uc -> -> 1 `i `uc ]
-[; ;app.c: 21: BME280_write8(0xF4, 0b00100100);
-"21
-[e ( _BME280_write8 (2 , -> -> 244 `i `uc -> -> 36 `i `uc ]
-[; ;app.c: 22: readSensorCoefficients();
-"22
-[e ( _readSensorCoefficients ..  ]
-[; ;app.c: 23: }
+[; ;app.c: 23: BME280_write8(0xF2, 0x01);
 "23
-[e :UE 925 ]
-}
+[e ( _BME280_write8 (2 , -> -> 242 `i `uc -> -> 1 `i `uc ]
+[; ;app.c: 24: BME280_write8(0xF4, 0b00100100);
+"24
+[e ( _BME280_write8 (2 , -> -> 244 `i `uc -> -> 36 `i `uc ]
+[; ;app.c: 25: readSensorCoefficients();
 "25
-[v _Bme280_OneMeasure `(v ~T0 @X0 1 ef3`*f`*f`*f ]
+[e ( _readSensorCoefficients ..  ]
+[; ;app.c: 26: }
 "26
+[e :UE 928 ]
+}
+"28
+[v _Bme280_OneMeasure `(v ~T0 @X0 1 ef3`*f`*f`*f ]
+"29
 {
-[; ;app.c: 25: void Bme280_OneMeasure(float *temp,float * humi,float *press)
-[; ;app.c: 26: {
+[; ;app.c: 28: void Bme280_OneMeasure(float *temp,float * humi,float *press)
+[; ;app.c: 29: {
 [e :U _Bme280_OneMeasure ]
-"25
+"28
 [v _temp `*f ~T0 @X0 1 r1 ]
 [v _humi `*f ~T0 @X0 1 r2 ]
 [v _press `*f ~T0 @X0 1 r3 ]
-"26
-[f ]
-[; ;app.c: 27: BME280_goForceMode();
-"27
-[e ( _BME280_goForceMode ..  ]
-[; ;app.c: 28: *temp = BME280_readTemperature();
-"28
-[e = *U _temp ( _BME280_readTemperature ..  ]
-[; ;app.c: 29: *humi = BME280_readHumidity();
 "29
-[e = *U _humi ( _BME280_readHumidity ..  ]
-[; ;app.c: 30: *press = BME280_readPressure();
+[f ]
+[; ;app.c: 30: BME280_goForceMode();
 "30
-[e = *U _press ( _BME280_readPressure ..  ]
-[; ;app.c: 31: }
+[e ( _BME280_goForceMode ..  ]
+[; ;app.c: 31: *temp = BME280_readTemperature();
 "31
-[e :UE 926 ]
+[e = *U _temp ( _BME280_readTemperature ..  ]
+[; ;app.c: 32: *humi = BME280_readHumidity();
+"32
+[e = *U _humi ( _BME280_readHumidity ..  ]
+[; ;app.c: 33: *press = BME280_readPressure();
+"33
+[e = *U _press ( _BME280_readPressure ..  ]
+[; ;app.c: 34: }
+"34
+[e :UE 929 ]
+}
+"36
+[v _Init_RF_andPowerDown `(v ~T0 @X0 1 ef4`uc`uc`*uc`*uc ]
+"37
+{
+[; ;app.c: 36: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[])
+[; ;app.c: 37: {
+[e :U _Init_RF_andPowerDown ]
+"36
+[v _channel `uc ~T0 @X0 1 r1 ]
+[v _payload_length `uc ~T0 @X0 1 r2 ]
+[v _tx_address `*uc ~T0 @X0 1 r3 ]
+[v _rx_address `*uc ~T0 @X0 1 r4 ]
+"37
+[f ]
+[; ;app.c: 38: nrf24_setPayload(payload_length);
+"38
+[e ( _nrf24_setPayload (1 _payload_length ]
+[; ;app.c: 39: nrf24_config(channel,1);
+"39
+[e ( _nrf24_config (2 , _channel -> -> 1 `i `uc ]
+[; ;app.c: 40: nrf24_tx_address(tx_address,1);
+"40
+[e ( _nrf24_tx_address (2 , _tx_address -> -> 1 `i `uc ]
+[; ;app.c: 41: nrf24_rx_address(rx_address,1);
+"41
+[e ( _nrf24_rx_address (2 , _rx_address -> -> 1 `i `uc ]
+[; ;app.c: 42: nrf24_powerDown(1);
+"42
+[e ( _nrf24_powerDown (1 -> -> 1 `i `uc ]
+[; ;app.c: 43: }
+"43
+[e :UE 930 ]
+}
+"46
+[v _AddTXfloat `(v ~T0 @X0 1 ef1`f ]
+"47
+{
+[; ;app.c: 46: void AddTXfloat(float the_float)
+[; ;app.c: 47: {
+[e :U _AddTXfloat ]
+"46
+[v _the_float `f ~T0 @X0 1 r1 ]
+"47
+[f ]
+"48
+[v _i `uc ~T0 @X0 1 a ]
+"49
+[v _pack1 `S922 ~T0 @X0 1 a ]
+[; ;app.c: 48: uint8_t i ;
+[; ;app.c: 49: union unpackFloat pack1;
+[; ;app.c: 50: pack1.f = the_float ;
+"50
+[e = . _pack1 0 _the_float ]
+[; ;app.c: 51: for(i=0;i<3;i++)
+"51
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 932  ]
+[e $U 933  ]
+"52
+[e :U 932 ]
+[; ;app.c: 52: {
+{
+[; ;app.c: 53: TXbuffer.data[TXbuffer.len] = pack1.b[i];
+"53
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
+[; ;app.c: 54: TXbuffer.len++;
+"54
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"55
+}
+"51
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 932  ]
+[e :U 933 ]
+"55
+}
+[; ;app.c: 55: }
+[; ;app.c: 56: }
+"56
+[e :UE 931 ]
+}
+"58
+[v _AddTX_U16 `(v ~T0 @X0 1 ef1`ui ]
+"59
+{
+[; ;app.c: 58: void AddTX_U16(uint16_t value )
+[; ;app.c: 59: {
+[e :U _AddTX_U16 ]
+"58
+[v _value `ui ~T0 @X0 1 r1 ]
+"59
+[f ]
+"60
+[v _i `uc ~T0 @X0 1 a ]
+"61
+[v _pack1 `S923 ~T0 @X0 1 a ]
+[; ;app.c: 60: uint8_t i ;
+[; ;app.c: 61: union unpackU16 pack1;
+[; ;app.c: 62: pack1.u = value ;
+"62
+[e = . _pack1 0 _value ]
+[; ;app.c: 63: for(i=0;i<2;i++)
+"63
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 2 `i 936  ]
+[e $U 937  ]
+"64
+[e :U 936 ]
+[; ;app.c: 64: {
+{
+[; ;app.c: 65: TXbuffer.data[TXbuffer.len] = pack1.b[i];
+"65
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
+[; ;app.c: 66: TXbuffer.len++;
+"66
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"67
+}
+"63
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 2 `i 936  ]
+[e :U 937 ]
+"67
+}
+[; ;app.c: 67: }
+[; ;app.c: 69: }
+"69
+[e :UE 935 ]
+}
+"71
+[v _AddTXAddr `(v ~T0 @X0 1 ef1`*uc ]
+"72
+{
+[; ;app.c: 71: void AddTXAddr(uint8_t *addr)
+[; ;app.c: 72: {
+[e :U _AddTXAddr ]
+"71
+[v _addr `*uc ~T0 @X0 1 r1 ]
+"72
+[f ]
+"73
+[v _i `uc ~T0 @X0 1 a ]
+[; ;app.c: 73: uint8_t i ;
+[; ;app.c: 74: for(i=0;i<5;i++)
+"74
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 940  ]
+[e $U 941  ]
+"75
+[e :U 940 ]
+[; ;app.c: 75: {
+{
+[; ;app.c: 76: TXbuffer.data[TXbuffer.len] = addr[i];
+"76
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + _addr * -> _i `ux -> -> # *U _addr `ui `ux ]
+[; ;app.c: 77: TXbuffer.len++;
+"77
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"78
+}
+"74
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 940  ]
+[e :U 941 ]
+"78
+}
+[; ;app.c: 78: }
+[; ;app.c: 80: }
+"80
+[e :UE 939 ]
+}
+"82
+[v _PushDataInTheAir `(v ~T0 @X0 1 ef ]
+"83
+{
+[; ;app.c: 82: void PushDataInTheAir(void)
+[; ;app.c: 83: {
+[e :U _PushDataInTheAir ]
+[f ]
+[; ;app.c: 84: nrf24_send(TXbuffer.data,1);
+"84
+[e ( _nrf24_send (2 , &U . _TXbuffer 0 -> -> 1 `i `uc ]
+[; ;app.c: 85: }
+"85
+[e :UE 943 ]
 }
 [p f _printf 8912896 ]
 [a 2C 32 37 99 0 ]

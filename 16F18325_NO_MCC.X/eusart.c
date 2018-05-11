@@ -93,3 +93,82 @@ void putch(char txData)
 /**
   End of File
 */
+void UART1_SendStr(const char * s)
+{
+    while(*s)
+            EUSART_Write(*s++);
+}
+
+void UART1_SendDec(unsigned int data) // 
+{
+    unsigned char temp;
+    temp=data/1000;
+    EUSART_Write(temp+'0');
+    data=data-temp*1000;
+    temp=data/100;
+    EUSART_Write(temp+'0');
+    data=data-temp*100;
+    temp=data/10;
+    EUSART_Write(temp+'0');
+    data=data-temp*10;
+    EUSART_Write(data+'0');
+}
+
+void UART1_SendHex(unsigned int data) // 
+{
+    unsigned char temp;
+     EUSART_Write('0');
+     EUSART_Write('x');
+    temp = data>>4;
+    EUSART_Write(setHEX(temp));
+    temp = data&0x0F;
+    EUSART_Write(setHEX(temp));
+    
+    
+}
+
+unsigned char setHEX(unsigned char ch)
+{
+    if(ch >= 0 && ch <= 9)
+    {
+        return (ch+'0');
+    }
+    else
+    {
+        switch(ch)
+        {
+            case 10:
+                return 'A';
+            break; 
+            case 11:
+                return 'B';
+            break; 
+            case 12:
+                return 'C';
+            break; 
+            case 13:
+                return 'D';
+            break; 
+            case 14:
+                return 'E';
+            break; 
+            case 15:
+                return 'F';
+            break; 
+        }
+    }
+}
+
+
+void printTable(uint8_t * table,uint8_t size)
+{
+    uint8_t i ;
+    for(i = 0; i<size;i++)
+    {
+        if (table[i] != NULL)
+        {
+            UART1_SendHex(table[i]);
+            UART1_SendStr(" ");
+        }
+    }
+}     

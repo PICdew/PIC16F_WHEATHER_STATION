@@ -37,6 +37,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RC1REG `Vuc ~T0 @X0 0 e@409 ]
 "2947
 [v _TX1REG `Vuc ~T0 @X0 0 e@410 ]
+"17 eusart.h
+[v _setHEX `(uc ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7234,12 +7236,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 "17 eusart.c
 [v _EUSART_Initialize `(v ~T0 @X0 1 ef ]
 "18
@@ -7430,3 +7438,289 @@ Version 3.2 HI-TECH Software Intermediate Code
 "92
 [e :UE 933 ]
 }
+"96
+[v _UART1_SendStr `(v ~T0 @X0 1 ef1`*Cuc ]
+"97
+{
+[; ;eusart.c: 96: void UART1_SendStr(const char * s)
+[; ;eusart.c: 97: {
+[e :U _UART1_SendStr ]
+"96
+[v _s `*Cuc ~T0 @X0 1 r1 ]
+"97
+[f ]
+[; ;eusart.c: 98: while(*s)
+"98
+[e $U 935  ]
+[e :U 936 ]
+[; ;eusart.c: 99: EUSART_Write(*s++);
+"99
+[e ( _EUSART_Write (1 *U ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 935 ]
+"98
+[e $ != -> *U _s `i -> -> -> 0 `i `Cuc `i 936  ]
+[e :U 937 ]
+[; ;eusart.c: 100: }
+"100
+[e :UE 934 ]
+}
+"102
+[v _UART1_SendDec `(v ~T0 @X0 1 ef1`ui ]
+"103
+{
+[; ;eusart.c: 102: void UART1_SendDec(unsigned int data)
+[; ;eusart.c: 103: {
+[e :U _UART1_SendDec ]
+"102
+[v _data `ui ~T0 @X0 1 r1 ]
+"103
+[f ]
+"104
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;eusart.c: 104: unsigned char temp;
+[; ;eusart.c: 105: temp=data/1000;
+"105
+[e = _temp -> / _data -> -> 1000 `i `ui `uc ]
+[; ;eusart.c: 106: EUSART_Write(temp+'0');
+"106
+[e ( _EUSART_Write (1 -> + -> _temp `ui -> 48 `ui `uc ]
+[; ;eusart.c: 107: data=data-temp*1000;
+"107
+[e = _data - _data -> * -> _temp `i -> 1000 `i `ui ]
+[; ;eusart.c: 108: temp=data/100;
+"108
+[e = _temp -> / _data -> -> 100 `i `ui `uc ]
+[; ;eusart.c: 109: EUSART_Write(temp+'0');
+"109
+[e ( _EUSART_Write (1 -> + -> _temp `ui -> 48 `ui `uc ]
+[; ;eusart.c: 110: data=data-temp*100;
+"110
+[e = _data - _data -> * -> _temp `i -> 100 `i `ui ]
+[; ;eusart.c: 111: temp=data/10;
+"111
+[e = _temp -> / _data -> -> 10 `i `ui `uc ]
+[; ;eusart.c: 112: EUSART_Write(temp+'0');
+"112
+[e ( _EUSART_Write (1 -> + -> _temp `ui -> 48 `ui `uc ]
+[; ;eusart.c: 113: data=data-temp*10;
+"113
+[e = _data - _data -> * -> _temp `i -> 10 `i `ui ]
+[; ;eusart.c: 114: EUSART_Write(data+'0');
+"114
+[e ( _EUSART_Write (1 -> + _data -> 48 `ui `uc ]
+[; ;eusart.c: 115: }
+"115
+[e :UE 938 ]
+}
+"117
+[v _UART1_SendHex `(v ~T0 @X0 1 ef1`ui ]
+"118
+{
+[; ;eusart.c: 117: void UART1_SendHex(unsigned int data)
+[; ;eusart.c: 118: {
+[e :U _UART1_SendHex ]
+"117
+[v _data `ui ~T0 @X0 1 r1 ]
+"118
+[f ]
+"119
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;eusart.c: 119: unsigned char temp;
+[; ;eusart.c: 120: EUSART_Write('0');
+"120
+[e ( _EUSART_Write (1 -> -> 48 `ui `uc ]
+[; ;eusart.c: 121: EUSART_Write('x');
+"121
+[e ( _EUSART_Write (1 -> -> 120 `ui `uc ]
+[; ;eusart.c: 122: temp = data>>4;
+"122
+[e = _temp -> >> _data -> 4 `i `uc ]
+[; ;eusart.c: 123: EUSART_Write(setHEX(temp));
+"123
+[e ( _EUSART_Write (1 ( _setHEX (1 _temp ]
+[; ;eusart.c: 124: temp = data&0x0F;
+"124
+[e = _temp -> & _data -> -> 15 `i `ui `uc ]
+[; ;eusart.c: 125: EUSART_Write(setHEX(temp));
+"125
+[e ( _EUSART_Write (1 ( _setHEX (1 _temp ]
+[; ;eusart.c: 128: }
+"128
+[e :UE 939 ]
+}
+"130
+[v _setHEX `(uc ~T0 @X0 1 ef1`uc ]
+"131
+{
+[; ;eusart.c: 130: unsigned char setHEX(unsigned char ch)
+[; ;eusart.c: 131: {
+[e :U _setHEX ]
+"130
+[v _ch `uc ~T0 @X0 1 r1 ]
+"131
+[f ]
+[; ;eusart.c: 132: if(ch >= 0 && ch <= 9)
+"132
+[e $ ! && >= -> _ch `i -> 0 `i <= -> _ch `i -> 9 `i 941  ]
+[; ;eusart.c: 133: {
+"133
+{
+[; ;eusart.c: 134: return (ch+'0');
+"134
+[e ) -> + -> _ch `ui -> 48 `ui `uc ]
+[e $UE 940  ]
+"135
+}
+[; ;eusart.c: 135: }
+[e $U 942  ]
+"136
+[e :U 941 ]
+[; ;eusart.c: 136: else
+[; ;eusart.c: 137: {
+"137
+{
+[; ;eusart.c: 138: switch(ch)
+"138
+[e $U 944  ]
+[; ;eusart.c: 139: {
+"139
+{
+[; ;eusart.c: 140: case 10:
+"140
+[e :U 945 ]
+[; ;eusart.c: 141: return 'A';
+"141
+[e ) -> -> 65 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 142: break;
+"142
+[e $U 943  ]
+[; ;eusart.c: 143: case 11:
+"143
+[e :U 946 ]
+[; ;eusart.c: 144: return 'B';
+"144
+[e ) -> -> 66 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 145: break;
+"145
+[e $U 943  ]
+[; ;eusart.c: 146: case 12:
+"146
+[e :U 947 ]
+[; ;eusart.c: 147: return 'C';
+"147
+[e ) -> -> 67 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 148: break;
+"148
+[e $U 943  ]
+[; ;eusart.c: 149: case 13:
+"149
+[e :U 948 ]
+[; ;eusart.c: 150: return 'D';
+"150
+[e ) -> -> 68 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 151: break;
+"151
+[e $U 943  ]
+[; ;eusart.c: 152: case 14:
+"152
+[e :U 949 ]
+[; ;eusart.c: 153: return 'E';
+"153
+[e ) -> -> 69 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 154: break;
+"154
+[e $U 943  ]
+[; ;eusart.c: 155: case 15:
+"155
+[e :U 950 ]
+[; ;eusart.c: 156: return 'F';
+"156
+[e ) -> -> 70 `ui `uc ]
+[e $UE 940  ]
+[; ;eusart.c: 157: break;
+"157
+[e $U 943  ]
+"158
+}
+[; ;eusart.c: 158: }
+[e $U 943  ]
+"138
+[e :U 944 ]
+[e [\ _ch , $ -> -> 10 `i `uc 945
+ , $ -> -> 11 `i `uc 946
+ , $ -> -> 12 `i `uc 947
+ , $ -> -> 13 `i `uc 948
+ , $ -> -> 14 `i `uc 949
+ , $ -> -> 15 `i `uc 950
+ 943 ]
+"158
+[e :U 943 ]
+"159
+}
+[e :U 942 ]
+[; ;eusart.c: 159: }
+[; ;eusart.c: 160: }
+"160
+[e :UE 940 ]
+}
+"163
+[v _printTable `(v ~T0 @X0 1 ef2`*uc`uc ]
+"164
+{
+[; ;eusart.c: 163: void printTable(uint8_t * table,uint8_t size)
+[; ;eusart.c: 164: {
+[e :U _printTable ]
+"163
+[v _table `*uc ~T0 @X0 1 r1 ]
+[v _size `uc ~T0 @X0 1 r2 ]
+"164
+[f ]
+"165
+[v _i `uc ~T0 @X0 1 a ]
+[; ;eusart.c: 165: uint8_t i ;
+[; ;eusart.c: 166: for(i = 0; i<size;i++)
+"166
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 955  ]
+"167
+[e :U 952 ]
+[; ;eusart.c: 167: {
+{
+[; ;eusart.c: 168: if (table[i] != (0))
+"168
+[e $ ! != -> *U + _table * -> _i `ux -> -> # *U _table `ui `ux `i -> 0 `i 956  ]
+[; ;eusart.c: 169: {
+"169
+{
+[; ;eusart.c: 170: UART1_SendHex(table[i]);
+"170
+[e ( _UART1_SendHex (1 -> *U + _table * -> _i `ux -> -> # *U _table `ui `ux `ui ]
+[; ;eusart.c: 171: UART1_SendStr(" ");
+"171
+[e ( _UART1_SendStr (1 :s 1C ]
+"172
+}
+[e :U 956 ]
+"173
+}
+"166
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 955 ]
+[e $ < -> _i `i -> _size `i 952  ]
+[e :U 953 ]
+"173
+}
+[; ;eusart.c: 172: }
+[; ;eusart.c: 173: }
+[; ;eusart.c: 174: }
+"174
+[e :UE 951 ]
+}
+[a 1C 32 0 ]
+

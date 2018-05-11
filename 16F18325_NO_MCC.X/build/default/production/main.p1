@@ -1,10 +1,19 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"6 interupt.h
-[s S920 `uc -> 3 `i `uc 1 ]
-[n S920 . data len ]
 [p mainexit ]
 "7 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"25 nrf24.h
+[v _set_csn `(v ~T0 @X0 0 ef2`uc`uc ]
+"24
+[v _set_ce `(v ~T0 @X0 0 ef2`uc`uc ]
+[v F7378 `(v ~T0 @X0 1 tf1`ul ]
+"153 /opt/microchip/xc8/v1.45/include/pic.h
+[v __delay `JF7378 ~T0 @X0 0 e ]
+[p i __delay ]
+"30 app.h
+[v _Init_RF_andPowerDown `(v ~T0 @X0 0 ef4`uc`uc`*uc`*uc ]
+"37 nrf24.h
+[v _nrf24_displayConfiguration `(v ~T0 @X0 0 ef1`uc ]
 "438 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S30 . RC0 RC1 RC2 RC3 RC4 RC5 ]
@@ -13,6 +22,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S29 . . ]
 "447
 [v _PORTCbits `VS29 ~T0 @X0 0 e@14 ]
+"46 nrf24.h
+[v _nrf24_send `(v ~T0 @X0 0 ef2`*uc`uc ]
+"47
+[v _nrf24_isSending `(uc ~T0 @X0 0 ef1`uc ]
+"49
+[v _nrf24_lastMessageStatus `(uc ~T0 @X0 0 ef1`uc ]
+"14 eusart.h
+[v _UART1_SendStr `(v ~T0 @X0 0 ef1`*Cuc ]
+"45 nrf24.h
+[v _nrf24_retransmissionCount `(uc ~T0 @X0 0 ef1`uc ]
+"15 eusart.h
+[v _UART1_SendDec `(v ~T0 @X0 0 ef1`ui ]
 "7 main.c
 [p x FEXTOSC=OFF ]
 "8
@@ -28,7 +49,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "15
 [p x PWRTE=OFF ]
 "16
-[p x WDTE=ON ]
+[p x WDTE=OFF ]
 "17
 [p x LPBOREN=OFF ]
 "18
@@ -7246,29 +7267,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
 [; ;system.h: 10: void PMD_Initialize(void);
 [; ;system.h: 11: void PIN_MANAGER_Initialize(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7281,12 +7320,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7302,12 +7347,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;BH1750.h: 8: uint16_t LireLux(int8_t resolution);
 [; ;BH1750.h: 9: void BH1750_Write(unsigned char data);
 [; ;BH1750.h: 10: uint16_t BH1750_Read(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 11: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 12: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 13: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 14: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 15: inline void EnableRXInterupts(void);
+[; ;interupt.h: 16: inline void DisableRXInterupts(void);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 11: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 12: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 13: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 14: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 15: inline void EnableRXInterupts(void);
+[; ;interupt.h: 16: inline void DisableRXInterupts(void);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7354,31 +7441,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;bme280.h: 86: float BME280_readTemperature(void);
 [; ;bme280.h: 87: float BME280_readHumidity(void);
 [; ;bme280.h: 88: float BME280_readPressure(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
-[; ;interupt.h: 6: typedef struct {
-[; ;interupt.h: 7: char data[3];
-[; ;interupt.h: 8: uint8_t len ;
-[; ;interupt.h: 9: } RXbuffer;
-"10 interupt.h
-[v _monBuffer `S920 ~T0 @X0 1 e ]
-[; ;interupt.h: 10: RXbuffer monBuffer ;
-[; ;interupt.h: 14: inline void EnableGlobalinterupts(void);
-[; ;interupt.h: 15: inline void DisableGlobalinterupts(void);
-[; ;interupt.h: 16: inline void EnablePeripheralInterupts(void);
-[; ;interupt.h: 17: inline void DisablePeripheralInterupts(void);
-[; ;interupt.h: 18: inline void EnableRXInterupts(void);
-[; ;interupt.h: 19: inline void DisableRXInterupts(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7425,7 +7499,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;nrf24.h: 33: void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
 [; ;nrf24.h: 34: void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
 [; ;nrf24.h: 35: void nrf24_powerUpRx(uint8_t radioNb);
-[; ;nrf24.h: 36: void nrf24_config(uint8_t channel, uint8_t pay_length,uint8_t radioNb);
+[; ;nrf24.h: 36: void nrf24_config(uint8_t channel,uint8_t radioNb);
 [; ;nrf24.h: 37: void nrf24_displayConfiguration(uint8_t radioNb);
 [; ;nrf24.h: 38: void clearTable(uint8_t* tab,uint8_t size);
 [; ;nrf24.h: 39: void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
@@ -7441,47 +7515,201 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;nrf24.h: 49: uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
 [; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
 [; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
-[v $root$_main `(v ~T0 @X0 0 e ]
-"43 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+[; ;nrf24.h: 52: void nrf24_setPayload(uint8_t pay_length);
+[; ;app.h: 7: typedef struct {
+[; ;app.h: 8: char data[3];
+[; ;app.h: 9: uint8_t len ;
+[; ;app.h: 10: } buffer;
+[; ;app.h: 12: typedef struct {
+[; ;app.h: 13: char data[14];
+[; ;app.h: 14: uint8_t len ;
+[; ;app.h: 15: } Airbuffer;
+[; ;app.h: 17: union unpackFloat {
+[; ;app.h: 18: float f;
+[; ;app.h: 19: uint8_t b[3];
+[; ;app.h: 20: };
+[; ;app.h: 22: union unpackU16 {
+[; ;app.h: 23: uint16_t u;
+[; ;app.h: 24: uint8_t b[2];
+[; ;app.h: 25: };
+[; ;app.h: 27: void interpretation(void);
+[; ;app.h: 28: void Bme280_OneMeasure(float *temp,float * humi,float *press);
+[; ;app.h: 29: void InitBME280andPowerDown(void);
+[; ;app.h: 30: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[]);
+[; ;app.h: 31: void AddTX_U16(uint16_t value );
+[; ;app.h: 32: void AddTXfloat(float the_float);
+[; ;app.h: 33: void AddTXAddr(uint8_t *addr);
+[; ;app.h: 34: void PushDataInTheAir(void);
+"42 main.c
+[v _lux `ui ~T0 @X0 1 e ]
+[; ;main.c: 42: uint16_t lux ;
+"43
+[v _temperature `f ~T0 @X0 1 e ]
+[; ;main.c: 43: float temperature ;
 "44
+[v _humidity `f ~T0 @X0 1 e ]
+[; ;main.c: 44: float humidity ;
+"45
+[v _pressure `f ~T0 @X0 1 e ]
+[; ;main.c: 45: float pressure ;
+"46
+[v _tx_address1 `uc ~T0 @X0 -> 5 `i e ]
+[i _tx_address1
+:U ..
+-> -> 231 `i `uc
+-> -> 231 `i `uc
+-> -> 231 `i `uc
+-> -> 231 `i `uc
+-> -> 231 `i `uc
+..
+]
+[; ;main.c: 46: uint8_t tx_address1[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+"47
+[v _rx_address1 `uc ~T0 @X0 -> 5 `i e ]
+[i _rx_address1
+:U ..
+-> -> 215 `i `uc
+-> -> 213 `i `uc
+-> -> 215 `i `uc
+-> -> 215 `i `uc
+-> -> 215 `i `uc
+..
+]
+[; ;main.c: 47: uint8_t rx_address1[5] = {0xD7,0xD5,0xD7,0xD7,0xD7};
+"49
+[v _device_address `uc ~T0 @X0 -> 5 `i e ]
+[i _device_address
+:U ..
+-> -> 170 `i `uc
+-> -> 187 `i `uc
+-> -> 204 `i `uc
+-> -> 221 `i `uc
+-> -> 238 `i `uc
+..
+]
+[; ;main.c: 49: uint8_t device_address[5] = {0xAA,0xBB,0xCC,0xDD,0xEE};
+"51
+[v _temp `uc ~T0 @X0 1 e ]
+[; ;main.c: 51: uint8_t temp ;
+[v $root$_main `(v ~T0 @X0 0 e ]
+"52
+[v _main `(v ~T0 @X0 1 ef ]
+"53
 {
-[; ;main.c: 43: void main()
-[; ;main.c: 44: {
+[; ;main.c: 52: void main()
+[; ;main.c: 53: {
 [e :U _main ]
 [f ]
-[; ;main.c: 46: SYSTEM_Initialize();
-"46
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 55: PORTCbits.RC3 = 0 ;
+[; ;main.c: 55: SYSTEM_Initialize();
 "55
-[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 56: asm("clrwdt");
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 56: set_csn(1,1);
 "56
-[; <" clrwdt ;# ">
-[; ;main.c: 57: asm("sleep");
+[e ( _set_csn (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 57: set_ce(0,1);
 "57
-[; <" sleep ;# ">
-[; ;main.c: 59: while(1)
+[e ( _set_ce (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 58: set_csn(1,2);
+"58
+[e ( _set_csn (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 59: set_ce(0,2);
 "59
-[e :U 923 ]
-[; ;main.c: 60: {
+[e ( _set_ce (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 60: _delay((unsigned long)((5500)*(2000000/4000.0)));
 "60
-{
-[; ;main.c: 61: asm("clrwdt");
-"61
-[; <" clrwdt ;# ">
-[; ;main.c: 62: PORTCbits.RC3 = 1 ;
+[e ( __delay (1 -> * -> -> 5500 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;main.c: 62: Init_RF_andPowerDown(20,14,tx_address1,rx_address1);
 "62
-[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+[e ( _Init_RF_andPowerDown (4 , , , -> -> 20 `i `uc -> -> 14 `i `uc &U _tx_address1 &U _rx_address1 ]
+[; ;main.c: 63: nrf24_displayConfiguration(1);
 "63
+[e ( _nrf24_displayConfiguration (1 -> -> 1 `i `uc ]
+[; ;main.c: 78: PORTCbits.RC3 = 0 ;
+"78
+[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 82: while(1)
+"82
+[e :U 926 ]
+[; ;main.c: 83: {
+"83
+{
+[; ;main.c: 84: nrf24_send(device_address,1);
+"84
+[e ( _nrf24_send (2 , &U _device_address -> -> 1 `i `uc ]
+[; ;main.c: 87: while(nrf24_isSending(1));
+"87
+[e $U 928  ]
+[e :U 929 ]
+[e :U 928 ]
+[e $ != -> ( _nrf24_isSending (1 -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 929  ]
+[e :U 930 ]
+[; ;main.c: 90: temp = nrf24_lastMessageStatus(1);
+"90
+[e = _temp ( _nrf24_lastMessageStatus (1 -> -> 1 `i `uc ]
+[; ;main.c: 92: if(temp == 0)
+"92
+[e $ ! == -> _temp `i -> 0 `i 931  ]
+[; ;main.c: 93: {
+"93
+{
+[; ;main.c: 94: UART1_SendStr("> Tranmission went OK\r\n");
+"94
+[e ( _UART1_SendStr (1 :s 1C ]
+"95
 }
-[e :U 922 ]
-"59
-[e $U 923  ]
-[e :U 924 ]
-[; ;main.c: 63: }
-[; ;main.c: 64: }
-"64
-[e :UE 921 ]
+[; ;main.c: 95: }
+[e $U 932  ]
+"96
+[e :U 931 ]
+[; ;main.c: 96: else if(temp == 1)
+[e $ ! == -> _temp `i -> 1 `i 933  ]
+[; ;main.c: 97: {
+"97
+{
+[; ;main.c: 98: UART1_SendStr("> Message is lost ...\r\n");
+"98
+[e ( _UART1_SendStr (1 :s 2C ]
+"99
 }
+[e :U 933 ]
+"101
+[e :U 932 ]
+[; ;main.c: 99: }
+[; ;main.c: 101: temp = nrf24_retransmissionCount(1);
+[e = _temp ( _nrf24_retransmissionCount (1 -> -> 1 `i `uc ]
+[; ;main.c: 102: UART1_SendStr("> Retranmission count:");
+"102
+[e ( _UART1_SendStr (1 :s 3C ]
+[; ;main.c: 103: UART1_SendDec(temp);
+"103
+[e ( _UART1_SendDec (1 -> _temp `ui ]
+[; ;main.c: 104: UART1_SendStr("\r\n");
+"104
+[e ( _UART1_SendStr (1 :s 4C ]
+[; ;main.c: 105: PORTCbits.RC3 = 1 ;
+"105
+[e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 107: _delay((unsigned long)((500)*(2000000/4000.0)));
+"107
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;main.c: 108: PORTCbits.RC3 = 0 ;
+"108
+[e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 110: _delay((unsigned long)((500)*(2000000/4000.0)));
+"110
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+"115
+}
+[e :U 925 ]
+"82
+[e $U 926  ]
+[e :U 927 ]
+[; ;main.c: 115: }
+[; ;main.c: 116: }
+"116
+[e :UE 924 ]
+}
+[a 3C 62 32 82 101 116 114 97 110 109 105 115 115 105 111 110 32 99 111 117 110 116 58 0 ]
+[a 1C 62 32 84 114 97 110 109 105 115 115 105 111 110 32 119 101 110 116 32 79 75 13 10 0 ]
+[a 2C 62 32 77 101 115 115 97 103 101 32 105 115 32 108 111 115 116 32 46 46 46 13 10 0 ]
+[a 4C 13 10 0 ]

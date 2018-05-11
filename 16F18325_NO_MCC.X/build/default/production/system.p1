@@ -7,21 +7,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
 "9
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
-"26 eusart.h
+"33 eusart.h
 [v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
 "16 I2C1.h
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 "17 system.c
-[c E7534 32 33 34 35 36 37 .. ]
-[n E7534 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E7542 0 128 .. ]
-[n E7542 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E7546 16 0 .. ]
-[n E7546 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E7550 0 64 .. ]
-[n E7550 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+[c E7561 32 33 34 35 36 37 .. ]
+[n E7561 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E7569 0 128 .. ]
+[n E7569 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E7573 16 0 .. ]
+[n E7573 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E7577 0 64 .. ]
+[n E7577 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
 "44 SPI2.h
-[v _spiInit `(v ~T0 @X0 0 ef4`E7534`E7542`E7546`E7550 ]
+[v _spiInit `(v ~T0 @X0 0 ef4`E7561`E7569`E7573`E7577 ]
 "11925 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [v _OSCCON1 `Vuc ~T0 @X0 0 e@2329 ]
 "12065
@@ -7389,23 +7389,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
 [; ;system.h: 10: void PMD_Initialize(void);
 [; ;system.h: 11: void PIN_MANAGER_Initialize(void);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7418,12 +7430,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
-[; ;eusart.h: 26: void EUSART_Initialize(void);
-[; ;eusart.h: 35: bool EUSART_is_tx_ready(void);
-[; ;eusart.h: 44: bool EUSART_is_rx_ready(void);
-[; ;eusart.h: 53: bool EUSART_is_tx_done(void);
-[; ;eusart.h: 60: uint8_t EUSART_Read(void);
-[; ;eusart.h: 69: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
 [; ;system.h: 7: void SYSTEM_Initialize(void);
 [; ;system.h: 8: void OSCILLATOR_Initialize(void);
 [; ;system.h: 9: void WDT_Initialize(void);
@@ -7458,6 +7476,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI2.h: 46: unsigned spiDataReady();
 [; ;SPI2.h: 47: uint8_t spiRead();
 [; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
+[; ;nrf24.h: 24: void set_ce(uint8_t state,uint8_t radioNb);
+[; ;nrf24.h: 25: void set_csn(uint8_t state,uint8_t bus);
+[; ;nrf24.h: 26: void set_sck(uint8_t state);
+[; ;nrf24.h: 27: void set_mosi(uint8_t state);
+[; ;nrf24.h: 28: uint8_t get_miso();
+[; ;nrf24.h: 29: uint8_t spi_transfer(uint8_t tx);
+[; ;nrf24.h: 30: void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+[; ;nrf24.h: 31: void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+[; ;nrf24.h: 32: void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+[; ;nrf24.h: 33: void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+[; ;nrf24.h: 34: void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+[; ;nrf24.h: 35: void nrf24_powerUpRx(uint8_t radioNb);
+[; ;nrf24.h: 36: void nrf24_config(uint8_t channel,uint8_t radioNb);
+[; ;nrf24.h: 37: void nrf24_displayConfiguration(uint8_t radioNb);
+[; ;nrf24.h: 38: void clearTable(uint8_t* tab,uint8_t size);
+[; ;nrf24.h: 39: void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+[; ;nrf24.h: 40: void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+[; ;nrf24.h: 41: uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+[; ;nrf24.h: 42: uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+[; ;nrf24.h: 43: uint8_t nrf24_payloadLength(uint8_t RadioNb);
+[; ;nrf24.h: 44: void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+[; ;nrf24.h: 45: uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+[; ;nrf24.h: 46: void nrf24_send(uint8_t* value,uint8_t RadioNb);
+[; ;nrf24.h: 47: uint8_t nrf24_isSending(uint8_t RadioNb);
+[; ;nrf24.h: 48: uint8_t nrf24_getStatus(uint8_t RadioNb);
+[; ;nrf24.h: 49: uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+[; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
+[; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
+[; ;nrf24.h: 52: void nrf24_setPayload(uint8_t pay_length);
 "7 system.c
 [v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
 "8
@@ -7486,7 +7533,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
 [; ;system.c: 17: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 "17
-[e ( _spiInit (4 , , , . `E7534 0 . `E7542 0 . `E7546 1 . `E7550 1 ]
+[e ( _spiInit (4 , , , . `E7561 0 . `E7569 0 . `E7573 1 . `E7577 1 ]
 [; ;system.c: 19: }
 "19
 [e :UE 919 ]
@@ -7508,142 +7555,142 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 28: OSCEN = 0x00;
 "28
 [e = _OSCEN -> -> 0 `i `uc ]
-[; ;system.c: 31: OSCFRQ = 0x01;
-"31
+[; ;system.c: 30: OSCFRQ = 0x01;
+"30
 [e = _OSCFRQ -> -> 1 `i `uc ]
-[; ;system.c: 33: OSCTUNE = 0x00;
-"33
+[; ;system.c: 32: OSCTUNE = 0x00;
+"32
 [e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;system.c: 34: }
-"34
+[; ;system.c: 33: }
+"33
 [e :UE 920 ]
 }
-"36
+"35
 [v _WDT_Initialize `(v ~T0 @X0 1 ef ]
-"37
+"36
 {
-[; ;system.c: 36: void WDT_Initialize(void)
-[; ;system.c: 37: {
+[; ;system.c: 35: void WDT_Initialize(void)
+[; ;system.c: 36: {
 [e :U _WDT_Initialize ]
 [f ]
-[; ;system.c: 39: asm("clrwdt");
-"39
+[; ;system.c: 38: asm("clrwdt");
+"38
 [; <" clrwdt ;# ">
-[; ;system.c: 40: WDTCON = 0x1B;
-"40
+[; ;system.c: 39: WDTCON = 0x1B;
+"39
 [e = _WDTCON -> -> 27 `i `uc ]
-[; ;system.c: 41: }
-"41
+[; ;system.c: 40: }
+"40
 [e :UE 921 ]
 }
-"43
+"42
 [v _PMD_Initialize `(v ~T0 @X0 1 ef ]
-"44
+"43
 {
-[; ;system.c: 43: void PMD_Initialize(void)
-[; ;system.c: 44: {
+[; ;system.c: 42: void PMD_Initialize(void)
+[; ;system.c: 43: {
 [e :U _PMD_Initialize ]
 [f ]
-[; ;system.c: 48: PMD0 = 0x07;
-"48
+[; ;system.c: 47: PMD0 = 0x07;
+"47
 [e = _PMD0 -> -> 7 `i `uc ]
-[; ;system.c: 50: PMD1 = 0xFC;
-"50
+[; ;system.c: 49: PMD1 = 0xFC;
+"49
 [e = _PMD1 -> -> 252 `i `uc ]
-[; ;system.c: 52: PMD2 = 0x66;
-"52
+[; ;system.c: 51: PMD2 = 0x66;
+"51
 [e = _PMD2 -> -> 102 `i `uc ]
-[; ;system.c: 54: PMD3 = 0xFF;
-"54
+[; ;system.c: 53: PMD3 = 0xFF;
+"53
 [e = _PMD3 -> -> 255 `i `uc ]
-[; ;system.c: 56: PMD4 = 0x00;
-"56
+[; ;system.c: 55: PMD4 = 0x00;
+"55
 [e = _PMD4 -> -> 0 `i `uc ]
-[; ;system.c: 58: PMD5 = 0x1F;
-"58
+[; ;system.c: 57: PMD5 = 0x1F;
+"57
 [e = _PMD5 -> -> 31 `i `uc ]
-[; ;system.c: 59: }
-"59
+[; ;system.c: 58: }
+"58
 [e :UE 922 ]
 }
-"61
+"60
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
-"62
+"61
 {
-[; ;system.c: 61: void PIN_MANAGER_Initialize(void)
-[; ;system.c: 62: {
+[; ;system.c: 60: void PIN_MANAGER_Initialize(void)
+[; ;system.c: 61: {
 [e :U _PIN_MANAGER_Initialize ]
 [f ]
-[; ;system.c: 66: LATA = 0x00;
-"66
+[; ;system.c: 65: LATA = 0x00;
+"65
 [e = _LATA -> -> 0 `i `uc ]
-[; ;system.c: 67: LATC = 0x00;
-"67
+[; ;system.c: 66: LATC = 0x00;
+"66
 [e = _LATC -> -> 0 `i `uc ]
-[; ;system.c: 72: TRISA = 0x37;
-"72
+[; ;system.c: 71: TRISA = 0x37;
+"71
 [e = _TRISA -> -> 55 `i `uc ]
-[; ;system.c: 73: TRISC = 0x2A;
-"73
+[; ;system.c: 72: TRISC = 0x2A;
+"72
 [e = _TRISC -> -> 42 `i `uc ]
-[; ;system.c: 74: TRISAbits.TRISA1 = 0 ;
-"74
+[; ;system.c: 73: TRISAbits.TRISA1 = 0 ;
+"73
 [e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-[; ;system.c: 75: TRISAbits.TRISA2 = 0 ;
-"75
+[; ;system.c: 74: TRISAbits.TRISA2 = 0 ;
+"74
 [e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
-[; ;system.c: 76: TRISCbits.TRISC3 = 0 ;
-"76
+[; ;system.c: 75: TRISCbits.TRISC3 = 0 ;
+"75
 [e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
-[; ;system.c: 85: ANSELC = 0x00;
-"85
+[; ;system.c: 84: ANSELC = 0x00;
+"84
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;system.c: 86: ANSELA = 0x00;
-"86
+[; ;system.c: 85: ANSELA = 0x00;
+"85
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;system.c: 92: WPUA = 0x00;
-"92
+[; ;system.c: 91: WPUA = 0x00;
+"91
 [e = _WPUA -> -> 0 `i `uc ]
-[; ;system.c: 93: WPUC = 0x00;
-"93
+[; ;system.c: 92: WPUC = 0x00;
+"92
 [e = _WPUC -> -> 0 `i `uc ]
-[; ;system.c: 98: ODCONA = 0x00;
-"98
+[; ;system.c: 97: ODCONA = 0x00;
+"97
 [e = _ODCONA -> -> 0 `i `uc ]
-[; ;system.c: 99: ODCONC = 0x00;
-"99
+[; ;system.c: 98: ODCONC = 0x00;
+"98
 [e = _ODCONC -> -> 0 `i `uc ]
-[; ;system.c: 100: SSP1DATPPSbits.SSP1DATPPS = 0x04;
-"100
+[; ;system.c: 99: SSP1DATPPSbits.SSP1DATPPS = 0x04;
+"99
 [e = . . _SSP1DATPPSbits 0 0 -> -> 4 `i `uc ]
-[; ;system.c: 101: SSP1CLKPPSbits.SSP1CLKPPS = 0x05;
-"101
+[; ;system.c: 100: SSP1CLKPPSbits.SSP1CLKPPS = 0x05;
+"100
 [e = . . _SSP1CLKPPSbits 0 0 -> -> 5 `i `uc ]
-[; ;system.c: 102: RXPPSbits.RXPPS = 0x15;
-"102
+[; ;system.c: 101: RXPPSbits.RXPPS = 0x15;
+"101
 [e = . . _RXPPSbits 0 0 -> -> 21 `i `uc ]
-[; ;system.c: 103: RA4PPSbits.RA4PPS = 0x19;
-"103
+[; ;system.c: 102: RA4PPSbits.RA4PPS = 0x19;
+"102
 [e = . . _RA4PPSbits 0 0 -> -> 25 `i `uc ]
-[; ;system.c: 104: RC4PPSbits.RC4PPS = 0x14;
-"104
+[; ;system.c: 103: RC4PPSbits.RC4PPS = 0x14;
+"103
 [e = . . _RC4PPSbits 0 0 -> -> 20 `i `uc ]
-[; ;system.c: 106: RC0PPSbits.RC0PPS = 0x1A;
-"106
+[; ;system.c: 105: RC0PPSbits.RC0PPS = 0x1A;
+"105
 [e = . . _RC0PPSbits 0 0 -> -> 26 `i `uc ]
-[; ;system.c: 107: RC2PPSbits.RC2PPS = 0x1B;
-"107
+[; ;system.c: 106: RC2PPSbits.RC2PPS = 0x1B;
+"106
 [e = . . _RC2PPSbits 0 0 -> -> 27 `i `uc ]
-[; ;system.c: 108: SSP2CLKPPSbits.SSP2CLKPPS = 0x10;
-"108
+[; ;system.c: 107: SSP2CLKPPSbits.SSP2CLKPPS = 0x10;
+"107
 [e = . . _SSP2CLKPPSbits 0 0 -> -> 16 `i `uc ]
-[; ;system.c: 109: SSP2DATPPSbits.SSP2DATPPS = 0x11;
-"109
+[; ;system.c: 108: SSP2DATPPSbits.SSP2DATPPS = 0x11;
+"108
 [e = . . _SSP2DATPPSbits 0 0 -> -> 17 `i `uc ]
-[; ;system.c: 110: RA5PPSbits.RA5PPS = 0x18;
-"110
+[; ;system.c: 109: RA5PPSbits.RA5PPS = 0x18;
+"109
 [e = . . _RA5PPSbits 0 0 -> -> 24 `i `uc ]
-[; ;system.c: 112: }
-"112
+[; ;system.c: 111: }
+"111
 [e :UE 923 ]
 }

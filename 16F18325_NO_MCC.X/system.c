@@ -2,7 +2,7 @@
 
 #include "system.h"
 #include "I2C1.h"
-#include "SPI2.h"
+#include "nrf24.h"
 
 void SYSTEM_Initialize(void)
 {

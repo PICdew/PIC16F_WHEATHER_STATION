@@ -9,7 +9,7 @@
 #define NRF24_TRANSMISSON_OK 0
 #define NRF24_MESSAGE_LOST   1
 
-//#define PAYLOAD_LEN 4
+#define PAYLOAD_LEN 14
 
 #define csnPin1 PORTAbits.RA2
 #define cePin1  PORTAbits.RA1
