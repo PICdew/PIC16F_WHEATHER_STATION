@@ -7233,6 +7233,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 [; ;bme280.h: 46: struct BME280_Calibration_Data
 [; ;bme280.h: 47: {
 [; ;bme280.h: 50: uint16_t dig_T1;
@@ -7273,9 +7276,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "5
 [v _t_fine `l ~T0 @X0 1 e ]
 [; ;bme280.c: 5: int32_t t_fine;
-[v F7548 `(uc ~T0 @X0 1 tf1`uc ]
+[v F7559 `(uc ~T0 @X0 1 tf1`uc ]
 "7
-[v _BME280_read8 `TF7548 ~T0 @X0 1 e ]
+[v _BME280_read8 `TF7559 ~T0 @X0 1 e ]
 "8
 {
 [; ;bme280.c: 7: inline uint8_t BME280_read8(uint8_t reg)
@@ -7332,9 +7335,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "25
 [e :UE 920 ]
 }
-[v F7555 `(ui ~T0 @X0 1 tf1`uc ]
+[v F7566 `(ui ~T0 @X0 1 tf1`uc ]
 "27
-[v _BME280_read16 `TF7555 ~T0 @X0 1 e ]
+[v _BME280_read16 `TF7566 ~T0 @X0 1 e ]
 "28
 {
 [; ;bme280.c: 27: inline uint16_t BME280_read16(uint8_t reg)
@@ -7397,9 +7400,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "47
 [e :UE 921 ]
 }
-[v F7562 `(ul ~T0 @X0 1 tf1`uc ]
+[v F7573 `(ul ~T0 @X0 1 tf1`uc ]
 "49
-[v _BME280_read24 `TF7562 ~T0 @X0 1 e ]
+[v _BME280_read24 `TF7573 ~T0 @X0 1 e ]
 "50
 {
 [; ;bme280.c: 49: inline uint32_t BME280_read24(uint8_t reg)
@@ -7528,9 +7531,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "91
 [e :UE 925 ]
 }
-[v F7552 `(c ~T0 @X0 1 tf2`uc`uc ]
+[v F7563 `(c ~T0 @X0 1 tf2`uc`uc ]
 "93
-[v _BME280_write8 `TF7552 ~T0 @X0 1 e ]
+[v _BME280_write8 `TF7563 ~T0 @X0 1 e ]
 "94
 {
 [; ;bme280.c: 93: inline int8_t BME280_write8(uint8_t reg,uint8_t value)

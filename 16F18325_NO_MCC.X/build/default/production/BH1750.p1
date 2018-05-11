@@ -7234,6 +7234,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 [; ;BH1750.h: 8: uint16_t LireLux(int8_t resolution);
 [; ;BH1750.h: 9: void BH1750_Write(unsigned char data);
 [; ;BH1750.h: 10: uint16_t BH1750_Read(void);

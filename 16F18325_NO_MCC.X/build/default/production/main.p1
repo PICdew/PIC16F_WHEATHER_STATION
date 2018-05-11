@@ -7320,6 +7320,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 [; ;eusart.h: 13: void SendUART1(unsigned int data);
 [; ;eusart.h: 14: void UART1_SendStr(const char * s);
 [; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
@@ -7344,6 +7347,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 [; ;BH1750.h: 8: uint16_t LireLux(int8_t resolution);
 [; ;BH1750.h: 9: void BH1750_Write(unsigned char data);
 [; ;BH1750.h: 10: uint16_t BH1750_Read(void);
@@ -7407,6 +7413,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
 [; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 [; ;bme280.h: 46: struct BME280_Calibration_Data
 [; ;bme280.h: 47: {
 [; ;bme280.h: 50: uint16_t dig_T1;
@@ -7624,89 +7633,89 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 63: nrf24_displayConfiguration(1);
 "63
 [e ( _nrf24_displayConfiguration (1 -> -> 1 `i `uc ]
-[; ;main.c: 78: PORTCbits.RC3 = 0 ;
-"78
+[; ;main.c: 67: PORTCbits.RC3 = 0 ;
+"67
 [e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 82: while(1)
-"82
+[; ;main.c: 71: while(1)
+"71
 [e :U 926 ]
-[; ;main.c: 83: {
-"83
+[; ;main.c: 72: {
+"72
 {
-[; ;main.c: 84: nrf24_send(device_address,1);
-"84
+[; ;main.c: 73: nrf24_send(device_address,1);
+"73
 [e ( _nrf24_send (2 , &U _device_address -> -> 1 `i `uc ]
-[; ;main.c: 87: while(nrf24_isSending(1));
-"87
+[; ;main.c: 76: while(nrf24_isSending(1));
+"76
 [e $U 928  ]
 [e :U 929 ]
 [e :U 928 ]
 [e $ != -> ( _nrf24_isSending (1 -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 929  ]
 [e :U 930 ]
-[; ;main.c: 90: temp = nrf24_lastMessageStatus(1);
-"90
+[; ;main.c: 79: temp = nrf24_lastMessageStatus(1);
+"79
 [e = _temp ( _nrf24_lastMessageStatus (1 -> -> 1 `i `uc ]
-[; ;main.c: 92: if(temp == 0)
-"92
+[; ;main.c: 81: if(temp == 0)
+"81
 [e $ ! == -> _temp `i -> 0 `i 931  ]
-[; ;main.c: 93: {
-"93
+[; ;main.c: 82: {
+"82
 {
-[; ;main.c: 94: UART1_SendStr("> Tranmission went OK\r\n");
-"94
+[; ;main.c: 83: UART1_SendStr("> Tranmission went OK\r\n");
+"83
 [e ( _UART1_SendStr (1 :s 1C ]
-"95
+"84
 }
-[; ;main.c: 95: }
+[; ;main.c: 84: }
 [e $U 932  ]
-"96
+"85
 [e :U 931 ]
-[; ;main.c: 96: else if(temp == 1)
+[; ;main.c: 85: else if(temp == 1)
 [e $ ! == -> _temp `i -> 1 `i 933  ]
-[; ;main.c: 97: {
-"97
+[; ;main.c: 86: {
+"86
 {
-[; ;main.c: 98: UART1_SendStr("> Message is lost ...\r\n");
-"98
+[; ;main.c: 87: UART1_SendStr("> Message is lost ...\r\n");
+"87
 [e ( _UART1_SendStr (1 :s 2C ]
-"99
+"88
 }
 [e :U 933 ]
-"101
+"90
 [e :U 932 ]
-[; ;main.c: 99: }
-[; ;main.c: 101: temp = nrf24_retransmissionCount(1);
+[; ;main.c: 88: }
+[; ;main.c: 90: temp = nrf24_retransmissionCount(1);
 [e = _temp ( _nrf24_retransmissionCount (1 -> -> 1 `i `uc ]
-[; ;main.c: 102: UART1_SendStr("> Retranmission count:");
-"102
+[; ;main.c: 91: UART1_SendStr("> Retranmission count:");
+"91
 [e ( _UART1_SendStr (1 :s 3C ]
-[; ;main.c: 103: UART1_SendDec(temp);
-"103
+[; ;main.c: 92: UART1_SendDec(temp);
+"92
 [e ( _UART1_SendDec (1 -> _temp `ui ]
-[; ;main.c: 104: UART1_SendStr("\r\n");
-"104
+[; ;main.c: 93: UART1_SendStr("\r\n");
+"93
 [e ( _UART1_SendStr (1 :s 4C ]
-[; ;main.c: 105: PORTCbits.RC3 = 1 ;
-"105
+[; ;main.c: 94: PORTCbits.RC3 = 1 ;
+"94
 [e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 107: _delay((unsigned long)((500)*(2000000/4000.0)));
-"107
+[; ;main.c: 96: _delay((unsigned long)((500)*(2000000/4000.0)));
+"96
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;main.c: 108: PORTCbits.RC3 = 0 ;
-"108
+[; ;main.c: 97: PORTCbits.RC3 = 0 ;
+"97
 [e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 110: _delay((unsigned long)((500)*(2000000/4000.0)));
-"110
+[; ;main.c: 99: _delay((unsigned long)((500)*(2000000/4000.0)));
+"99
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-"115
+"104
 }
 [e :U 925 ]
-"82
+"71
 [e $U 926  ]
 [e :U 927 ]
-[; ;main.c: 115: }
-[; ;main.c: 116: }
-"116
+[; ;main.c: 104: }
+[; ;main.c: 105: }
+"105
 [e :UE 924 ]
 }
 [a 3C 62 32 82 101 116 114 97 110 109 105 115 115 105 111 110 32 99 111 117 110 116 58 0 ]

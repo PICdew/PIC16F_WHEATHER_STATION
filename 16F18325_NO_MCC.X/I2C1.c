@@ -101,14 +101,14 @@ int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8
   }
   for(i=0;i<dataIn_len;i++) // on envoie les données en fonction de la longeur et on verifie que l'esclave acquitte chaque octet 
   {
-    if(I2C_Master_Write_V2(*dataIn[i])) // si 1 --> Acknowledge was not received (datasheet p362)
+    if(I2C_Master_Write_V2(dataIn[i])) // si 1 --> Acknowledge was not received (datasheet p362)
     {
       I2C_Master_Stop(); // on stop
       return -1 ; // on exit avec erreur 
     }
   }
   
- I2C_Master_ReStart() // restart 
+ I2C_Master_ReStart(); // restart 
 
  if(I2C_Master_Write_V2(((I2C_Slave_7bitAddr<<1)|0x01))) // addresse en lecture 
   {
@@ -120,7 +120,7 @@ int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8
     I2C_Master_Wait();
     SSP1CON2bits.RCEN = 1;
     I2C_Master_Wait();
-    *dataOut[i] = SSPBUF;      //Read data from SSPBUF
+    dataOut[i] = SSPBUF;      //Read data from SSPBUF
     I2C_Master_Wait();
     if(i == (dataOut_len-1)) // si on recoit le dernier on NACK
     {
@@ -129,7 +129,7 @@ int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8
     }
     else // sinon ACk 
     {
-       SSP1CON2bits.ACKDT = 0   //Acknowledge bit
+       SSP1CON2bits.ACKDT = 0;   //Acknowledge bit
        SSP1CON2bits.ACKEN = 1; 
     }
    

@@ -9672,6 +9672,9 @@ void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
+void I2C_Master_ReStart();
+int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 
 # 13 "eusart.h"
 void SendUART1(unsigned int data);
@@ -9714,6 +9717,9 @@ void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
+void I2C_Master_ReStart();
+int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 
 # 8 "BH1750.h"
 uint16_t LireLux(int8_t resolution);
@@ -9829,6 +9835,9 @@ void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
 int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
+void I2C_Master_ReStart();
+int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
 
 # 46 "bme280.h"
 struct BME280_Calibration_Data
@@ -10029,7 +10038,8 @@ _delay((unsigned long)((5500)*(2000000/4000.0)));
 Init_RF_andPowerDown(20,14,tx_address1,rx_address1);
 nrf24_displayConfiguration(1);
 
-# 78
+
+
 PORTCbits.RC3 = 0 ;
 
 
