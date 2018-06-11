@@ -28,6 +28,7 @@ void InitBME280andPowerDown(void)
 void Bme280_OneMeasure(float *temp,float * humi,float *press)
 {
 	 BME280_goForceMode();
+     __delay_ms(200);
      *temp = BME280_readTemperature();
      *humi = BME280_readHumidity();
      *press = BME280_readPressure();
@@ -81,6 +82,29 @@ void AddTXAddr(uint8_t *addr)
 
 void PushDataInTheAir(void)
 {
-    nrf24_send(TXbuffer.data,1);
+    nrf24_send(TXbuffer.data,1);        
+    TXbuffer.len = 0 ;   
+        uint8_t temp ;
+        while(nrf24_isSending(1));
+
+   
+        temp = nrf24_lastMessageStatus(1);
+
+        if(temp == NRF24_TRANSMISSON_OK)
+        {                    
+           UART1_SendStr("> Tranmission went OK\r\n");
+        }
+        else if(temp == NRF24_MESSAGE_LOST)
+        {                    
+            UART1_SendStr("> Message is lost ...\r\n");    
+        }
+        
+        temp = nrf24_retransmissionCount(1);
+		UART1_SendStr("> Retranmission count:");
+        UART1_SendDec(temp);
+		UART1_SendStr("\r\n"); 
+        __delay_ms(1);
+        nrf24_powerDown(1);
+        
 }
 

@@ -12,7 +12,7 @@
 
 #pragma config MCLRE = ON
 #pragma config PWRTE = OFF
-#pragma config WDTE = OFF
+#pragma config WDTE = ON
 #pragma config LPBOREN = OFF
 #pragma config BOREN = ON
 #pragma config BORV = LOW
@@ -9674,7 +9674,7 @@ int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
 void I2C_Master_ReStart();
 int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 
 # 13 "eusart.h"
 void SendUART1(unsigned int data);
@@ -9719,7 +9719,7 @@ int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
 void I2C_Master_ReStart();
 int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 
 # 8 "BH1750.h"
 uint16_t LireLux(int8_t resolution);
@@ -9837,7 +9837,7 @@ int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
 void I2C_Master_ReStart();
 int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 
 # 46 "bme280.h"
 struct BME280_Calibration_Data
@@ -10024,7 +10024,7 @@ uint8_t rx_address1[5] = {0xD7,0xD5,0xD7,0xD7,0xD7};
 
 uint8_t device_address[5] = {0xAA,0xBB,0xCC,0xDD,0xEE};
 
-uint8_t temp ;
+
 void main()
 {
 
@@ -10033,8 +10033,8 @@ set_csn(1,1);
 set_ce(0,1);
 set_csn(1,2);
 set_ce(0,2);
-_delay((unsigned long)((5500)*(2000000/4000.0)));
-
+_delay((unsigned long)((2000)*(2000000/4000.0)));
+InitBME280andPowerDown();
 Init_RF_andPowerDown(20,14,tx_address1,rx_address1);
 nrf24_displayConfiguration(1);
 
@@ -10042,40 +10042,23 @@ nrf24_displayConfiguration(1);
 
 PORTCbits.RC3 = 0 ;
 
-
-
+# 74
 while(1)
 {
-nrf24_send(device_address,1);
-
-
-while(nrf24_isSending(1));
-
-
-temp = nrf24_lastMessageStatus(1);
-
-if(temp == 0)
-{
-UART1_SendStr("> Tranmission went OK\r\n");
-}
-else if(temp == 1)
-{
-UART1_SendStr("> Message is lost ...\r\n");
-}
-
-temp = nrf24_retransmissionCount(1);
-UART1_SendStr("> Retranmission count:");
-UART1_SendDec(temp);
-UART1_SendStr("\r\n");
-PORTCbits.RC3 = 1 ;
-
-_delay((unsigned long)((500)*(2000000/4000.0)));
-PORTCbits.RC3 = 0 ;
-
-_delay((unsigned long)((500)*(2000000/4000.0)));
+asm("clrwdt");
+Bme280_OneMeasure(&temperature,&humidity,&pressure);
 
 
 
+AddTXAddr(device_address);
+AddTXfloat(temperature);
+AddTXfloat(humidity);
+AddTXfloat(pressure);
 
+PushDataInTheAir();
+
+asm("sleep");
+
+# 104
 }
 }

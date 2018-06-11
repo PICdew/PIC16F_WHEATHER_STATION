@@ -90,7 +90,7 @@ int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len)
 }
 
 
-int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len)
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time)
 {
   uint8_t i ;
   I2C_Master_Start();  // start condtion 
@@ -107,8 +107,9 @@ int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8
       return -1 ; // on exit avec erreur 
     }
   }
-  
- I2C_Master_ReStart(); // restart 
+  I2C_Master_Stop();
+  __delay_ms(wait_time);
+ I2C_Master_Start(); // restart 
 
  if(I2C_Master_Write_V2(((I2C_Slave_7bitAddr<<1)|0x01))) // addresse en lecture 
   {

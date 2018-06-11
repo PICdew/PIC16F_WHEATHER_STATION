@@ -9,10 +9,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _I2C_Master_Read `(us ~T0 @X0 0 ef1`us ]
 "17
 [v _I2C_Master_Wait `(v ~T0 @X0 0 ef ]
-[v F7378 `(v ~T0 @X0 1 tf1`ul ]
-"153 /opt/microchip/xc8/v1.45/include/pic.h
-[v __delay `JF7378 ~T0 @X0 0 e ]
-[p i __delay ]
+"22 app.h
+[u S923 `ui 1 `uc -> 2 `i ]
+[n S923 unpackU16 u b ]
+"24 I2C1.h
+[v _I2C_Write_data `(c ~T0 @X0 0 ef3`uc`*uc`uc ]
+"25
+[v _I2C_Write_data_then_Read `(c ~T0 @X0 0 ef6`uc`*uc`uc`*uc`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7236,162 +7239,340 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
 [; ;I2C1.h: 23: void I2C_Master_ReStart();
 [; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 [; ;BH1750.h: 8: uint16_t LireLux(int8_t resolution);
 [; ;BH1750.h: 9: void BH1750_Write(unsigned char data);
 [; ;BH1750.h: 10: uint16_t BH1750_Read(void);
-"3 BH1750.c
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;interupt.h: 11: inline void EnableGlobalinterupts(void);
+[; ;interupt.h: 12: inline void DisableGlobalinterupts(void);
+[; ;interupt.h: 13: inline void EnablePeripheralInterupts(void);
+[; ;interupt.h: 14: inline void DisablePeripheralInterupts(void);
+[; ;interupt.h: 15: inline void EnableRXInterupts(void);
+[; ;interupt.h: 16: inline void DisableRXInterupts(void);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;system.h: 7: void SYSTEM_Initialize(void);
+[; ;system.h: 8: void OSCILLATOR_Initialize(void);
+[; ;system.h: 9: void WDT_Initialize(void);
+[; ;system.h: 10: void PMD_Initialize(void);
+[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;I2C1.h: 16: void I2C_Master_Init(const unsigned long c);
+[; ;I2C1.h: 17: void I2C_Master_Wait();
+[; ;I2C1.h: 18: void I2C_Master_Start();
+[; ;I2C1.h: 19: void I2C_Master_Stop();
+[; ;I2C1.h: 20: void I2C_Master_Write(unsigned d);
+[; ;I2C1.h: 21: int8_t I2C_Master_Write_V2(unsigned d);
+[; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
+[; ;I2C1.h: 23: void I2C_Master_ReStart();
+[; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
+[; ;bme280.h: 46: struct BME280_Calibration_Data
+[; ;bme280.h: 47: {
+[; ;bme280.h: 50: uint16_t dig_T1;
+[; ;bme280.h: 51: int16_t dig_T2;
+[; ;bme280.h: 52: int16_t dig_T3;
+[; ;bme280.h: 54: uint16_t dig_P1;
+[; ;bme280.h: 55: int16_t dig_P2;
+[; ;bme280.h: 56: int16_t dig_P3;
+[; ;bme280.h: 57: int16_t dig_P4;
+[; ;bme280.h: 58: int16_t dig_P5;
+[; ;bme280.h: 59: int16_t dig_P6;
+[; ;bme280.h: 60: int16_t dig_P7;
+[; ;bme280.h: 61: int16_t dig_P8;
+[; ;bme280.h: 62: int16_t dig_P9;
+[; ;bme280.h: 64: uint8_t dig_H1;
+[; ;bme280.h: 65: int16_t dig_H2;
+[; ;bme280.h: 66: uint8_t dig_H3;
+[; ;bme280.h: 67: int16_t dig_H4;
+[; ;bme280.h: 68: int16_t dig_H5;
+[; ;bme280.h: 69: int8_t dig_H6;
+[; ;bme280.h: 71: };
+[; ;bme280.h: 75: int8_t BME280_init(void);
+[; ;bme280.h: 76: inline uint8_t BME280_read8(uint8_t reg);
+[; ;bme280.h: 77: inline int8_t BME280_write8(uint8_t reg,uint8_t value);
+[; ;bme280.h: 78: inline uint16_t BME280_read16(uint8_t reg);
+[; ;bme280.h: 79: uint16_t BME280_read16_LE(uint8_t reg);
+[; ;bme280.h: 80: int16_t BME280_readS16(uint8_t reg);
+[; ;bme280.h: 81: inline uint32_t BME280_read24(uint8_t reg);
+[; ;bme280.h: 82: int16_t BME280_readS16_LE(uint8_t reg);
+[; ;bme280.h: 83: void readSensorCoefficients(void);
+[; ;bme280.h: 85: void BME280_goForceMode(void);
+[; ;bme280.h: 86: float BME280_readTemperature(void);
+[; ;bme280.h: 87: float BME280_readHumidity(void);
+[; ;bme280.h: 88: float BME280_readPressure(void);
+[; ;eusart.h: 13: void SendUART1(unsigned int data);
+[; ;eusart.h: 14: void UART1_SendStr(const char * s);
+[; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
+[; ;eusart.h: 16: void UART1_SendHex(unsigned int data);
+[; ;eusart.h: 17: unsigned char setHEX(unsigned char ch);
+[; ;eusart.h: 18: void printTable(uint8_t * table,uint8_t size);
+[; ;eusart.h: 33: void EUSART_Initialize(void);
+[; ;eusart.h: 42: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 51: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 60: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 67: uint8_t EUSART_Read(void);
+[; ;eusart.h: 76: void EUSART_Write(uint8_t txData);
+[; ;system.h: 7: void SYSTEM_Initialize(void);
+[; ;system.h: 8: void OSCILLATOR_Initialize(void);
+[; ;system.h: 9: void WDT_Initialize(void);
+[; ;system.h: 10: void PMD_Initialize(void);
+[; ;system.h: 11: void PIN_MANAGER_Initialize(void);
+[; ;SPI2.h: 15: typedef enum
+[; ;SPI2.h: 16: {
+[; ;SPI2.h: 17: SPI_MASTER_OSC_DIV4 = 0b00100000,
+[; ;SPI2.h: 18: SPI_MASTER_OSC_DIV16 = 0b00100001,
+[; ;SPI2.h: 19: SPI_MASTER_OSC_DIV64 = 0b00100010,
+[; ;SPI2.h: 20: SPI_MASTER_TMR2 = 0b00100011,
+[; ;SPI2.h: 21: SPI_SLAVE_SS_EN = 0b00100100,
+[; ;SPI2.h: 22: SPI_SLAVE_SS_DIS = 0b00100101
+[; ;SPI2.h: 23: }Spi_Type;
+[; ;SPI2.h: 25: typedef enum
+[; ;SPI2.h: 26: {
+[; ;SPI2.h: 27: SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+[; ;SPI2.h: 28: SPI_DATA_SAMPLE_END = 0b10000000
+[; ;SPI2.h: 29: }Spi_Data_Sample;
+[; ;SPI2.h: 31: typedef enum
+[; ;SPI2.h: 32: {
+[; ;SPI2.h: 33: SPI_CLOCK_IDLE_HIGH = 0b00010000,
+[; ;SPI2.h: 34: SPI_CLOCK_IDLE_LOW = 0b00000000
+[; ;SPI2.h: 35: }Spi_Clock_Idle;
+[; ;SPI2.h: 37: typedef enum
+[; ;SPI2.h: 38: {
+[; ;SPI2.h: 39: SPI_IDLE_2_ACTIVE = 0b00000000,
+[; ;SPI2.h: 40: SPI_ACTIVE_2_IDLE = 0b01000000
+[; ;SPI2.h: 41: }Spi_Transmit_Edge;
+[; ;SPI2.h: 44: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+[; ;SPI2.h: 45: void spiWrite(char);
+[; ;SPI2.h: 46: unsigned spiDataReady();
+[; ;SPI2.h: 47: uint8_t spiRead();
+[; ;SPI2.h: 48: uint8_t SPI2_Exchange8bit(uint8_t tx);
+[; ;nrf24.h: 24: void set_ce(uint8_t state,uint8_t radioNb);
+[; ;nrf24.h: 25: void set_csn(uint8_t state,uint8_t bus);
+[; ;nrf24.h: 26: void set_sck(uint8_t state);
+[; ;nrf24.h: 27: void set_mosi(uint8_t state);
+[; ;nrf24.h: 28: uint8_t get_miso();
+[; ;nrf24.h: 29: uint8_t spi_transfer(uint8_t tx);
+[; ;nrf24.h: 30: void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+[; ;nrf24.h: 31: void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+[; ;nrf24.h: 32: void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+[; ;nrf24.h: 33: void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+[; ;nrf24.h: 34: void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+[; ;nrf24.h: 35: void nrf24_powerUpRx(uint8_t radioNb);
+[; ;nrf24.h: 36: void nrf24_config(uint8_t channel,uint8_t radioNb);
+[; ;nrf24.h: 37: void nrf24_displayConfiguration(uint8_t radioNb);
+[; ;nrf24.h: 38: void clearTable(uint8_t* tab,uint8_t size);
+[; ;nrf24.h: 39: void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+[; ;nrf24.h: 40: void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+[; ;nrf24.h: 41: uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+[; ;nrf24.h: 42: uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+[; ;nrf24.h: 43: uint8_t nrf24_payloadLength(uint8_t RadioNb);
+[; ;nrf24.h: 44: void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+[; ;nrf24.h: 45: uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+[; ;nrf24.h: 46: void nrf24_send(uint8_t* value,uint8_t RadioNb);
+[; ;nrf24.h: 47: uint8_t nrf24_isSending(uint8_t RadioNb);
+[; ;nrf24.h: 48: uint8_t nrf24_getStatus(uint8_t RadioNb);
+[; ;nrf24.h: 49: uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+[; ;nrf24.h: 50: void nrf24_powerUpTx(uint8_t RadioNb);
+[; ;nrf24.h: 51: void nrf24_powerDown(uint8_t RadioNb);
+[; ;nrf24.h: 52: void nrf24_setPayload(uint8_t pay_length);
+[; ;app.h: 7: typedef struct {
+[; ;app.h: 8: char data[3];
+[; ;app.h: 9: uint8_t len ;
+[; ;app.h: 10: } buffer;
+[; ;app.h: 12: typedef struct {
+[; ;app.h: 13: char data[14];
+[; ;app.h: 14: uint8_t len ;
+[; ;app.h: 15: } Airbuffer;
+[; ;app.h: 17: union unpackFloat {
+[; ;app.h: 18: float f;
+[; ;app.h: 19: uint8_t b[3];
+[; ;app.h: 20: };
+[; ;app.h: 22: union unpackU16 {
+[; ;app.h: 23: uint16_t u;
+[; ;app.h: 24: uint8_t b[2];
+[; ;app.h: 25: };
+[; ;app.h: 27: void interpretation(void);
+[; ;app.h: 28: void Bme280_OneMeasure(float *temp,float * humi,float *press);
+[; ;app.h: 29: void InitBME280andPowerDown(void);
+[; ;app.h: 30: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[]);
+[; ;app.h: 31: void AddTX_U16(uint16_t value );
+[; ;app.h: 32: void AddTXfloat(float the_float);
+[; ;app.h: 33: void AddTXAddr(uint8_t *addr);
+[; ;app.h: 34: void PushDataInTheAir(void);
+"4 BH1750.c
 [v _BH1750_Write `(v ~T0 @X0 1 ef1`uc ]
-"4
+"5
 {
-[; ;BH1750.c: 3: void BH1750_Write(unsigned char data1)
-[; ;BH1750.c: 4: {
+[; ;BH1750.c: 4: void BH1750_Write(unsigned char data1)
+[; ;BH1750.c: 5: {
 [e :U _BH1750_Write ]
-"3
-[v _data1 `uc ~T0 @X0 1 r1 ]
 "4
+[v _data1 `uc ~T0 @X0 1 r1 ]
+"5
 [f ]
-[; ;BH1750.c: 6: I2C_Master_Start();
-"6
-[e ( _I2C_Master_Start ..  ]
-[; ;BH1750.c: 7: I2C_Master_Write(0x46);
+[; ;BH1750.c: 7: I2C_Master_Start();
 "7
-[e ( _I2C_Master_Write (1 -> -> 70 `i `ui ]
-[; ;BH1750.c: 8: I2C_Master_Write(data1);
+[e ( _I2C_Master_Start ..  ]
+[; ;BH1750.c: 8: I2C_Master_Write(0x46);
 "8
-[e ( _I2C_Master_Write (1 -> _data1 `ui ]
-[; ;BH1750.c: 9: I2C_Master_Stop();
+[e ( _I2C_Master_Write (1 -> -> 70 `i `ui ]
+[; ;BH1750.c: 9: I2C_Master_Write(data1);
 "9
-[e ( _I2C_Master_Stop ..  ]
-[; ;BH1750.c: 10: }
+[e ( _I2C_Master_Write (1 -> _data1 `ui ]
+[; ;BH1750.c: 10: I2C_Master_Stop();
 "10
-[e :UE 919 ]
+[e ( _I2C_Master_Stop ..  ]
+[; ;BH1750.c: 11: }
+"11
+[e :UE 924 ]
 }
-"12
-[v _BH1750_Read `(ui ~T0 @X0 1 ef ]
 "13
+[v _BH1750_Read `(ui ~T0 @X0 1 ef ]
+"14
 {
-[; ;BH1750.c: 12: uint16_t BH1750_Read()
-[; ;BH1750.c: 13: {
+[; ;BH1750.c: 13: uint16_t BH1750_Read()
+[; ;BH1750.c: 14: {
 [e :U _BH1750_Read ]
 [f ]
-"14
-[v _res `ui ~T0 @X0 1 a ]
-[; ;BH1750.c: 14: uint16_t res ;
-[; ;BH1750.c: 15: I2C_Master_Start();
 "15
-[e ( _I2C_Master_Start ..  ]
-[; ;BH1750.c: 16: I2C_Master_Write(0x47);
+[v _res `ui ~T0 @X0 1 a ]
+[; ;BH1750.c: 15: uint16_t res ;
+[; ;BH1750.c: 16: I2C_Master_Start();
 "16
-[e ( _I2C_Master_Write (1 -> -> 71 `i `ui ]
-[; ;BH1750.c: 17: res = I2C_Master_Read(1);
+[e ( _I2C_Master_Start ..  ]
+[; ;BH1750.c: 17: I2C_Master_Write(0x47);
 "17
-[e = _res -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ui ]
-[; ;BH1750.c: 18: res <<= 8;
+[e ( _I2C_Master_Write (1 -> -> 71 `i `ui ]
+[; ;BH1750.c: 18: res = I2C_Master_Read(1);
 "18
-[e =<< _res -> 8 `i ]
-[; ;BH1750.c: 19: res |= I2C_Master_Read(0);
+[e = _res -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ui ]
+[; ;BH1750.c: 19: res <<= 8;
 "19
-[e =| _res -> ( _I2C_Master_Read (1 -> -> 0 `i `us `ui ]
-[; ;BH1750.c: 20: I2C_Master_Wait();
+[e =<< _res -> 8 `i ]
+[; ;BH1750.c: 20: res |= I2C_Master_Read(0);
 "20
-[e ( _I2C_Master_Wait ..  ]
-[; ;BH1750.c: 21: I2C_Master_Stop();
+[e =| _res -> ( _I2C_Master_Read (1 -> -> 0 `i `us `ui ]
+[; ;BH1750.c: 21: I2C_Master_Wait();
 "21
-[e ( _I2C_Master_Stop ..  ]
-[; ;BH1750.c: 22: return res;
+[e ( _I2C_Master_Wait ..  ]
+[; ;BH1750.c: 22: I2C_Master_Stop();
 "22
+[e ( _I2C_Master_Stop ..  ]
+[; ;BH1750.c: 23: return res;
+"23
 [e ) _res ]
-[e $UE 920  ]
-[; ;BH1750.c: 24: }
-"24
-[e :UE 920 ]
+[e $UE 925  ]
+[; ;BH1750.c: 25: }
+"25
+[e :UE 925 ]
 }
-"28
+"29
 [v _LireLux `(ui ~T0 @X0 1 ef1`c ]
-"29
-{
-[; ;BH1750.c: 28: uint16_t LireLux(int8_t resolution)
-[; ;BH1750.c: 29: {
-[e :U _LireLux ]
-"28
-[v _resolution `c ~T0 @X0 1 r1 ]
-"29
-[f ]
 "30
-[v _lux `ui ~T0 @X0 1 a ]
-[; ;BH1750.c: 30: uint16_t lux ;
-[; ;BH1750.c: 31: BH1750_Write(0x01);
-"31
-[e ( _BH1750_Write (1 -> -> 1 `i `uc ]
-[; ;BH1750.c: 32: switch(resolution)
-"32
-[e $U 923  ]
-[; ;BH1750.c: 33: {
-"33
 {
-[; ;BH1750.c: 34: case 0:
+[; ;BH1750.c: 29: uint16_t LireLux(int8_t resolution)
+[; ;BH1750.c: 30: {
+[e :U _LireLux ]
+"29
+[v _resolution `c ~T0 @X0 1 r1 ]
+"30
+[f ]
+"33
+[v _Word `S923 ~T0 @X0 1 a ]
+[; ;BH1750.c: 33: union unpackU16 Word ;
+[; ;BH1750.c: 34: Word.b[0] = 0x01;
 "34
-[e :U 924 ]
-[; ;BH1750.c: 35: BH1750_Write(0x23);
+[e = *U + &U . _Word 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _Word 1 `ui `ux -> -> 1 `i `uc ]
+[; ;BH1750.c: 35: I2C_Write_data(0x46,&Word.b,1);
 "35
-[e ( _BH1750_Write (1 -> -> 35 `i `uc ]
-[; ;BH1750.c: 36: break;
+[e ( _I2C_Write_data (3 , , -> -> 70 `i `uc &U . _Word 1 -> -> 1 `i `uc ]
+[; ;BH1750.c: 36: switch(resolution)
 "36
-[e $U 922  ]
-[; ;BH1750.c: 37: case 1:
+[e $U 928  ]
+[; ;BH1750.c: 37: {
 "37
-[e :U 925 ]
-[; ;BH1750.c: 38: BH1750_Write(0x20);
+{
+[; ;BH1750.c: 38: case 0:
 "38
-[e ( _BH1750_Write (1 -> -> 32 `i `uc ]
-[; ;BH1750.c: 39: break;
+[e :U 929 ]
+[; ;BH1750.c: 39: Word.b[0] = 0x23;
 "39
-[e $U 922  ]
-[; ;BH1750.c: 40: case 2:
+[e = *U + &U . _Word 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _Word 1 `ui `ux -> -> 35 `i `uc ]
+[; ;BH1750.c: 40: break;
 "40
-[e :U 926 ]
-[; ;BH1750.c: 41: BH1750_Write(0x21);
+[e $U 927  ]
+[; ;BH1750.c: 41: case 1:
 "41
-[e ( _BH1750_Write (1 -> -> 33 `i `uc ]
-[; ;BH1750.c: 42: break;
+[e :U 930 ]
+[; ;BH1750.c: 42: Word.b[0] = 0x20;
 "42
-[e $U 922  ]
-[; ;BH1750.c: 43: default:
+[e = *U + &U . _Word 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _Word 1 `ui `ux -> -> 32 `i `uc ]
+[; ;BH1750.c: 43: break;
 "43
-[e :U 927 ]
-[; ;BH1750.c: 44: BH1750_Write(0x20);
+[e $U 927  ]
+[; ;BH1750.c: 44: case 2:
 "44
-[e ( _BH1750_Write (1 -> -> 32 `i `uc ]
-[; ;BH1750.c: 45: break;
+[e :U 931 ]
+[; ;BH1750.c: 45: Word.b[0] = 0x21;
 "45
-[e $U 922  ]
+[e = *U + &U . _Word 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _Word 1 `ui `ux -> -> 33 `i `uc ]
+[; ;BH1750.c: 46: break;
 "46
-}
-[; ;BH1750.c: 46: }
-[e $U 922  ]
-"32
-[e :U 923 ]
-[e [\ _resolution , $ -> -> 0 `i `c 924
- , $ -> -> 1 `i `c 925
- , $ -> -> 2 `i `c 926
- 927 ]
-"46
-[e :U 922 ]
-[; ;BH1750.c: 48: _delay((unsigned long)((200)*(2000000/4000.0)));
+[e $U 927  ]
+[; ;BH1750.c: 47: default:
+"47
+[e :U 932 ]
+[; ;BH1750.c: 48: Word.b[0] = 0x20;
 "48
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
-[; ;BH1750.c: 49: lux = BH1750_Read();
+[e = *U + &U . _Word 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _Word 1 `ui `ux -> -> 32 `i `uc ]
+[; ;BH1750.c: 49: break;
 "49
-[e = _lux ( _BH1750_Read ..  ]
-[; ;BH1750.c: 50: lux = lux/1.20 ;
+[e $U 927  ]
 "50
-[e = _lux -> / -> _lux `d .1.20 `ui ]
-[; ;BH1750.c: 51: return lux;
-"51
-[e ) _lux ]
-[e $UE 921  ]
-[; ;BH1750.c: 54: }
+}
+[; ;BH1750.c: 50: }
+[e $U 927  ]
+"36
+[e :U 928 ]
+[e [\ _resolution , $ -> -> 0 `i `c 929
+ , $ -> -> 1 `i `c 930
+ , $ -> -> 2 `i `c 931
+ 932 ]
+"50
+[e :U 927 ]
+[; ;BH1750.c: 52: I2C_Write_data_then_Read(0x23,&Word.b,1,&Word.b,2,185);
+"52
+[e ( _I2C_Write_data_then_Read (4 , , , , , -> -> 35 `i `uc &U . _Word 1 -> -> 1 `i `uc &U . _Word 1 -> -> 2 `i `uc -> -> 185 `i `uc ]
+[; ;BH1750.c: 53: Word.u = (Word.u >> 8) | (Word.u << 8);
+"53
+[e = . _Word 0 | >> . _Word 0 -> 8 `i << . _Word 0 -> 8 `i ]
+[; ;BH1750.c: 54: return (((uint16_t)Word.u/1.20));
 "54
-[e :UE 921 ]
+[e ) -> / -> . _Word 0 `d .1.20 `ui ]
+[e $UE 926  ]
+[; ;BH1750.c: 58: }
+"58
+[e :UE 926 ]
 }

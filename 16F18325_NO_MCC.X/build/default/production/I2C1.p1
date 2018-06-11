@@ -25,6 +25,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SSP1CON2bits `VS240 ~T0 @X0 0 e@534 ]
 "3843
 [v _SSPBUF `Vuc ~T0 @X0 0 e@529 ]
+[v F7378 `(v ~T0 @X0 1 tf1`ul ]
+"153 /opt/microchip/xc8/v1.45/include/pic.h
+[v __delay `JF7378 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7248,7 +7252,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
 [; ;I2C1.h: 23: void I2C_Master_ReStart();
 [; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 "10 I2C1.c
 [v _I2C_Master_Init `(v ~T0 @X0 1 ef1`Cul ]
 "11
@@ -7531,10 +7535,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 930 ]
 }
 "93
-[v _I2C_Write_data_then_Read `(c ~T0 @X0 1 ef5`uc`*uc`uc`*uc`uc ]
+[v _I2C_Write_data_then_Read `(c ~T0 @X0 1 ef6`uc`*uc`uc`*uc`uc`uc ]
 "94
 {
-[; ;I2C1.c: 93: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len)
+[; ;I2C1.c: 93: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time)
 [; ;I2C1.c: 94: {
 [e :U _I2C_Write_data_then_Read ]
 "93
@@ -7543,6 +7547,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _dataIn_len `uc ~T0 @X0 1 r3 ]
 [v _dataOut `*uc ~T0 @X0 1 r4 ]
 [v _dataOut_len `uc ~T0 @X0 1 r5 ]
+[v _wait_time `uc ~T0 @X0 1 r6 ]
 "94
 [f ]
 "95
@@ -7604,100 +7609,106 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [; ;I2C1.c: 108: }
 [; ;I2C1.c: 109: }
-[; ;I2C1.c: 111: I2C_Master_ReStart();
-"111
-[e ( _I2C_Master_ReStart ..  ]
-[; ;I2C1.c: 113: if(I2C_Master_Write_V2(((I2C_Slave_7bitAddr<<1)|0x01)))
-"113
-[e $ ! != -> ( _I2C_Master_Write_V2 (1 -> | << -> _I2C_Slave_7bitAddr `i -> 1 `i -> 1 `i `ui `i -> -> -> 0 `i `c `i 944  ]
-[; ;I2C1.c: 114: {
-"114
-{
-[; ;I2C1.c: 115: I2C_Master_Stop();
-"115
+[; ;I2C1.c: 110: I2C_Master_Stop();
+"110
 [e ( _I2C_Master_Stop ..  ]
-[; ;I2C1.c: 116: return -1 ;
+[; ;I2C1.c: 111: _delay((unsigned long)((wait_time)*(2000000/4000.0)));
+"111
+[e ( __delay (1 -> * -> _wait_time `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;I2C1.c: 112: I2C_Master_Start();
+"112
+[e ( _I2C_Master_Start ..  ]
+[; ;I2C1.c: 114: if(I2C_Master_Write_V2(((I2C_Slave_7bitAddr<<1)|0x01)))
+"114
+[e $ ! != -> ( _I2C_Master_Write_V2 (1 -> | << -> _I2C_Slave_7bitAddr `i -> 1 `i -> 1 `i `ui `i -> -> -> 0 `i `c `i 944  ]
+[; ;I2C1.c: 115: {
+"115
+{
+[; ;I2C1.c: 116: I2C_Master_Stop();
 "116
+[e ( _I2C_Master_Stop ..  ]
+[; ;I2C1.c: 117: return -1 ;
+"117
 [e ) -> -U -> 1 `i `c ]
 [e $UE 937  ]
-"117
+"118
 }
 [e :U 944 ]
-[; ;I2C1.c: 117: }
-[; ;I2C1.c: 118: for(i=0;i<dataOut_len;i++)
-"118
+[; ;I2C1.c: 118: }
+[; ;I2C1.c: 119: for(i=0;i<dataOut_len;i++)
+"119
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 948  ]
-"119
-[e :U 945 ]
-[; ;I2C1.c: 119: {
-{
-[; ;I2C1.c: 120: I2C_Master_Wait();
 "120
-[e ( _I2C_Master_Wait ..  ]
-[; ;I2C1.c: 121: SSP1CON2bits.RCEN = 1;
+[e :U 945 ]
+[; ;I2C1.c: 120: {
+{
+[; ;I2C1.c: 121: I2C_Master_Wait();
 "121
-[e = . . _SSP1CON2bits 0 3 -> -> 1 `i `uc ]
-[; ;I2C1.c: 122: I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
+[; ;I2C1.c: 122: SSP1CON2bits.RCEN = 1;
 "122
-[e ( _I2C_Master_Wait ..  ]
-[; ;I2C1.c: 123: dataOut[i] = SSPBUF;
+[e = . . _SSP1CON2bits 0 3 -> -> 1 `i `uc ]
+[; ;I2C1.c: 123: I2C_Master_Wait();
 "123
-[e = *U + _dataOut * -> _i `ux -> -> # *U _dataOut `ui `ux _SSPBUF ]
-[; ;I2C1.c: 124: I2C_Master_Wait();
-"124
 [e ( _I2C_Master_Wait ..  ]
-[; ;I2C1.c: 125: if(i == (dataOut_len-1))
+[; ;I2C1.c: 124: dataOut[i] = SSPBUF;
+"124
+[e = *U + _dataOut * -> _i `ux -> -> # *U _dataOut `ui `ux _SSPBUF ]
+[; ;I2C1.c: 125: I2C_Master_Wait();
 "125
-[e $ ! == -> _i `i - -> _dataOut_len `i -> 1 `i 949  ]
-[; ;I2C1.c: 126: {
+[e ( _I2C_Master_Wait ..  ]
+[; ;I2C1.c: 126: if(i == (dataOut_len-1))
 "126
-{
-[; ;I2C1.c: 127: SSP1CON2bits.ACKDT = 1;
+[e $ ! == -> _i `i - -> _dataOut_len `i -> 1 `i 949  ]
+[; ;I2C1.c: 127: {
 "127
-[e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
-[; ;I2C1.c: 128: SSP1CON2bits.ACKEN = 1;
-"128
-[e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
-"129
-}
-[; ;I2C1.c: 129: }
-[e $U 950  ]
-"130
-[e :U 949 ]
-[; ;I2C1.c: 130: else
-[; ;I2C1.c: 131: {
-"131
 {
-[; ;I2C1.c: 132: SSP1CON2bits.ACKDT = 0;
-"132
-[e = . . _SSP1CON2bits 0 5 -> -> 0 `i `uc ]
-[; ;I2C1.c: 133: SSP1CON2bits.ACKEN = 1;
-"133
+[; ;I2C1.c: 128: SSP1CON2bits.ACKDT = 1;
+"128
+[e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
+[; ;I2C1.c: 129: SSP1CON2bits.ACKEN = 1;
+"129
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
+"130
+}
+[; ;I2C1.c: 130: }
+[e $U 950  ]
+"131
+[e :U 949 ]
+[; ;I2C1.c: 131: else
+[; ;I2C1.c: 132: {
+"132
+{
+[; ;I2C1.c: 133: SSP1CON2bits.ACKDT = 0;
+"133
+[e = . . _SSP1CON2bits 0 5 -> -> 0 `i `uc ]
+[; ;I2C1.c: 134: SSP1CON2bits.ACKEN = 1;
 "134
+[e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
+"135
 }
 [e :U 950 ]
-"136
+"137
 }
-"118
+"119
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 948 ]
 [e $ < -> _i `i -> _dataOut_len `i 945  ]
 [e :U 946 ]
-"136
-}
-[; ;I2C1.c: 134: }
-[; ;I2C1.c: 136: }
-[; ;I2C1.c: 137: I2C_Master_Stop();
 "137
-[e ( _I2C_Master_Stop ..  ]
-[; ;I2C1.c: 138: return 0 ;
+}
+[; ;I2C1.c: 135: }
+[; ;I2C1.c: 137: }
+[; ;I2C1.c: 138: I2C_Master_Stop();
 "138
+[e ( _I2C_Master_Stop ..  ]
+[; ;I2C1.c: 139: return 0 ;
+"139
 [e ) -> -> 0 `i `c ]
 [e $UE 937  ]
-[; ;I2C1.c: 141: }
-"141
+[; ;I2C1.c: 142: }
+"142
 [e :UE 937 ]
 }

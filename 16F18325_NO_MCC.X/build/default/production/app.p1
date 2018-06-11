@@ -7,14 +7,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S921 . data len ]
 "195 /opt/microchip/xc8/v1.45/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-[v F7594 `(c ~T0 @X0 1 tf2`uc`uc ]
+[v F7595 `(c ~T0 @X0 1 tf2`uc`uc ]
 "77 bme280.h
-[v _BME280_write8 `TF7594 ~T0 @X0 0 e ]
+[v _BME280_write8 `TF7595 ~T0 @X0 0 e ]
 "83
 [v _readSensorCoefficients `(v ~T0 @X0 0 ef ]
 "85
 [v _BME280_goForceMode `(v ~T0 @X0 0 ef ]
-"86
+[v F7378 `(v ~T0 @X0 1 tf1`ul ]
+"153 /opt/microchip/xc8/v1.45/include/pic.h
+[v __delay `JF7378 ~T0 @X0 0 e ]
+[p i __delay ]
+"86 bme280.h
 [v _BME280_readTemperature `(f ~T0 @X0 0 ef ]
 "87
 [v _BME280_readHumidity `(f ~T0 @X0 0 ef ]
@@ -38,6 +42,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S923 unpackU16 u b ]
 "46 nrf24.h
 [v _nrf24_send `(v ~T0 @X0 0 ef2`*uc`uc ]
+"47
+[v _nrf24_isSending `(uc ~T0 @X0 0 ef1`uc ]
+"49
+[v _nrf24_lastMessageStatus `(uc ~T0 @X0 0 ef1`uc ]
+"14 eusart.h
+[v _UART1_SendStr `(v ~T0 @X0 0 ef1`*Cuc ]
+"45 nrf24.h
+[v _nrf24_retransmissionCount `(uc ~T0 @X0 0 ef1`uc ]
+"15 eusart.h
+[v _UART1_SendDec `(v ~T0 @X0 0 ef1`ui ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7279,7 +7293,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
 [; ;I2C1.h: 23: void I2C_Master_ReStart();
 [; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 [; ;bme280.h: 46: struct BME280_Calibration_Data
 [; ;bme280.h: 47: {
 [; ;bme280.h: 50: uint16_t dig_T1;
@@ -7499,208 +7513,277 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;app.c: 30: BME280_goForceMode();
 "30
 [e ( _BME280_goForceMode ..  ]
-[; ;app.c: 31: *temp = BME280_readTemperature();
+[; ;app.c: 31: _delay((unsigned long)((200)*(2000000/4000.0)));
 "31
-[e = *U _temp ( _BME280_readTemperature ..  ]
-[; ;app.c: 32: *humi = BME280_readHumidity();
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;app.c: 32: *temp = BME280_readTemperature();
 "32
-[e = *U _humi ( _BME280_readHumidity ..  ]
-[; ;app.c: 33: *press = BME280_readPressure();
+[e = *U _temp ( _BME280_readTemperature ..  ]
+[; ;app.c: 33: *humi = BME280_readHumidity();
 "33
-[e = *U _press ( _BME280_readPressure ..  ]
-[; ;app.c: 34: }
+[e = *U _humi ( _BME280_readHumidity ..  ]
+[; ;app.c: 34: *press = BME280_readPressure();
 "34
+[e = *U _press ( _BME280_readPressure ..  ]
+[; ;app.c: 35: }
+"35
 [e :UE 929 ]
 }
-"36
-[v _Init_RF_andPowerDown `(v ~T0 @X0 1 ef4`uc`uc`*uc`*uc ]
 "37
+[v _Init_RF_andPowerDown `(v ~T0 @X0 1 ef4`uc`uc`*uc`*uc ]
+"38
 {
-[; ;app.c: 36: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[])
-[; ;app.c: 37: {
+[; ;app.c: 37: void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[])
+[; ;app.c: 38: {
 [e :U _Init_RF_andPowerDown ]
-"36
+"37
 [v _channel `uc ~T0 @X0 1 r1 ]
 [v _payload_length `uc ~T0 @X0 1 r2 ]
 [v _tx_address `*uc ~T0 @X0 1 r3 ]
 [v _rx_address `*uc ~T0 @X0 1 r4 ]
-"37
-[f ]
-[; ;app.c: 38: nrf24_setPayload(payload_length);
 "38
-[e ( _nrf24_setPayload (1 _payload_length ]
-[; ;app.c: 39: nrf24_config(channel,1);
+[f ]
+[; ;app.c: 39: nrf24_setPayload(payload_length);
 "39
-[e ( _nrf24_config (2 , _channel -> -> 1 `i `uc ]
-[; ;app.c: 40: nrf24_tx_address(tx_address,1);
+[e ( _nrf24_setPayload (1 _payload_length ]
+[; ;app.c: 40: nrf24_config(channel,1);
 "40
-[e ( _nrf24_tx_address (2 , _tx_address -> -> 1 `i `uc ]
-[; ;app.c: 41: nrf24_rx_address(rx_address,1);
+[e ( _nrf24_config (2 , _channel -> -> 1 `i `uc ]
+[; ;app.c: 41: nrf24_tx_address(tx_address,1);
 "41
-[e ( _nrf24_rx_address (2 , _rx_address -> -> 1 `i `uc ]
-[; ;app.c: 42: nrf24_powerDown(1);
+[e ( _nrf24_tx_address (2 , _tx_address -> -> 1 `i `uc ]
+[; ;app.c: 42: nrf24_rx_address(rx_address,1);
 "42
-[e ( _nrf24_powerDown (1 -> -> 1 `i `uc ]
-[; ;app.c: 43: }
+[e ( _nrf24_rx_address (2 , _rx_address -> -> 1 `i `uc ]
+[; ;app.c: 43: nrf24_powerDown(1);
 "43
+[e ( _nrf24_powerDown (1 -> -> 1 `i `uc ]
+[; ;app.c: 44: }
+"44
 [e :UE 930 ]
 }
-"46
+"47
 [v _AddTXfloat `(v ~T0 @X0 1 ef1`f ]
-"47
-{
-[; ;app.c: 46: void AddTXfloat(float the_float)
-[; ;app.c: 47: {
-[e :U _AddTXfloat ]
-"46
-[v _the_float `f ~T0 @X0 1 r1 ]
-"47
-[f ]
 "48
-[v _i `uc ~T0 @X0 1 a ]
+{
+[; ;app.c: 47: void AddTXfloat(float the_float)
+[; ;app.c: 48: {
+[e :U _AddTXfloat ]
+"47
+[v _the_float `f ~T0 @X0 1 r1 ]
+"48
+[f ]
 "49
-[v _pack1 `S922 ~T0 @X0 1 a ]
-[; ;app.c: 48: uint8_t i ;
-[; ;app.c: 49: union unpackFloat pack1;
-[; ;app.c: 50: pack1.f = the_float ;
+[v _i `uc ~T0 @X0 1 a ]
 "50
-[e = . _pack1 0 _the_float ]
-[; ;app.c: 51: for(i=0;i<3;i++)
+[v _pack1 `S922 ~T0 @X0 1 a ]
+[; ;app.c: 49: uint8_t i ;
+[; ;app.c: 50: union unpackFloat pack1;
+[; ;app.c: 51: pack1.f = the_float ;
 "51
+[e = . _pack1 0 _the_float ]
+[; ;app.c: 52: for(i=0;i<3;i++)
+"52
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 3 `i 932  ]
 [e $U 933  ]
-"52
-[e :U 932 ]
-[; ;app.c: 52: {
-{
-[; ;app.c: 53: TXbuffer.data[TXbuffer.len] = pack1.b[i];
 "53
-[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
-[; ;app.c: 54: TXbuffer.len++;
+[e :U 932 ]
+[; ;app.c: 53: {
+{
+[; ;app.c: 54: TXbuffer.data[TXbuffer.len] = pack1.b[i];
 "54
-[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
+[; ;app.c: 55: TXbuffer.len++;
 "55
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"56
 }
-"51
+"52
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 3 `i 932  ]
 [e :U 933 ]
-"55
-}
-[; ;app.c: 55: }
-[; ;app.c: 56: }
 "56
+}
+[; ;app.c: 56: }
+[; ;app.c: 57: }
+"57
 [e :UE 931 ]
 }
-"58
+"59
 [v _AddTX_U16 `(v ~T0 @X0 1 ef1`ui ]
-"59
-{
-[; ;app.c: 58: void AddTX_U16(uint16_t value )
-[; ;app.c: 59: {
-[e :U _AddTX_U16 ]
-"58
-[v _value `ui ~T0 @X0 1 r1 ]
-"59
-[f ]
 "60
-[v _i `uc ~T0 @X0 1 a ]
+{
+[; ;app.c: 59: void AddTX_U16(uint16_t value )
+[; ;app.c: 60: {
+[e :U _AddTX_U16 ]
+"59
+[v _value `ui ~T0 @X0 1 r1 ]
+"60
+[f ]
 "61
-[v _pack1 `S923 ~T0 @X0 1 a ]
-[; ;app.c: 60: uint8_t i ;
-[; ;app.c: 61: union unpackU16 pack1;
-[; ;app.c: 62: pack1.u = value ;
+[v _i `uc ~T0 @X0 1 a ]
 "62
-[e = . _pack1 0 _value ]
-[; ;app.c: 63: for(i=0;i<2;i++)
+[v _pack1 `S923 ~T0 @X0 1 a ]
+[; ;app.c: 61: uint8_t i ;
+[; ;app.c: 62: union unpackU16 pack1;
+[; ;app.c: 63: pack1.u = value ;
 "63
+[e = . _pack1 0 _value ]
+[; ;app.c: 64: for(i=0;i<2;i++)
+"64
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 2 `i 936  ]
 [e $U 937  ]
-"64
-[e :U 936 ]
-[; ;app.c: 64: {
-{
-[; ;app.c: 65: TXbuffer.data[TXbuffer.len] = pack1.b[i];
 "65
-[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
-[; ;app.c: 66: TXbuffer.len++;
+[e :U 936 ]
+[; ;app.c: 65: {
+{
+[; ;app.c: 66: TXbuffer.data[TXbuffer.len] = pack1.b[i];
 "66
-[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + &U . _pack1 1 * -> _i `ux -> -> # *U &U . _pack1 1 `ui `ux ]
+[; ;app.c: 67: TXbuffer.len++;
 "67
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"68
 }
-"63
+"64
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 2 `i 936  ]
 [e :U 937 ]
-"67
+"68
 }
-[; ;app.c: 67: }
-[; ;app.c: 69: }
-"69
+[; ;app.c: 68: }
+[; ;app.c: 70: }
+"70
 [e :UE 935 ]
 }
-"71
+"72
 [v _AddTXAddr `(v ~T0 @X0 1 ef1`*uc ]
-"72
-{
-[; ;app.c: 71: void AddTXAddr(uint8_t *addr)
-[; ;app.c: 72: {
-[e :U _AddTXAddr ]
-"71
-[v _addr `*uc ~T0 @X0 1 r1 ]
-"72
-[f ]
 "73
-[v _i `uc ~T0 @X0 1 a ]
-[; ;app.c: 73: uint8_t i ;
-[; ;app.c: 74: for(i=0;i<5;i++)
+{
+[; ;app.c: 72: void AddTXAddr(uint8_t *addr)
+[; ;app.c: 73: {
+[e :U _AddTXAddr ]
+"72
+[v _addr `*uc ~T0 @X0 1 r1 ]
+"73
+[f ]
 "74
+[v _i `uc ~T0 @X0 1 a ]
+[; ;app.c: 74: uint8_t i ;
+[; ;app.c: 75: for(i=0;i<5;i++)
+"75
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 5 `i 940  ]
 [e $U 941  ]
-"75
-[e :U 940 ]
-[; ;app.c: 75: {
-{
-[; ;app.c: 76: TXbuffer.data[TXbuffer.len] = addr[i];
 "76
-[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + _addr * -> _i `ux -> -> # *U _addr `ui `ux ]
-[; ;app.c: 77: TXbuffer.len++;
+[e :U 940 ]
+[; ;app.c: 76: {
+{
+[; ;app.c: 77: TXbuffer.data[TXbuffer.len] = addr[i];
 "77
-[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+[e = *U + &U . _TXbuffer 0 * -> . _TXbuffer 1 `ux -> -> # *U &U . _TXbuffer 0 `ui `ux *U + _addr * -> _i `ux -> -> # *U _addr `ui `ux ]
+[; ;app.c: 78: TXbuffer.len++;
 "78
+[e ++ . _TXbuffer 1 -> -> 1 `i `uc ]
+"79
 }
-"74
+"75
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 5 `i 940  ]
 [e :U 941 ]
-"78
+"79
 }
-[; ;app.c: 78: }
-[; ;app.c: 80: }
-"80
+[; ;app.c: 79: }
+[; ;app.c: 81: }
+"81
 [e :UE 939 ]
 }
-"82
-[v _PushDataInTheAir `(v ~T0 @X0 1 ef ]
 "83
+[v _PushDataInTheAir `(v ~T0 @X0 1 ef ]
+"84
 {
-[; ;app.c: 82: void PushDataInTheAir(void)
-[; ;app.c: 83: {
+[; ;app.c: 83: void PushDataInTheAir(void)
+[; ;app.c: 84: {
 [e :U _PushDataInTheAir ]
 [f ]
-[; ;app.c: 84: nrf24_send(TXbuffer.data,1);
-"84
-[e ( _nrf24_send (2 , &U . _TXbuffer 0 -> -> 1 `i `uc ]
-[; ;app.c: 85: }
+[; ;app.c: 85: nrf24_send(TXbuffer.data,1);
 "85
+[e ( _nrf24_send (2 , &U . _TXbuffer 0 -> -> 1 `i `uc ]
+[; ;app.c: 86: TXbuffer.len = 0 ;
+"86
+[e = . _TXbuffer 1 -> -> 0 `i `uc ]
+"87
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;app.c: 87: uint8_t temp ;
+[; ;app.c: 88: while(nrf24_isSending(1));
+"88
+[e $U 944  ]
+[e :U 945 ]
+[e :U 944 ]
+[e $ != -> ( _nrf24_isSending (1 -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 945  ]
+[e :U 946 ]
+[; ;app.c: 91: temp = nrf24_lastMessageStatus(1);
+"91
+[e = _temp ( _nrf24_lastMessageStatus (1 -> -> 1 `i `uc ]
+[; ;app.c: 93: if(temp == 0)
+"93
+[e $ ! == -> _temp `i -> 0 `i 947  ]
+[; ;app.c: 94: {
+"94
+{
+[; ;app.c: 95: UART1_SendStr("> Tranmission went OK\r\n");
+"95
+[e ( _UART1_SendStr (1 :s 3C ]
+"96
+}
+[; ;app.c: 96: }
+[e $U 948  ]
+"97
+[e :U 947 ]
+[; ;app.c: 97: else if(temp == 1)
+[e $ ! == -> _temp `i -> 1 `i 949  ]
+[; ;app.c: 98: {
+"98
+{
+[; ;app.c: 99: UART1_SendStr("> Message is lost ...\r\n");
+"99
+[e ( _UART1_SendStr (1 :s 4C ]
+"100
+}
+[e :U 949 ]
+"102
+[e :U 948 ]
+[; ;app.c: 100: }
+[; ;app.c: 102: temp = nrf24_retransmissionCount(1);
+[e = _temp ( _nrf24_retransmissionCount (1 -> -> 1 `i `uc ]
+[; ;app.c: 103: UART1_SendStr("> Retranmission count:");
+"103
+[e ( _UART1_SendStr (1 :s 5C ]
+[; ;app.c: 104: UART1_SendDec(temp);
+"104
+[e ( _UART1_SendDec (1 -> _temp `ui ]
+[; ;app.c: 105: UART1_SendStr("\r\n");
+"105
+[e ( _UART1_SendStr (1 :s 6C ]
+[; ;app.c: 106: _delay((unsigned long)((1)*(2000000/4000.0)));
+"106
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[; ;app.c: 107: nrf24_powerDown(1);
+"107
+[e ( _nrf24_powerDown (1 -> -> 1 `i `uc ]
+[; ;app.c: 109: }
+"109
 [e :UE 943 ]
 }
 [p f _printf 8912896 ]
 [a 2C 32 37 99 0 ]
+[a 5C 62 32 82 101 116 114 97 110 109 105 115 115 105 111 110 32 99 111 117 110 116 58 0 ]
+[a 3C 62 32 84 114 97 110 109 105 115 115 105 111 110 32 119 101 110 116 32 79 75 13 10 0 ]
+[a 4C 62 32 77 101 115 115 97 103 101 32 105 115 32 108 111 115 116 32 46 46 46 13 10 0 ]
 [a 1C 108 97 32 99 111 109 109 97 110 100 101 32 101 115 116 32 58 32 13 10 0 ]
+[a 6C 13 10 0 ]

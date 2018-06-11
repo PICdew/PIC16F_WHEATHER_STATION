@@ -9588,14 +9588,268 @@ int8_t I2C_Master_Write_V2(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
 void I2C_Master_ReStart();
 int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 
 # 8 "BH1750.h"
 uint16_t LireLux(int8_t resolution);
 void BH1750_Write(unsigned char data);
 uint16_t BH1750_Read(void);
 
-# 3 "BH1750.c"
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
+void EUSART_Initialize(void);
+
+# 42
+bool EUSART_is_tx_ready(void);
+
+# 51
+bool EUSART_is_rx_ready(void);
+
+# 60
+bool EUSART_is_tx_done(void);
+
+# 67
+uint8_t EUSART_Read(void);
+
+# 76
+void EUSART_Write(uint8_t txData);
+
+# 11 "interupt.h"
+inline void EnableGlobalinterupts(void);
+inline void DisableGlobalinterupts(void);
+inline void EnablePeripheralInterupts(void);
+inline void DisablePeripheralInterupts(void);
+inline void EnableRXInterupts(void);
+inline void DisableRXInterupts(void);
+
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
+void EUSART_Initialize(void);
+
+# 42
+bool EUSART_is_tx_ready(void);
+
+# 51
+bool EUSART_is_rx_ready(void);
+
+# 60
+bool EUSART_is_tx_done(void);
+
+# 67
+uint8_t EUSART_Read(void);
+
+# 76
+void EUSART_Write(uint8_t txData);
+
+# 7 "system.h"
+void SYSTEM_Initialize(void);
+void OSCILLATOR_Initialize(void);
+void WDT_Initialize(void);
+void PMD_Initialize(void);
+void PIN_MANAGER_Initialize(void);
+
+# 16 "I2C1.h"
+void I2C_Master_Init(const unsigned long c);
+void I2C_Master_Wait();
+void I2C_Master_Start();
+void I2C_Master_Stop();
+void I2C_Master_Write(unsigned d);
+int8_t I2C_Master_Write_V2(unsigned d);
+unsigned short I2C_Master_Read(unsigned short a);
+void I2C_Master_ReStart();
+int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
+int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
+
+# 46 "bme280.h"
+struct BME280_Calibration_Data
+{
+
+
+uint16_t dig_T1;
+int16_t dig_T2;
+int16_t dig_T3;
+
+uint16_t dig_P1;
+int16_t dig_P2;
+int16_t dig_P3;
+int16_t dig_P4;
+int16_t dig_P5;
+int16_t dig_P6;
+int16_t dig_P7;
+int16_t dig_P8;
+int16_t dig_P9;
+
+uint8_t dig_H1;
+int16_t dig_H2;
+uint8_t dig_H3;
+int16_t dig_H4;
+int16_t dig_H5;
+int8_t dig_H6;
+
+};
+
+
+
+int8_t BME280_init(void);
+inline uint8_t BME280_read8(uint8_t reg);
+inline int8_t BME280_write8(uint8_t reg,uint8_t value);
+inline uint16_t BME280_read16(uint8_t reg);
+uint16_t BME280_read16_LE(uint8_t reg);
+int16_t BME280_readS16(uint8_t reg);
+inline uint32_t BME280_read24(uint8_t reg);
+int16_t BME280_readS16_LE(uint8_t reg);
+void readSensorCoefficients(void);
+
+void BME280_goForceMode(void);
+float BME280_readTemperature(void);
+float BME280_readHumidity(void);
+float BME280_readPressure(void);
+
+# 13 "eusart.h"
+void SendUART1(unsigned int data);
+void UART1_SendStr(const char * s);
+void UART1_SendDec(unsigned int data);
+void UART1_SendHex(unsigned int data);
+unsigned char setHEX(unsigned char ch);
+void printTable(uint8_t * table,uint8_t size);
+
+# 33
+void EUSART_Initialize(void);
+
+# 42
+bool EUSART_is_tx_ready(void);
+
+# 51
+bool EUSART_is_rx_ready(void);
+
+# 60
+bool EUSART_is_tx_done(void);
+
+# 67
+uint8_t EUSART_Read(void);
+
+# 76
+void EUSART_Write(uint8_t txData);
+
+# 7 "system.h"
+void SYSTEM_Initialize(void);
+void OSCILLATOR_Initialize(void);
+void WDT_Initialize(void);
+void PMD_Initialize(void);
+void PIN_MANAGER_Initialize(void);
+
+# 15 "SPI2.h"
+typedef enum
+{
+SPI_MASTER_OSC_DIV4 = 0b00100000,
+SPI_MASTER_OSC_DIV16 = 0b00100001,
+SPI_MASTER_OSC_DIV64 = 0b00100010,
+SPI_MASTER_TMR2 = 0b00100011,
+SPI_SLAVE_SS_EN = 0b00100100,
+SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+SPI_CLOCK_IDLE_HIGH = 0b00010000,
+SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+SPI_IDLE_2_ACTIVE = 0b00000000,
+SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+uint8_t spiRead();
+uint8_t SPI2_Exchange8bit(uint8_t tx);
+
+# 24 "nrf24.h"
+void set_ce(uint8_t state,uint8_t radioNb);
+void set_csn(uint8_t state,uint8_t bus);
+void set_sck(uint8_t state);
+void set_mosi(uint8_t state);
+uint8_t get_miso();
+uint8_t spi_transfer(uint8_t tx);
+void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
+void nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+void nrf24_configRegister(uint8_t reg, uint8_t value,uint8_t bus);
+void nrf24_readRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus);
+void nrf24_writeRegister(uint8_t reg, uint8_t* value, uint8_t len,uint8_t bus) ;
+void nrf24_powerUpRx(uint8_t radioNb);
+void nrf24_config(uint8_t channel,uint8_t radioNb);
+void nrf24_displayConfiguration(uint8_t radioNb);
+void clearTable(uint8_t* tab,uint8_t size);
+void nrf24_rx_address(uint8_t * adr,uint8_t RadioNb) ;
+void nrf24_tx_address(uint8_t* adr,uint8_t RadioNb);
+uint8_t nrf24_dataReady(uint8_t RadioNb) ;
+uint8_t nrf24_rxFifoEmpty(uint8_t RadioNb);
+uint8_t nrf24_payloadLength(uint8_t RadioNb);
+void nrf24_getData(uint8_t* dta,uint8_t RadioNb) ;
+uint8_t nrf24_retransmissionCount(uint8_t RadioNb);
+void nrf24_send(uint8_t* value,uint8_t RadioNb);
+uint8_t nrf24_isSending(uint8_t RadioNb);
+uint8_t nrf24_getStatus(uint8_t RadioNb);
+uint8_t nrf24_lastMessageStatus(uint8_t RadioNb);
+void nrf24_powerUpTx(uint8_t RadioNb);
+void nrf24_powerDown(uint8_t RadioNb);
+void nrf24_setPayload(uint8_t pay_length);
+
+# 7 "app.h"
+typedef struct {
+char data[3];
+uint8_t len ;
+} buffer;
+
+typedef struct {
+char data[14];
+uint8_t len ;
+} Airbuffer;
+
+union unpackFloat {
+float f;
+uint8_t b[3];
+};
+
+union unpackU16 {
+uint16_t u;
+uint8_t b[2];
+};
+
+void interpretation(void);
+void Bme280_OneMeasure(float *temp,float * humi,float *press);
+void InitBME280andPowerDown(void);
+void Init_RF_andPowerDown(uint8_t channel,uint8_t payload_length,uint8_t tx_address[],uint8_t rx_address[]);
+void AddTX_U16(uint16_t value );
+void AddTXfloat(float the_float);
+void AddTXAddr(uint8_t *addr);
+void PushDataInTheAir(void);
+
+# 4 "BH1750.c"
 void BH1750_Write(unsigned char data1)
 {
 
@@ -9623,28 +9877,31 @@ return res;
 
 uint16_t LireLux(int8_t resolution)
 {
-uint16_t lux ;
-BH1750_Write(0x01);
+
+
+union unpackU16 Word ;
+Word.b[0] = 0x01;
+I2C_Write_data(0x46,&Word.b,1);
 switch(resolution)
 {
 case 0:
-BH1750_Write(0x23);
+Word.b[0] = 0x23;
 break;
 case 1:
-BH1750_Write(0x20);
+Word.b[0] = 0x20;
 break;
 case 2:
-BH1750_Write(0x21);
+Word.b[0] = 0x21;
 break;
 default:
-BH1750_Write(0x20);
+Word.b[0] = 0x20;
 break;
 }
 
-_delay((unsigned long)((200)*(2000000/4000.0)));
-lux = BH1750_Read();
-lux = lux/1.20 ;
-return lux;
+I2C_Write_data_then_Read(0x23,&Word.b,1,&Word.b,2,185);
+Word.u = (Word.u >> 8) | (Word.u << 8);
+return (((uint16_t)Word.u/1.20));
+
 
 
 }

@@ -12,16 +12,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "16 I2C1.h
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 "17 system.c
-[c E7572 32 33 34 35 36 37 .. ]
-[n E7572 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E7580 0 128 .. ]
-[n E7580 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E7584 16 0 .. ]
-[n E7584 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E7588 0 64 .. ]
-[n E7588 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+[c E7573 32 33 34 35 36 37 .. ]
+[n E7573 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E7581 0 128 .. ]
+[n E7581 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E7585 16 0 .. ]
+[n E7585 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E7589 0 64 .. ]
+[n E7589 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
 "44 SPI2.h
-[v _spiInit `(v ~T0 @X0 0 ef4`E7572`E7580`E7584`E7588 ]
+[v _spiInit `(v ~T0 @X0 0 ef4`E7573`E7581`E7585`E7589 ]
 "11925 /opt/microchip/xc8/v1.45/include/pic16f18325.h
 [v _OSCCON1 `Vuc ~T0 @X0 0 e@2329 ]
 "12065
@@ -7432,7 +7432,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C1.h: 22: unsigned short I2C_Master_Read(unsigned short a);
 [; ;I2C1.h: 23: void I2C_Master_ReStart();
 [; ;I2C1.h: 24: int8_t I2C_Write_data(uint8_t I2C_Slave_8bitAddr,uint8_t *data,uint8_t data_len);
-[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len);
+[; ;I2C1.h: 25: int8_t I2C_Write_data_then_Read(uint8_t I2C_Slave_7bitAddr,uint8_t *dataIn,uint8_t dataIn_len,uint8_t *dataOut,uint8_t dataOut_len,uint8_t wait_time);
 [; ;eusart.h: 13: void SendUART1(unsigned int data);
 [; ;eusart.h: 14: void UART1_SendStr(const char * s);
 [; ;eusart.h: 15: void UART1_SendDec(unsigned int data);
@@ -7536,7 +7536,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
 [; ;system.c: 17: spiInit(SPI_MASTER_OSC_DIV4,SPI_DATA_SAMPLE_MIDDLE,SPI_CLOCK_IDLE_LOW,SPI_ACTIVE_2_IDLE);
 "17
-[e ( _spiInit (4 , , , . `E7572 0 . `E7580 0 . `E7584 1 . `E7588 1 ]
+[e ( _spiInit (4 , , , . `E7573 0 . `E7581 0 . `E7585 1 . `E7589 1 ]
 [; ;system.c: 19: }
 "19
 [e :UE 919 ]

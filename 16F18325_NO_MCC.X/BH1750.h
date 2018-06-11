@@ -11,6 +11,7 @@ uint16_t BH1750_Read(void);
 
 
 //BH1750 command 
+#define bh1750_address_7bit     0x23
 #define	BH1750_address_w		0x46                               
 #define	BH1750_address_r		0x47 
 
